@@ -5,6 +5,9 @@ from django.utils import timezone
 
 class Event(models.Model):
     name = models.CharField(max_length = 50)
-    date = models.DateTimeField()
+    date = models.DateField()
     objective = models.TextField(blank = True)
     description = models.TextField(blank = True)
+
+class EventType(models.Model):
+    name = models.CharField(max_length = 50)
