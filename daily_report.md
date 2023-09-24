@@ -32,7 +32,7 @@
 |-------------|-------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------|
 | 19/09/2023   | No aplica | Reunirme con el equipo para distribuir las historias de usuario que vamos a desarrollar cada uno. | Ninguno |
 | 20/09/2023   | Reunirme con el equipo para distribuir las historias de usuario que vamos a desarrollar cada uno. | Subir el codigo base del pryecto. El cual incluye login y sign up | Ninguno |
-| [Fecha 3]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
+| 23/09/2023   | Crear el formulario para registrar el evento | Modificar el html y el view para colocar un datepicker para la fecha | Ninguno |
 | ...         | ...                                       | ...                                                | ...                                                                   |
 ## Sebastián López
 
