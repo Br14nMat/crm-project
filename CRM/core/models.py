@@ -6,7 +6,8 @@ class InvestigationProyect(models.Model):
     description = models.TextField()
     objetivos = models.TextField()
     start_date= models.DateField()
-    finish_date= models.CharField(max_length=15)
+    finish_date= models.DateField()
+    nit= models.CharField(max_length=15)
 
     def __str__(self):
         return self.name
