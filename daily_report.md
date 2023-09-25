@@ -5,7 +5,7 @@
 | Fecha       | ¿Qué hice ayer para avanzar en el proyecto? | ¿Qué voy a hacer hoy para avanzar en el proyecto? | ¿Hay algún impedimento que me esté impidiendo avanzar en el proyecto? |
 |-------------|-------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------|
 | 20/09/2023   | Selección de HU a realizar      | Creación de app en djnago y creación del super usuario                         | Documentación                          |
-| [Fecha 2]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
+| 25/09/2023   | Investigación de funcionalidades de django      | Avance en la Historia de Usuario 12                         | Falta del pull request y vistas                          |
 | [Fecha 3]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
 | ...         | ...                                       | ...                                                | ...                                                                   |
 
