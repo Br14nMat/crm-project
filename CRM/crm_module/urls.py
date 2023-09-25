@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from authentication import views as auth_views
 from event import views as event_views
-
+from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', auth_views.home, name = 'home'),
@@ -26,6 +26,7 @@ urlpatterns = [
     path('signin/', auth_views.signin, name = 'signin'),
     path('signout/', auth_views.signout, name = 'signout'),
     path('sesion/', auth_views.sesion, name = 'sesion'),
+    path("agregar_proyecto", views.agregarProyecto, name='AgregarProyecto')
 
     #path('event/create', event_views.create_event, name = 'create event')
 
