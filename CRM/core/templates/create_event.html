@@ -4,7 +4,7 @@
 
     <h1>Create event </h1>
     {{ error }}
-    <form action = "/event/create" method = "POST">
+    <form action = "/event/register" method = "POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button>Save</button>
