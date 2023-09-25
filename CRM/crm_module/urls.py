@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from authentication import views as auth_views
+from core import views as core_views
 
 
 urlpatterns = [
@@ -26,7 +27,5 @@ urlpatterns = [
     path('signin/', auth_views.signin, name = 'signin'),
     path('signout/', auth_views.signout, name = 'signout'),
     path('sesion/', auth_views.sesion, name = 'sesion'),
-
-    #path('event/create', event_views.create_event, name = 'create event')
-
+    path('sponsor/register', core_views.register_sponsor, name = 'register_sponsor'),
 ]
