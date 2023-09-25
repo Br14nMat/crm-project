@@ -13,10 +13,12 @@
 
 | Fecha       | ¿Qué hice ayer para avanzar en el proyecto? | ¿Qué voy a hacer hoy para avanzar en el proyecto? | ¿Hay algún impedimento que me esté impidiendo avanzar en el proyecto? |
 |-------------|-------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------|
-| [Fecha 1]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
-| [Fecha 2]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
-| [Fecha 3]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
-| ...         | ...                                       | ...                                                | ...                                                                   |
+| 19/09/2023   | No aplica      | Reunión para asignación/distribución de historias de usuario.                 | Ninguno                          |
+| 20/09/2023   | Reunión para asignación/distribución de historias de usuario.      | Investigación sobre la separación del proyecto recomendada en django          | Dudas sobre cómo debería estar separado el proyecto.                          |
+| 21/09/2023   |  Investigación sobre la separación del proyecto recomendada en django | Creación de app core y creación del patrocinador en el modelo       | Dudas sobre cómo debería estar separado el proyecto.                          |
+| 22/09/2023        | Creación de app core y creación del patrocinador en el modelo   | Aclaración de dudas con el profesor           | Ninguno      |
+| 23/09/2023 | Aclaración de dudas con el profesor | HU 1 completada, registrar patrocinador | Ninguno |
+| 24/09/2023 | HU 1 completada, registrar patrocinador | Investigación sobre manejo de tablas y vistas de las mismas en Django | Ninguno |
 
 ## Juan Pablo Niño
 
