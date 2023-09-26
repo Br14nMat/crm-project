@@ -13,8 +13,10 @@ class Sponsor(models.Model):
     initialDonation = models.DecimalField(max_digits=19, decimal_places=3)
     status = "active"
 
+
 class Event(models.Model):
     name = models.CharField(max_length = 50)
     date = models.DateField()
     objective = models.TextField(blank = True)
     description = models.TextField(blank = True)
+

@@ -19,6 +19,7 @@ from django.urls import path
 from authentication import views as auth_views
 from core import views as core_views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', auth_views.home, name = 'home'),

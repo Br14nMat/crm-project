@@ -1,6 +1,8 @@
+
 from django.forms import ModelForm, widgets
 from .models import Sponsor
 from .models import Event
+
 
 
 class SponsorForm(ModelForm):
@@ -15,3 +17,6 @@ class EventForm(ModelForm):
         widgets = {
             'date': widgets.DateInput(attrs={'type': 'date'})
         }
+
+        fields = '__all__'
+
