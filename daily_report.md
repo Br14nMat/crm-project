@@ -36,6 +36,7 @@
 | 20/09/2023   | Reunirme con el equipo para distribuir las historias de usuario que vamos a desarrollar cada uno. | Subir el codigo base del pryecto. El cual incluye login y sign up | Ninguno |
 | 23/09/2023   | Crear el formulario para registrar el evento | Modificar el html y el view para colocar un datepicker para la fecha | Ninguno |
 | 25/09/2023   | Investigar sobre Bootstrap para darle estilo al proyecto | Migrar la app Event a core, agregar el gitignore y hacer el pull request | Ninguno |
+| 27/09/2023   | Investigar sobre cómo listar los eventos en una tabla html | Crear la funcionalidad para listar los eventos en una tabla con la opción de eliminar y ver más información | Ninguno |
 
 ## Sebastián López
 
