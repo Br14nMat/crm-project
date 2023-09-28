@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import SponsorForm
-
 from .forms import EventForm
+from .models import Event
 
 
 def register_sponsor(request):
@@ -39,5 +39,11 @@ def create_event(request):
 
     return render(request, 'create_event.html', {
         'form': EventForm
+    })
+
+def list_event(request):
+    events = Event.objects.all()
+    return render(request, "list_event.html", {
+        "events": events
     })
 

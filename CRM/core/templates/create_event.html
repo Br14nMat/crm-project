@@ -3,11 +3,12 @@
 {% block content %}
 
     <h1>Create event </h1>
-    {{ error }}
-    <form action = "/event/register" method = "POST">
+    
+    <form action = "" method = "POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button>Save</button>
+        {{form.as_p}}
+        <input type = "submit">
     </form>
+
 
 {% endblock %}

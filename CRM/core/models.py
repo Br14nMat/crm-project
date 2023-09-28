@@ -17,6 +17,11 @@ class Sponsor(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length = 50)
     date = models.DateField()
+    types=(
+        ('florecimiento', "FLORECIMIENTO"),
+        ('organizacinal', "ORGANIZACIONAL")
+    )
+    type = models.CharField(max_length = 20, choices = types, default = "florecimiento")
     objective = models.TextField(blank = True)
     description = models.TextField(blank = True)
 
