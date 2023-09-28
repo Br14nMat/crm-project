@@ -6,7 +6,7 @@
 |-------------|-------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------|
 | 20/09/2023   | Selección de HU a realizar      | Creación de app en djnago y creación del super usuario                         | Documentación                          |
 | 25/09/2023   | Investigación de funcionalidades de django      | Avance en la Historia de Usuario 12                         | Falta del pull request y vistas                          |
-| [Fecha 3]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
+| 26/09/2023   | Creación de proyecto de investigación      | Investigación de CRUD'S                         | Falta del pull request                          |
 | ...         | ...                                       | ...                                                | ...                                                                   |
 
 ## Juan Medina
