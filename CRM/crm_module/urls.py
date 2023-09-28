@@ -29,5 +29,6 @@ urlpatterns = [
     path('sesion/', auth_views.sesion, name = 'sesion'),
     path('sponsor/register', core_views.register_sponsor, name = 'register_sponsor'),
     path('event/register', core_views.create_event, name = 'create event'),
-    path('event/all', core_views.list_event, name = 'list event')
+    path('event/all', core_views.list_event, name = 'list event'),
+    path('event/delete/<int:id>', core_views.delete_event, name = 'delete event')
 ]

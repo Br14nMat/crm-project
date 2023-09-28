@@ -47,3 +47,7 @@ def list_event(request):
         "events": events
     })
 
+def delete_event(request, id):
+    event = Event.objects.get(id = id)
+    event.delete()
+    return redirect("/event/all")
