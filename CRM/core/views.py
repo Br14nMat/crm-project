@@ -51,3 +51,10 @@ def delete_event(request, id):
     event = Event.objects.get(id = id)
     event.delete()
     return redirect("/event/all")
+
+def show_event(request, id):
+    event = Event.objects.get(id = id )
+    return render(request, "event_info.html", {
+        "event": event
+    })
+
