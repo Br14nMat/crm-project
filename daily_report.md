@@ -24,8 +24,8 @@
 
 | Fecha       | ¿Qué hice ayer para avanzar en el proyecto? | ¿Qué voy a hacer hoy para avanzar en el proyecto? | ¿Hay algún impedimento que me esté impidiendo avanzar en el proyecto? |
 |-------------|-------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------|
-| [Fecha 1]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
-| [Fecha 2]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
+| 28/09/2023   | Revisar el estado de la creación de eventos      | Implementar el código relacionado al despliegue de la información detallada del evento (HU4)                         | Como se relaciona los archivos python y html                          |
+| 29/09/2023   | Implementar el código relacionado al despliegue de la información detallada del evento (HU4)            | Avanzar en la creación de seguimientos para cada evento (HU21)                         | Ninguno                          |
 | [Fecha 3]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
 | ...         | ...                                       | ...                                                | ...                                                                   |
 ## Brian Matasca
