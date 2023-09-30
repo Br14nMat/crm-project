@@ -38,6 +38,7 @@
 | 25/09/2023   | Investigar sobre Bootstrap para darle estilo al proyecto | Migrar la app Event a core, agregar el gitignore y hacer el pull request | Ninguno |
 | 27/09/2023   | Investigar sobre cómo listar los eventos en una tabla html | Crear la funcionalidad para listar los eventos en una tabla html con la opción de eliminar y ver más información | Ninguno |
 | 28/09/2023   | Crear la funcionalidad para listar los eventos en una tabla html con la opción de eliminar y ver más información | Crear la funcionalidad para eliminar un evento | Ninguno |
+| 29/09/2023   | Crear la funcionalidad para eliminar un evento | Darle estilo con bootstrap al formulario de registrar eventos | Ninguno |
 
 ## Sebastián López
 
