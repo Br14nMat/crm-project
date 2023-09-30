@@ -2,7 +2,6 @@ from django.forms import ModelForm, widgets
 from .models import Sponsor
 from .models import Event
 
-
 class SponsorForm(ModelForm):
     class Meta:
         model = Sponsor

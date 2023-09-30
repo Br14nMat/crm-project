@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import SponsorForm
+
 from .forms import EventForm
+
 
 def register_sponsor(request):
     form= SponsorForm()
@@ -20,6 +22,7 @@ def register_sponsor(request):
     context = {'form':form}
     return render(request, 'register_sponsor.html',context)
 
+
 def create_event(request):
 
     if request.method == 'POST':
@@ -37,3 +40,4 @@ def create_event(request):
     return render(request, 'create_event.html', {
         'form': EventForm
     })
+
