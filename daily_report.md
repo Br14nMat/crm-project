@@ -39,6 +39,7 @@
 | 27/09/2023   | Investigar sobre cómo listar los eventos en una tabla html | Crear la funcionalidad para listar los eventos en una tabla html con la opción de eliminar y ver más información | Ninguno |
 | 28/09/2023   | Crear la funcionalidad para listar los eventos en una tabla html con la opción de eliminar y ver más información | Crear la funcionalidad para eliminar un evento | Ninguno |
 | 29/09/2023   | Crear la funcionalidad para eliminar un evento | Darle estilo con bootstrap al formulario de registrar eventos | Ninguno |
+| 30/09/2023   | Darle estilo con bootstrap al formulario de registrar eventos | Darle estilo con bootstrap a la tabla donde se listan los eventos | Falta estructurar el flujo de la pagina |
 
 ## Sebastián López
 
