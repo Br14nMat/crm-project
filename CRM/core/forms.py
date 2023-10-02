@@ -2,6 +2,7 @@
 from django.forms import ModelForm, widgets
 from .models import Sponsor
 from .models import Event
+from .models import Donation
 
 
 
@@ -19,4 +20,12 @@ class EventForm(ModelForm):
         }
 
         fields = '__all__'
+
+class DonationForm(ModelForm):
+    class Meta:
+        model = Donation
+        widgets = {
+            'date': widgets.DateInput(attrs={'type': 'date'})
+        }
+        fields = ['value','date','type']
 

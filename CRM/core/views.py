@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import SponsorForm
 from .forms import EventForm
+from .forms import DonationForm
 from .models import Event
 from .models import Sponsor
 
@@ -65,4 +66,25 @@ def show_event(request, id):
     return render(request, "event_info.html", {
         "event": event
     })
+
+def add_donation(request, nit):
+    sponsor = Sponsor.objects.get(nit=nit)
+    form= DonationForm()
+    print(sponsor)
+    if request.method == 'POST': 
+        try: 
+                form = DonationForm(request.POST)
+                donation = form.save(commit=False)
+                donation.sponsor = sponsor
+                donation.save()
+                print(sponsor)
+                return redirect('home')
+        except ValueError:
+            print("Please provide valid data")
+            context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
+            return render(request, 'add_donation.html', context)
+    
+    context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
+    return render(request, 'add_donation.html', context)
+
 
