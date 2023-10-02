@@ -19,6 +19,13 @@
 | 22/09/2023        | Creación de app core y creación del patrocinador en el modelo   | Aclaración de dudas con el profesor           | Ninguno      |
 | 23/09/2023 | Aclaración de dudas con el profesor | HU 1 completada, registrar patrocinador | Ninguno |
 | 24/09/2023 | HU 1 completada, registrar patrocinador | Investigación sobre manejo de tablas y vistas de las mismas en Django | Ninguno |
+| 25/09/2023 |  Investigación sobre manejo de tablas y vistas de las mismas en Django | Reunión sobre el sprint con el grupo del proyecto. | Ninguno |
+| 26/09/2023 |  Reunión sobre el sprint con el grupo del proyecto. | Revisón de pull requests. | Dudas sobre condiciones de aceptación para un pull request. |
+| 27/09/2023 | Revisón de pull requests. | Atención de dudas con el profesor para hablar sobre condiciones de aceptación para un pull request. | Ninguno |
+| 28/09/2023 | Atención de dudas con el profesor para hablar sobre condiciones de aceptación para un pull request. | Revisión de pull requests y transmisión de información al grupo sobre criterios para programación. | Ninguno |
+| 1/10/2023 | Revisión de pull requests y transmisión de información al grupo sobre criterios para programación. | Añadición de lista de patrocinadores. | Ninguno |
+
+
 
 ## Juan Pablo Niño
 
