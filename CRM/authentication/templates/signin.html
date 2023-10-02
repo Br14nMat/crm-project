@@ -2,13 +2,18 @@
 
 {% block content %}
 
-    <h1>Sign in</h1>
+    <div class = "container-sm p-4">
+        <h1>Sign in</h1>
+        {{ error }}
 
-    {{error}}
-    <form action="/signin/" method="POST">
-        {% csrf_token %}
+        <div class = "form-group">
+            <form action="/signin/" method="POST">
+                {% csrf_token %}
 
-        {{form.as_p}}
-        <button>Sign in</button>
-    </form>
+                {{form.as_p}}
+                <button class = "btn btn-primary">Sign in</button>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}
