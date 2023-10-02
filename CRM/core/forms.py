@@ -2,6 +2,7 @@
 from django.forms import ModelForm, widgets
 from .models import Sponsor
 from .models import Event
+from .models import Followup
 
 
 
@@ -20,3 +21,7 @@ class EventForm(ModelForm):
 
         fields = '__all__'
 
+class FollowupForm(ModelForm):
+    class Meta:
+        model = Followup
+        exclude = ("event_id",)

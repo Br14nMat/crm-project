@@ -25,3 +25,8 @@ class Event(models.Model):
     objective = models.TextField(blank = True)
     description = models.TextField(blank = True)
 
+class Followup(models.Model):
+    name = models.CharField(max_length = 50, null=False)
+    description = models.TextField(blank = True)
+    event_id = models.ForeignKey(Event, on_delete = models.CASCADE)
+
