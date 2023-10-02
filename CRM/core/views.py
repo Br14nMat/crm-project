@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import SponsorForm
 from .forms import EventForm
 from .models import Event
+from .models import Sponsor
 
 
 def register_sponsor(request):
@@ -22,6 +23,13 @@ def register_sponsor(request):
     context = {'form':form}
     return render(request, 'register_sponsor.html',context)
 
+def list_sponsors(request):
+    sponsors = Sponsor.objects.all()
+    if request.method == 'GET':
+        return render(request, 'list_sponsors.html',{
+            "sponsors":sponsors
+        })
+    
 
 def create_event(request):
 
