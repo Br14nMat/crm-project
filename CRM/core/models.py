@@ -25,3 +25,15 @@ class Event(models.Model):
     objective = models.TextField(blank = True)
     description = models.TextField(blank = True)
 
+class Donation(models.Model):
+    sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE, related_name='donations')
+    value = models.DecimalField(max_digits=19, decimal_places=3)
+    date = models.DateField()
+    types = (
+        ('Type1', "Type1"),
+        ('Type2', "Type2"),
+        ('Type3', "Type3")
+    )
+    type = models.CharField(max_length=20, choices=types, default="Type1")
+
+
