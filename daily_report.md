@@ -33,7 +33,7 @@
 |-------------|-------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------|
 | 28/09/2023   | Revisar el estado de la creación de eventos      | Implementar el código relacionado al despliegue de la información detallada del evento (HU4)                         | Como se relaciona los archivos python y html                          |
 | 29/09/2023   | Implementar el código relacionado al despliegue de la información detallada del evento (HU4)            | Avanzar en la creación de seguimientos para cada evento (HU21)                         | Ninguno                          |
-| [Fecha 3]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
+| 02/10/2023   | Investigar acerca de la implementación de llaves foráneas en Django      | Implementar el código relacionado a la creación de "seguimientos" para cada uno de los eventos                         | Ninguno                          |
 | ...         | ...                                       | ...                                                | ...                                                                   |
 ## Brian Matasca
 
