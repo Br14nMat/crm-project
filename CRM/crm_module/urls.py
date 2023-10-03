@@ -28,6 +28,10 @@ urlpatterns = [
     path('signout/', auth_views.signout, name = 'signout'),
     path('sesion/', auth_views.sesion, name = 'sesion'),
     path('sponsor/register', core_views.register_sponsor, name = 'register_sponsor'),
-    path('event/register', core_views.create_event, name = 'create event')
-
+    path('sponsor/all', core_views.list_sponsors, name = 'list_sponsors'),
+    path('event/register', core_views.create_event, name = 'create event'),
+    path('event/all', core_views.list_event, name = 'list event'),
+    path('event/delete/<int:id>', core_views.delete_event, name = 'delete event'),
+    path('event/info/<int:id>', core_views.show_event, name = 'show event information'),
+    path('sponsor/donation/add/<int:nit>', core_views.add_donation, name = 'add new donation')
 ]

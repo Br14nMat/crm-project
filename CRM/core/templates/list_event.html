@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container-sm p-4">
+        <h1 class="py-3">Events</h1>
+    
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in events %}
+                <tr>
+                    <td>{{e.id}}</td>
+                    <td>{{e.name}}</td>
+                    <td>{{e.date}}</td>
+                    <td>{{e.type}}</td>
+                    <td>
+                        <a href = "delete/{{e.id}}" class = "btn btn-danger">Delete</a>
+                        <a href = "/{{e.id}}" class = "btn btn-success">More info</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

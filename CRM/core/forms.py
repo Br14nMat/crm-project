@@ -1,6 +1,7 @@
 from django.forms import ModelForm, widgets
 from .models import Sponsor
 from .models import Event
+from .models import Donation
 
 class SponsorForm(ModelForm):
     class Meta:
@@ -20,7 +21,6 @@ class EventForm(ModelForm):
                 }),
 
             'type': widgets.Select(attrs = {'class': 'form-control'}),
-
             'objective': widgets.Textarea(attrs = {
                 'class': 'form-control',
                 'rows': '3'
@@ -31,3 +31,12 @@ class EventForm(ModelForm):
                 'rows': '3'
                 }),
         }
+
+class DonationForm(ModelForm):
+    class Meta:
+        model = Donation
+        widgets = {
+            'date': widgets.DateInput(attrs={'type': 'date'})
+        }
+        fields = ['value','date','type']
+
