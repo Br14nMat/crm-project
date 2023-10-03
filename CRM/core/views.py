@@ -74,7 +74,7 @@ def show_event(request, id):
                 fol = form.save(commit=False)
                 fol.event_id = event
                 fol.save()
-            return redirect('home')
+            return redirect("/event/info/"+str(id))
     except ValueError:
         return render(request, 'event_info.html', {
             'form': FollowupForm,
@@ -85,5 +85,5 @@ def show_event(request, id):
         "event": event,
         "followups": followups,
         "form": form
-    })         
+    })
 
