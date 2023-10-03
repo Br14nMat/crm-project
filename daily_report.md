@@ -48,6 +48,7 @@
 | 29/09/2023   | Crear la funcionalidad para eliminar un evento | Darle estilo con bootstrap al formulario de registrar eventos | Ninguno |
 | 30/09/2023   | Darle estilo con bootstrap al formulario de registrar eventos | Darle estilo con bootstrap a la tabla donde se listan los eventos | Falta estructurar el flujo de la pagina |
 | 1/10/2023   | Darle estilo con bootstrap a la tabla donde se listan los eventos | Darle estilo con bootstrap al login | Integrar los estilos de las funcionalidades anteriores |
+| 2/10/2023   | Darle estilo con bootstrap al login | Crear la pull request que contiene el diseño de la tabla de listar eventos | Ninguno |
 
 ## Sebastián López
 
