@@ -50,6 +50,7 @@
 | 1/10/2023   | Darle estilo con bootstrap a la tabla donde se listan los eventos | Darle estilo con bootstrap al login | Integrar los estilos de las funcionalidades anteriores |
 | 2/10/2023   | Darle estilo con bootstrap al login | Crear la pull request que contiene el diseño de la tabla de listar eventos | Ninguno |
 | 4/10/2023   | Crear la pull request que contiene el estilo del formulario de registrar evento | Agregar las funcionalidades desarrolladas hasta el momento al menu de opciones | Ninguno |
+| 6/10/2023   | Investigar cómo agregar la carpeta static y los archivos css | Agregar la carpeta static, los archivos css y darle estilo a la navbar | Ninguno |
 
 ## Sebastián López
 
