@@ -20,7 +20,7 @@ def signup(request):
                 )
                 user.save()
                 login(request, user)
-                return HttpResponse("User created succesfully!")
+                return render(request, 'home.html')
             except:
                 return HttpResponse("User already exists!")
 
@@ -47,7 +47,7 @@ def signin(request):
             })
         else:
             login(request, user)
-            return redirect('sesion')
+            return redirect('home')
 
     return render(request, 'signin.html', {
         'form': AuthenticationForm
