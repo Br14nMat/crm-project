@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import InvestigationProyectForm
 # Create your views here.
 
-def agregarProyecto(request):
+def add_project(request):
     if request.method == "POST":
         form = InvestigationProyectForm(request.POST)
         if form.is_valid():
