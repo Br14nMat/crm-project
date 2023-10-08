@@ -25,7 +25,7 @@ urlpatterns = [
     path('signin/', auth_views.signin, name = 'signin'),
     path('signout/', auth_views.signout, name = 'signout'),
     path('sesion/', auth_views.sesion, name = 'sesion'),
-    path("agregar_proyecto", views.add_project, name='AgregarProyecto')
+    path("add_project", views.add_project, name='add_project')
 
     #path('event/create', event_views.create_event, name = 'create event')
 

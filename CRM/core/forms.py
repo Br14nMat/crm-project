@@ -1,7 +1,7 @@
 from django.forms import ModelForm, widgets
-from .models import InvestigationProyect
+from .models import investigation_project
 
-class InvestigationProyectForm(ModelForm):
+class investigation_project_form(ModelForm):
     class Meta:
-        model = InvestigationProyect
-        fields = ['name','description','objetivos','start_date','finish_date','nit']
+        model = investigation_project
+        fields = ['name','description','objectives','start_date','finish_date','nit']

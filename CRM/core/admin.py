@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import InvestigationProyect
+from .models import investigation_project
 # Register your models here.
 
-admin.site.register(InvestigationProyect)
+admin.site.register(investigation_project)
