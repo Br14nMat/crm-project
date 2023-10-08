@@ -20,9 +20,28 @@ def register_sponsor(request):
             'form': SponsorForm,
             'error': 'Please provide valid data'
             })
-    
+
     context = {'form':form}
     return render(request, 'register_sponsor.html',context)
+
+def edit_sponsor(request):
+    nit = request.session.get('selectedNIT', -1)
+    sponsor=Sponsor.objects.get(nit=nit)
+    form = SponsorForm(instance=sponsor)
+    if request.method=='POST':
+        
+        form = SponsorForm(request.POST,instance=sponsor)
+        edited_sponsor = form.save(commit=False)
+        if edited_sponsor.nit != nit:
+            Sponsor.objects.filter(nit=nit).delete()
+        edited_sponsor.save()
+        del request.session['selectedNIT']
+        return redirect('list_sponsors')
+
+    else:
+        context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
+        return render(request, 'edit_sponsor.html', context)
+    
 
 def list_sponsors(request):
     sponsors = Sponsor.objects.all()
@@ -30,6 +49,10 @@ def list_sponsors(request):
         return render(request, 'list_sponsors.html',{
             "sponsors":sponsors
         })
+    if request.method == 'POST':
+        nit = request.POST.get('nit', None)
+        request.session['selectedNIT']=nit
+        return redirect('edit_sponsor')
     
 
 def create_event(request):
