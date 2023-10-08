@@ -1,0 +1,19 @@
+<h1>Agregar Producto</h1>
+
+<br><br><br>
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="description">Descripción:</label>
+    <input type="text" id="description" name="description" required>
+    
+    <label for="type">Tipo de producto:</label>
+    <select id="type" name="type" required>
+        {% for option in form.type.field.choices %}
+            <option value="{{ option.0 }}">{{ option.1 }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit">
+</form>
+
+
+

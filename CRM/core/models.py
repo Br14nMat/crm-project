@@ -35,4 +35,13 @@ class Donation(models.Model):
     )
     type = models.CharField(max_length=20, choices=types, default="Type1")
 
+class Product(models.Model):
+    #project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='products')
+    description = models.TextField(blank = True)
+    types = (
+        ('Type1', "Type1"),
+        ('Type2', "Type2"),
+        ('Type3', "Type3")
+    )
+    type = models.CharField(max_length=20, choices=types, default="Type1")
 

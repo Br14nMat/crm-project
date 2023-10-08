@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from .forms import SponsorForm
 from .forms import EventForm
 from .forms import DonationForm
+from .forms import ProductForm
 from .models import Event
 from .models import Sponsor
+from .models import Product
 
 
 def register_sponsor(request):
@@ -110,4 +112,26 @@ def add_donation(request, nit):
     context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
     return render(request, 'add_donation.html', context)
 
+def add_product(request):
+#def add_donation(request, id):
+    #project = Project.objects.get(id=id)
+    form= ProductForm()
+    #print(project)
+    if request.method == 'POST': 
+        try: 
+                form = ProductForm(request.POST)
+                product = form.save(commit=False)
+                #product.project = project
+                product.save()
+                #print(project)
+                return redirect('home')
+        except ValueError:
+            print("Please provide valid data")
+            #context = {'form': form, 'project': project,'error': 'Please provide valid data'}
+            context = {'form': form,'error': 'Please provide valid data'}
+            return render(request, 'add_product.html', context)
+    
+    #context = {'form': form, 'project': project,'error': 'Please provide valid data'}
+    context = {'form': form,'error': 'Please provide valid data'}
+    return render(request, 'add_product.html', context)
 
