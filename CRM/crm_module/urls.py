@@ -28,6 +28,7 @@ urlpatterns = [
     path('signout/', auth_views.signout, name = 'signout'),
     path('sesion/', auth_views.sesion, name = 'sesion'),
     path('sponsor/register', core_views.register_sponsor, name = 'register_sponsor'),
+    path('sponsor/edit', core_views.edit_sponsor, name = 'edit_sponsor'),
     path('sponsor/all', core_views.list_sponsors, name = 'list_sponsors'),
     path('event/register', core_views.create_event, name = 'create event'),
     path('event/all', core_views.list_event, name = 'list event'),
