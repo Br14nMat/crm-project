@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="info">
+        <h1>{{event.name}}</h1>
+        <h2>{{event.date}}</h2>
+        <h3>{{event.id}}</h3>
+        <h3>{{event.type}}</h3>
+        <h3>{{event.objective}}</h3>
+        <h3>{{event.description}}</h3>
+    </section>
+
+    <section class="followups">
+        <h2>Seguimientos</h2>
+
+        <form action = "" method = "POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type = "submit">
+        </form>
+
+        {% for f in followups %}
+            <h3>{{f.name}}</h3>
+            <p>{{f.description}}</p>
+            <a href = "followup/delete/{{event.id}}/{{f.id}}" >Delete</a>
+            <br>
+        {% endfor %}
+
+    </section>
+    
+
+{% endblock %}

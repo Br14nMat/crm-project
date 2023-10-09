@@ -1,0 +1,14 @@
+nav{
+    background-color: #00599c;
+    color: white;
+}
+
+.logo{
+    width: 100%;
+    max-width: 9rem;
+    height: auto;
+}
+
+.content{
+    padding: 1rem 2rem;
+}
