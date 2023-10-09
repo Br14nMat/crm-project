@@ -2,7 +2,8 @@ from django.db import models
 # Create your models here.
 
 class Sponsor(models.Model):
-    nit = models.IntegerField(primary_key=True,unique=True)
+    id = models.AutoField(primary_key=True)
+    nit = models.IntegerField(unique=True)
     name = models.CharField(max_length=255)
     types=(
         ('natural', "NATURAL"),

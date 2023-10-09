@@ -34,8 +34,6 @@ def edit_sponsor(request):
         
         form = SponsorForm(request.POST,instance=sponsor)
         edited_sponsor = form.save(commit=False)
-        if edited_sponsor.nit != nit:
-            Sponsor.objects.filter(nit=nit).delete()
         edited_sponsor.save()
         del request.session['selectedNIT']
         return redirect('list_sponsors')
