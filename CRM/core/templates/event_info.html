@@ -22,7 +22,7 @@
         {% for f in followups %}
             <h3>{{f.name}}</h3>
             <p>{{f.description}}</p>
-            <a href = "followup/delete/{{f.id}}" >Delete</a>
+            <a href = "followup/delete/{{event.id}}/{{f.id}}" >Delete</a>
             <br>
         {% endfor %}
 

@@ -33,5 +33,5 @@ urlpatterns = [
     path('event/all', core_views.list_event, name = 'list event'),
     path('event/delete/<int:id>', core_views.delete_event, name = 'delete event'),
     path('event/info/<int:id>', core_views.show_event, name = 'show event information'),
-    path('event/info/followup/delete/<int:id>', core_views.delete_followup, name = 'show event information')
+    path('event/info/followup/delete/<int:eventId>/<int:followupId>', core_views.delete_followup, name = 'show event information')
 ]

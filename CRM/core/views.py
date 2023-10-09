@@ -87,8 +87,8 @@ def show_event(request, id):
         "form": form
     })
 
-def delete_followup(request, id):
-    followup = Followup.objects.get(id = id)
+def delete_followup(request, eventId, followupId):
+    followup = Followup.objects.get(id = followupId)
     followup.delete()
-    return redirect("/event/all")
+    return redirect("/event/info/"+str(eventId))
 
