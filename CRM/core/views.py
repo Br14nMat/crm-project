@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from .forms import SponsorForm
 from .forms import EventForm
 from .forms import DonationForm
+from .forms import FollowupForm
 from .models import Event
 from .models import Sponsor
+from .models import Followup
 
 
 def register_sponsor(request):
@@ -84,10 +86,29 @@ def delete_event(request, id):
     event.delete()
     return redirect("/event/all")
 
-def show_event(request, id):
+def show_event(request, id):    
     event = Event.objects.get(id = id )
+    followups = Followup.objects.filter(event_id = id)
+    form = FollowupForm()
+    try:
+        if request.method == 'POST':
+            print(request.POST)
+            form = FollowupForm(request.POST)
+            if form.is_valid():
+                fol = form.save(commit=False)
+                fol.event_id = event
+                fol.save()
+            return redirect("/event/info/"+str(id))
+    except ValueError:
+        return render(request, 'event_info.html', {
+            'form': FollowupForm,
+            'error': 'Please provide valid data'
+            })
+    
     return render(request, "event_info.html", {
-        "event": event
+        "event": event,
+        "followups": followups,
+        "form": form
     })
 
 def add_donation(request, nit):
@@ -110,4 +131,9 @@ def add_donation(request, nit):
     context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
     return render(request, 'add_donation.html', context)
 
+
+def delete_followup(request, eventId, followupId):
+    followup = Followup.objects.get(id = followupId)
+    followup.delete()
+    return redirect("/event/info/"+str(eventId))
 

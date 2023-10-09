@@ -36,3 +36,8 @@ class Donation(models.Model):
     type = models.CharField(max_length=20, choices=types, default="Type1")
 
 
+class Followup(models.Model):
+    name = models.CharField(max_length = 50, null=False)
+    description = models.TextField(blank = True)
+    event_id = models.ForeignKey(Event, on_delete = models.CASCADE)
+
