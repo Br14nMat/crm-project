@@ -7,11 +7,11 @@
         {% csrf_token %}
       <p>
         <label for="id_nit">Nit:</label>
-        <input type="number" name="nit" value="110" required="" id="id_nit"min="0">
+        <input type="number" name="nit" value={{sponsor.nit}} required="" id="id_nit"min="0">
       </p>
       <p>
         <label for="id_name">Nombre:</label>
-        <input type="text" name="name" value="Jan" maxlength="255" required="" id="id_name">
+        <input type="text" name="name" value={{sponsor.name}}  maxlength="255" required="" id="id_name">
       </p>
       <p>
         <label for="id_type">Tipo:</label>
@@ -22,11 +22,11 @@
       </p>
       <p>
         <label for="id_mail">Correo:</label>
-        <input type="email" name="mail" value="juan@mail.com" maxlength="200" required="" id="id_mail">
+        <input type="email" name="mail" value={{sponsor.mail}}  maxlength="200" required="" id="id_mail">
       </p>
       <p>
         <label for="id_initial_donation">Donación inicial:</label>
-        <input type="number" name="initial_donation" value="1000.000" step="0.001" min="0" required="" id="id_initial_donation">
+        <input type="number" name="initial_donation" value={{sponsor.initial_donation}} step="0.001" min="0" required="" id="id_initial_donation">
       </p>
       <input type="submit">
     </form>
