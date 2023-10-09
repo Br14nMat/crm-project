@@ -57,6 +57,7 @@
 | 4/10/2023   | Crear la pull request que contiene el estilo del formulario de registrar evento | Agregar las funcionalidades desarrolladas hasta el momento al menu de opciones | Ninguno |
 | 6/10/2023   | Investigar cómo agregar la carpeta static y los archivos css | Agregar la carpeta static, los archivos css y darle estilo a la navbar | Ninguno |
 | 8/10/2023   | Corregir algunos errores del estilo de la pagina principal | Hacer el pull request del diseño que tengo hasta el momento | No hay un diseño claro para la pagina pricipal |
+| 9/10/2023   | Hacer el pull request del diseño que tengo hasta el momento | Añadir la opción de agregar proyecto de investigación, arreglar algunas redirecciones y plantear una base para el home | Ninguno |
 
 ## Sebastián López
 
