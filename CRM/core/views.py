@@ -6,7 +6,7 @@ from .forms import FollowupForm
 from .models import Event
 from .models import Sponsor
 from .models import Followup
-
+from .forms import investigation_project_form
 
 def register_sponsor(request):
     form= SponsorForm()
@@ -134,4 +134,17 @@ def delete_followup(request, eventId, followupId):
     followup = Followup.objects.get(id = followupId)
     followup.delete()
     return redirect("/event/info/"+str(eventId))
+  
+ 
+
+def add_project(request):
+    if request.method == "POST":
+        form = investigation_project_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    else:
+        form = investigation_project_form()
+    return render(request, 'add_project.html', {"form": form})    
+
 

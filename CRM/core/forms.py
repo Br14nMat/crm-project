@@ -1,8 +1,10 @@
 from django.forms import ModelForm, widgets
+
 from .models import Sponsor
 from .models import Event
 from .models import Followup
 from .models import Donation
+from .models import investigation_project
 
 class SponsorForm(ModelForm):
     class Meta:
@@ -46,3 +48,8 @@ class FollowupForm(ModelForm):
     class Meta:
         model = Followup
         exclude = ("event_id",)
+        
+class investigation_project_form(ModelForm):
+    class Meta:
+        model = investigation_project
+        fields = ['name','description','objectives','start_date','finish_date','nit']
