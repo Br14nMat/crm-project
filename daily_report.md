@@ -23,7 +23,12 @@
 | 26/09/2023 |  Reunión sobre el sprint con el grupo del proyecto. | Revisón de pull requests. | Dudas sobre condiciones de aceptación para un pull request. |
 | 27/09/2023 | Revisón de pull requests. | Atención de dudas con el profesor para hablar sobre condiciones de aceptación para un pull request. | Ninguno |
 | 28/09/2023 | Atención de dudas con el profesor para hablar sobre condiciones de aceptación para un pull request. | Revisión de pull requests y transmisión de información al grupo sobre criterios para programación. | Ninguno |
-| 1/10/2023 | Revisión de pull requests y transmisión de información al grupo sobre criterios para programación. | Añadición de lista de patrocinadores. | Ninguno |
+| 1/10/2023 | Revisión de pull requests y transmisión de información al grupo sobre criterios para programación. | Adición de lista de patrocinadores. | Ninguno |
+| 2/10/2023 | Adición de lista de patrocinadores. | Reunión sobre el sprint en grupo | Ninguno |
+| 3/10/2023 | Reunión sobre el sprint en grupo. | Investigación sobre edición de objetos de modelo. | Ninguno |
+| 5/10/2023 | Investigación sobre edición de objetos de modelo. | Investiación sobre manejo de bootstrap. | Ninguno |
+| 7/10/2023 |  Investigación sobre manejo de bootstrap. | Historia de usuario edición de patrocinador | Ninguno |
+| 8/10/2023 |  Historia de usuario edición de patrocinador  | Revisión de pull requests | Ninguno |
 
 
 
