@@ -3,30 +3,34 @@
 {% block content %}
 
     <h1>Sponsors</h1>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>NIT</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Mail</th>
-                <th>Initial Donation</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for s in sponsors %}
-            <tr>
-                <td>{{s.nit}}</td>
-                <td>{{s.name}}</td>
-                <td>{{s.type}}</td>
-                <td>{{s.mail}}</td>
-                <td>{{s.initial_donation}}</td>
-                <td>{{s.status}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>NIT</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Mail</th>
+                    <th>Initial Donation</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in sponsors %}
+                <tr>
+                    <td>{{s.nit}}</td>
+                    <td>{{s.name}}</td>
+                    <td>{{s.type}}</td>
+                    <td>{{s.mail}}</td>
+                    <td>{{s.initial_donation}}</td>
+                    <td>{{s.status}}</td>
+                    <td><a href = "donation/add/{{s.nit}}" >Registrar Donación</a></td>
+                    <td><button type="submit" name="nit" value={{s.nit}}>Editar</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
 
 {% endblock %}
