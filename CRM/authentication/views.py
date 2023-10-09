@@ -55,7 +55,4 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    return redirect('home')
-
-def sesion(request):
-    return render(request, 'sesion.html')
+    return redirect('/')
