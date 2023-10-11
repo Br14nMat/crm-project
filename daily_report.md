@@ -40,6 +40,8 @@
 | 29/09/2023   | Implementar el código relacionado al despliegue de la información detallada del evento (HU4) | Avanzar en la creación de seguimientos para cada evento (HU21)         | Ninguno                                          |
 | 02/10/2023   | Investigar acerca de la implementación de llaves foráneas en Django      | Implementar el código relacionado a la creación de "seguimientos" para cada uno de los eventos                         | Ninguno             |
 | 03/10/2023   |      Implementar el código relacionado a la creación de "seguimientos" para cada uno de los eventos                                  | Implementar la opción de eliminar un seguimiento  |    Ninguno                                                             |
+| 09/10/2023   | Aprender sobre el uso de clases en bootstrap para crear la vista del proyecto              | Crear la vista para las HU 4 y 21 | Ninguno   |
+| 11/10/2023   | Crear la vista para las HU 4 y 21              | Mejorar la vista para el proyecto | Ninguno   |
 ## Brian Matasca
 
 | Fecha       | ¿Qué hice ayer para avanzar en el proyecto? | ¿Qué voy a hacer hoy para avanzar en el proyecto? | ¿Hay algún impedimento que me esté impidiendo avanzar en el proyecto? |
