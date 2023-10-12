@@ -14,7 +14,7 @@ class SponsorForm(ModelForm):
 class EventForm(ModelForm):
     class Meta:
         model = Event
-        fields = '__all__'
+        fields = ['name','date','type','objective','description']
         widgets = {
             'name': widgets.TextInput(attrs = {'class': 'form-control'}),
 
