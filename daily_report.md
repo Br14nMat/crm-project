@@ -42,6 +42,7 @@
 | 03/10/2023   |      Implementar el código relacionado a la creación de "seguimientos" para cada uno de los eventos                                  | Implementar la opción de eliminar un seguimiento  |    Ninguno                                                             |
 | 09/10/2023   | Aprender sobre el uso de clases en bootstrap para crear la vista del proyecto              | Crear la vista para las HU 4 y 21 | Ninguno   |
 | 11/10/2023   | Crear la vista para las HU 4 y 21              | Mejorar la vista para el proyecto | Ninguno   |
+
 ## Brian Matasca
 
 | Fecha       | ¿Qué hice ayer para avanzar en el proyecto? | ¿Qué voy a hacer hoy para avanzar en el proyecto? | ¿Hay algún impedimento que me esté impidiendo avanzar en el proyecto? |
@@ -60,6 +61,7 @@
 | 6/10/2023   | Investigar cómo agregar la carpeta static y los archivos css | Agregar la carpeta static, los archivos css y darle estilo a la navbar | Ninguno |
 | 8/10/2023   | Corregir algunos errores del estilo de la pagina principal | Hacer el pull request del diseño que tengo hasta el momento | No hay un diseño claro para la pagina pricipal |
 | 9/10/2023   | Hacer el pull request del diseño que tengo hasta el momento | Añadir la opción de agregar proyecto de investigación, arreglar algunas redirecciones y plantear una base para el home | Ninguno |
+| 11/10/2023   | Aceptar pull el pull request de añadir patrocinador a evento | Mejorar la vista del login | Ninguno |
 
 ## Sebastián López
 
