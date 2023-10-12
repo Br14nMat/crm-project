@@ -1,0 +1,30 @@
+<h1>Agregar Donación</h1>
+
+<tr>
+    NIT = <td>{{sponsor.nit}}</td><br>
+    Nombre = <td>{{sponsor.name}}</td><br>
+    Tipo = <td>{{sponsor.type}}</td><br>
+    Email = <td>{{sponsor.mail}}</td><br>
+    Donacion Inicial = <td>{{sponsor.initial_donation}}</td><br>
+    Estado = <td>{{sponsor.status}}</td>
+</tr>
+<br><br><br>
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="value">Valor:</label>
+    <input type="text" id="value" name="value" required>
+    
+    <label for="type">Tipo de donación:</label>
+    <select id="type" name="type" required>
+        {% for option in form.type.field.choices %}
+            <option value="{{ option.0 }}">{{ option.1 }}</option>
+        {% endfor %}
+    </select>
+    <label for="id_date">Fecha de la donación: </label>
+    <input type="date" name="date" required="" id="id_date">
+    <br><br>
+    <input type="submit">
+</form>
+
+
+
