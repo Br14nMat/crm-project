@@ -63,6 +63,7 @@
 | 9/10/2023   | Hacer el pull request del diseño que tengo hasta el momento | Añadir la opción de agregar proyecto de investigación, arreglar algunas redirecciones y plantear una base para el home | Ninguno |
 | 11/10/2023   | Aceptar pull el pull request de añadir patrocinador a evento | Mejorar la vista del login | Ninguno |
 | 12/10/2023   | Mejorar la vista del login | Agregar un sidebar colapsable para las opciones del modulo | Me falta que los demas terminen sus funcionalidades para poder agregarlas al menu |
+| 15/10/2023 | Esperar que me acepten las pull request | Aceptar pull request HU4 | Ninguno |
 
 ## Sebastián López
 
