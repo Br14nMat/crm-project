@@ -15,6 +15,9 @@ class Sponsor(models.Model):
     initial_donation = models.DecimalField(max_digits=19, decimal_places=3)
     status = models.CharField(max_length=10, default='activo')
 
+    def __str__(self): 
+        return str(self.nit)
+
 class Event(models.Model):
     name = models.CharField(max_length = 50)
     date = models.DateField()
@@ -25,6 +28,7 @@ class Event(models.Model):
     type = models.CharField(max_length = 20, choices = types, default = "florecimiento")
     objective = models.TextField(blank = True)
     description = models.TextField(blank = True)
+    sponsors = models.ManyToManyField(Sponsor, related_name='events')    
 
 class Donation(models.Model):
     sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE, related_name='donations')

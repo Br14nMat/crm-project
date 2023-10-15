@@ -89,18 +89,29 @@ def delete_event(request, id):
     return redirect("/event/all")
 
 def show_event(request, id):    
-    event = Event.objects.get(id = id )
+    event = Event.objects.get(id = id)
     followups = Followup.objects.filter(event_id = id)
     form = FollowupForm()
+    usable_sponsors=[]
+    for sponsor in Sponsor.objects.all():
+        if not event.sponsors.filter(nit=sponsor.nit).exists():
+            usable_sponsors.append(sponsor)
     try:
         if request.method == 'POST':
-            print(request.POST)
-            form = FollowupForm(request.POST)
-            if form.is_valid():
-                fol = form.save(commit=False)
-                fol.event_id = event
-                fol.save()
-            return redirect("/event/info/"+str(id))
+            if request.POST.get('followup'):
+                print(request.POST)
+                form = FollowupForm(request.POST)
+                if form.is_valid():
+                    fol = form.save(commit=False)
+                    fol.event_id = event
+                    fol.save()
+                return redirect("/event/info/"+str(id))
+            if request.POST.get('link_sponsor'):
+                selected_nit= request.POST.get('nit', None)
+                sponsor = Sponsor.objects.get(nit=selected_nit)
+                event.sponsors.add(sponsor)
+                sponsor.events.add(event)
+                return redirect("/event/info/"+str(id))
     except ValueError:
         return render(request, 'event_info.html', {
             'form': FollowupForm,
@@ -110,7 +121,8 @@ def show_event(request, id):
     return render(request, "event_info.html", {
         "event": event,
         "followups": followups,
-        "form": form
+        "form": form,
+        "sponsors" : usable_sponsors
     })
 
 def add_donation(request, nit):
