@@ -23,6 +23,14 @@
             </form>
         </div>
     </div>
+    <section class="followups">
+        <h2>Seguimientos</h2>
+
+        <form action = "" method = "POST" name="followup">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" name="followup" value="followup">Submit</button>
+        </form>
 
     <div class="row row-cols-1 row-cols-md-1 g-4 px-4">
         {% for f in followups %}
@@ -35,6 +43,21 @@
                 </div>
             </div>
         {% endfor %}
-    </div>
-        
+    </div><br>
+
+    </section>
+
+    <section class="">
+        <h1>Agregar patrocinador</h1>
+        <form action="" method="POST" name="link_sponsor">
+            {% csrf_token %}
+            <select class="form-select" aria-label="Select Sponsor" name="nit">
+                {% for s in sponsors%}
+                    <option value={{s.nit}}>{{s.nit}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit" class="btn btn-secondary" name="link_sponsor" value="link_sponsor">Agregar</button>
+        </form>
+    </section>
 {% endblock %}
