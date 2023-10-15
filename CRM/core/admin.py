@@ -7,5 +7,5 @@ from .models import Sponsor, Event, Donation, investigation_project, Product
 admin.site.register(Sponsor)
 admin.site.register(Event)
 admin.site.register(Donation)
-admin.site.register(Product)
 admin.site.register(investigation_project)
+admin.site.register(Product)

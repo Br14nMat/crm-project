@@ -37,6 +37,6 @@ urlpatterns = [
     path('event/delete/<int:id>', core_views.delete_event, name = 'delete event'),
     path('event/info/<int:id>', core_views.show_event, name = 'show event information'),
     path('sponsor/donation/add/<int:nit>', core_views.add_donation, name = 'add new donation'),
-    path('project/product/add', core_views.add_product, name = 'add new product'),
+    path('project/product/add/<int:id>', core_views.add_product, name = 'add new product'),
     path('event/info/followup/delete/<int:eventId>/<int:followupId>', core_views.delete_followup, name = 'show event information')
 ]
