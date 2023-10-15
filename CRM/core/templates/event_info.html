@@ -4,6 +4,7 @@
     <div class="card mx-4">
         <div class="card-header">{{event.date}}</div>
             <div class="card-body">
+                <div class="container-sm py-4">
                 <h1 class="card-title">{{event.name}}</h1>
                 <p class="card-text">
                     {{event.type}}<br>
@@ -11,26 +12,27 @@
                     {{event.description}}<br>
                 </p>
             </div>
-    </div>
-
-    <div class="container-sm py-4">
-        <h3>Seguimientos</h3>
-        <div class="form-group">
-            <form action = "" method = "POST">
-                {% csrf_token %}
-                {{form.as_p}}
-                <button type = "submit" class="btn btn-primary">Agregar</button>
-            </form>
         </div>
     </div>
-    <section class="followups">
-        <h2>Seguimientos</h2>
+    <br>
 
-        <form action = "" method = "POST" name="followup">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit" name="followup" value="followup">Submit</button>
-        </form>
+    
+    <section class="followups">
+        <div class="card mx-4">
+            <div class="card-body">
+                <div class="container-sm py-4">
+                    <h3>Seguimientos</h3>
+                    <div class="form-group">
+                        <form action = "" method = "POST" name="followup">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button type="submit" name="followup" value="followup" class="btn btn-primary">Agregar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
 
     <div class="row row-cols-1 row-cols-md-1 g-4 px-4">
         {% for f in followups %}
