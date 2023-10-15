@@ -152,21 +152,24 @@ def show_event(request, id):
     })
 
 def add_product(request, id):
+    #id = request.session.get('selectedID', -1)
     project = investigation_project.objects.get(id=id)
     form= ProductForm()
     if request.method == 'POST': 
         try: 
-                form = ProductForm(request.POST)
+            form = ProductForm(request.POST)
+            if form.is_valid():
                 product = form.save(commit=False)
                 product.project = project
                 product.save()
+                #del request.session['selectedID']
                 return redirect('home')
         except ValueError:
             print("Please provide valid data")
             context = {'form': form, 'project': project,'error': 'Please provide valid data'}
             return render(request, 'add_product.html', context)
-    
-    context = {'form': form, 'project': project,'error': 'Please provide valid data'}
+    else:
+        context = {'form': form, 'project': project,'error': 'Please provide valid data'}
     return render(request, 'add_product.html', context)
 
 def delete_followup(request, eventId, followupId):

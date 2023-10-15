@@ -47,7 +47,7 @@ class DonationForm(ModelForm):
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = ['description','type']
+        exclude = ("project",)
 
 class FollowupForm(ModelForm):
     class Meta:
