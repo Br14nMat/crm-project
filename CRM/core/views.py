@@ -44,6 +44,27 @@ def edit_sponsor(request):
         context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
         return render(request, 'edit_sponsor.html', context)
     
+def add_donation(request):
+    nit = request.session.get('selectedNIT', -1)
+    sponsor=Sponsor.objects.get(nit=nit)
+    form= DonationForm()
+    print(sponsor) 
+    if request.method == 'POST': 
+        try: 
+            form = DonationForm(request.POST)
+            if form.is_valid():
+                donation = form.save(commit=False)
+                donation.sponsor = sponsor
+                donation.save()
+                del request.session['selectedNIT']
+                return redirect('home')
+        except ValueError:
+            print("Please provide valid data")
+            context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
+            return render(request, 'add_donation.html', context)
+    else:
+        context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
+        return render(request, 'add_donation.html', context)
 
 def list_sponsors(request):
     sponsors = Sponsor.objects.all()
@@ -52,9 +73,16 @@ def list_sponsors(request):
             "sponsors":sponsors
         })
     if request.method == 'POST':
-        nit = request.POST.get('nit', None)
-        request.session['selectedNIT']=nit
-        return redirect('edit_sponsor')
+
+        if request.POST.get('new_donation'):
+            nit = request.POST.get('new_donation', None)
+            request.session['selectedNIT']=nit
+            return redirect('add_donation')
+
+        if request.POST.get('nit'):
+            nit = request.POST.get('nit', None)
+            request.session['selectedNIT']=nit
+            return redirect('edit_sponsor')
     
 
 def create_event(request):
@@ -122,26 +150,6 @@ def show_event(request, id):
         "form": form,
         "sponsors" : usable_sponsors
     })
-
-def add_donation(request, nit):
-    sponsor = Sponsor.objects.get(nit=nit)
-    form= DonationForm()
-    print(sponsor)
-    if request.method == 'POST': 
-        try: 
-                form = DonationForm(request.POST)
-                donation = form.save(commit=False)
-                donation.sponsor = sponsor
-                donation.save()
-                print(sponsor)
-                return redirect('home')
-        except ValueError:
-            print("Please provide valid data")
-            context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
-            return render(request, 'add_donation.html', context)
-    
-    context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
-    return render(request, 'add_donation.html', context)
 
 def add_product(request, id):
     project = investigation_project.objects.get(id=id)

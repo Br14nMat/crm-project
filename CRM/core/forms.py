@@ -42,8 +42,7 @@ class DonationForm(ModelForm):
         widgets = {
             'date': widgets.DateInput(attrs={'type': 'date'})
         }
-
-        fields = ['value','date','type']
+        exclude = ("sponsor",)
 
 class ProductForm(ModelForm):
     class Meta:
