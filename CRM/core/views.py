@@ -42,6 +42,10 @@ def edit_sponsor(request):
                 sponsor.status='inactivo'
             elif sponsor.status=='inactivo':
                 sponsor.status='activo'
+            sponsor.save()
+            context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
+            return render(request, 'edit_sponsor.html', context)
+
     else:
         context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
         return render(request, 'edit_sponsor.html', context)
