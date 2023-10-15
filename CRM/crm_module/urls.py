@@ -20,12 +20,15 @@ from authentication import views as auth_views
 from core import views as core_views
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', auth_views.home, name = 'home'),
     path('signup/', auth_views.signup, name = 'signup'),
     path('signin/', auth_views.signin, name = 'signin'),
     path('signout/', auth_views.signout, name = 'signout'),
+    path('sesion/', auth_views.sesion, name = 'sesion'),
+    path("project/add", core_views.add_project, name='add_project'),
     path('sponsor/register', core_views.register_sponsor, name = 'register_sponsor'),
     path('sponsor/edit', core_views.edit_sponsor, name = 'edit_sponsor'),
     path('sponsor/all', core_views.list_sponsors, name = 'list_sponsors'),
@@ -35,4 +38,5 @@ urlpatterns = [
     path('event/info/<int:id>', core_views.show_event, name = 'show event information'),
     path('sponsor/donation/add/<int:nit>', core_views.add_donation, name = 'add new donation'),
     path('project/product/add', core_views.add_product, name = 'add new product'),
+    path('event/info/followup/delete/<int:eventId>/<int:followupId>', core_views.delete_followup, name = 'show event information')
 ]

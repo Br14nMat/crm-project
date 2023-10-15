@@ -1,8 +1,11 @@
 from django.forms import ModelForm, widgets
+
 from .models import Sponsor
 from .models import Event
+from .models import Followup
 from .models import Donation
 from .models import Product
+from .models import investigation_project
 
 class SponsorForm(ModelForm):
     class Meta:
@@ -12,7 +15,7 @@ class SponsorForm(ModelForm):
 class EventForm(ModelForm):
     class Meta:
         model = Event
-        fields = '__all__'
+        fields = ['name','date','type','objective','description']
         widgets = {
             'name': widgets.TextInput(attrs = {'class': 'form-control'}),
 
@@ -39,6 +42,7 @@ class DonationForm(ModelForm):
         widgets = {
             'date': widgets.DateInput(attrs={'type': 'date'})
         }
+
         fields = ['value','date','type']
 
 class ProductForm(ModelForm):
@@ -46,3 +50,12 @@ class ProductForm(ModelForm):
         model = Product
         fields = ['description','type']
 
+class FollowupForm(ModelForm):
+    class Meta:
+        model = Followup
+        exclude = ("event_id",)
+        
+class investigation_project_form(ModelForm):
+    class Meta:
+        model = investigation_project
+        fields = ['name','description','objectives','start_date','finish_date','nit']

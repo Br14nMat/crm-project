@@ -1,12 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{event.name}}</h1>
-    <h2>{{event.date}}</h2>
-    <h3>{{event.id}}</h3>
-    <h3>{{event.type}}</h3>
-    <h3>{{event.objective}}</h3>
-    <h3>{{event.description}}</h3>
+    <section class="info">
+        <h1>{{event.name}}</h1>
+        <h2>{{event.date}}</h2>
+        <h3>{{event.id}}</h3>
+        <h3>{{event.type}}</h3>
+        <h3>{{event.objective}}</h3>
+        <h3>{{event.description}}</h3>
+    </section>
+
+    <section class="followups">
+        <h2>Seguimientos</h2>
+
+        <form action = "" method = "POST" name="followup">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" name="followup" value="followup">Submit</button>
+        </form>
+
+        {% for f in followups %}
+            <h3>{{f.name}}</h3>
+            <p>{{f.description}}</p>
+            <a href = "followup/delete/{{event.id}}/{{f.id}}" >Delete</a>
+            <br>
+        {% endfor %}
+        <br>
+
+    </section>
+
+    <section class="">
+        <h1>Agregar patrocinador</h1>
+        <form action="" method="POST" name="link_sponsor">
+            {% csrf_token %}
+            <select class="form-select" aria-label="Select Sponsor" name="nit">
+                {% for s in sponsors%}
+                    <option value={{s.nit}}>{{s.nit}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit" class="btn btn-secondary" name="link_sponsor" value="link_sponsor">Agregar</button>
+        </form>
+    </section>
+
+
     
 
 {% endblock %}

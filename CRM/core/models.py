@@ -1,8 +1,10 @@
 from django.db import models
+
 # Create your models here.
 
 class Sponsor(models.Model):
-    nit = models.IntegerField(primary_key=True,unique=True)
+    id = models.AutoField(primary_key=True)
+    nit = models.IntegerField(unique=True)
     name = models.CharField(max_length=255)
     types=(
         ('natural', "NATURAL"),
@@ -12,6 +14,9 @@ class Sponsor(models.Model):
     mail = models.EmailField(max_length=200)
     initial_donation = models.DecimalField(max_digits=19, decimal_places=3)
     status = "active"
+
+    def __str__(self): 
+        return str(self.nit)
 
 class Event(models.Model):
     name = models.CharField(max_length = 50)
@@ -23,6 +28,7 @@ class Event(models.Model):
     type = models.CharField(max_length = 20, choices = types, default = "florecimiento")
     objective = models.TextField(blank = True)
     description = models.TextField(blank = True)
+    sponsors = models.ManyToManyField(Sponsor, related_name='events')    
 
 class Donation(models.Model):
     sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE, related_name='donations')
@@ -45,3 +51,18 @@ class Product(models.Model):
     )
     type = models.CharField(max_length=20, choices=types, default="Type1")
 
+class Followup(models.Model):
+    name = models.CharField(max_length = 50, null=False)
+    description = models.TextField(blank = True)
+    event_id = models.ForeignKey(Event, on_delete = models.CASCADE)
+
+class investigation_project(models.Model):
+    name = models.CharField(max_length=100, primary_key=True, unique=True)
+    description = models.TextField()
+    objectives = models.TextField()
+    start_date= models.DateField()
+    finish_date= models.DateField()
+    nit= models.IntegerField()
+
+    def __str__(self):
+        return self.name
