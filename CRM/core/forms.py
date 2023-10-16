@@ -4,6 +4,7 @@ from .models import Sponsor
 from .models import Event
 from .models import Followup
 from .models import Donation
+from .models import Product
 from .models import investigation_project
 
 class SponsorForm(ModelForm):
@@ -42,6 +43,11 @@ class DonationForm(ModelForm):
             'date': widgets.DateInput(attrs={'type': 'date'})
         }
         exclude = ("sponsor",)
+
+class ProductForm(ModelForm):
+    class Meta:
+        model = Product
+        exclude = ("project",)
 
 class FollowupForm(ModelForm):
     class Meta:

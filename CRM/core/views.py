@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from .forms import SponsorForm
 from .forms import EventForm
 from .forms import DonationForm
+from .forms import ProductForm
 from .forms import FollowupForm
+from .forms import investigation_project_form
 from .models import Event
 from .models import Sponsor
 from .models import Followup
-from .forms import investigation_project_form
+from .models import investigation_project
 
 def register_sponsor(request):
     form= SponsorForm()
@@ -156,6 +158,27 @@ def show_event(request, id):
         "form": form,
         "sponsors" : usable_sponsors
     })
+
+def add_product(request, id):
+    #id = request.session.get('selectedID', -1)
+    project = investigation_project.objects.get(id=id)
+    form= ProductForm()
+    if request.method == 'POST': 
+        try: 
+            form = ProductForm(request.POST)
+            if form.is_valid():
+                product = form.save(commit=False)
+                product.project = project
+                product.save()
+                #del request.session['selectedID']
+                return redirect('home')
+        except ValueError:
+            print("Please provide valid data")
+            context = {'form': form, 'project': project,'error': 'Please provide valid data'}
+            return render(request, 'add_product.html', context)
+    else:
+        context = {'form': form, 'project': project,'error': 'Please provide valid data'}
+    return render(request, 'add_product.html', context)
 
 def delete_followup(request, eventId, followupId):
     followup = Followup.objects.get(id = followupId)
