@@ -40,5 +40,8 @@ urlpatterns = [
     path('project/product/add/<int:id>', core_views.add_product, name = 'add_product'),
     path('sponsor/donation/add', core_views.add_donation, name = 'add_donation'),
     path('event/info/followup/delete/<int:eventId>/<int:followupId>', core_views.delete_followup, name = 'show event information'),
-    path('project/product/all/<int:id>', core_views.list_product, name = 'list_product')
+    path('project/product/all/<int:id>', core_views.list_product, name='list_product'),
+    path('project/product/delete', core_views.delete_product, name='delete_product')
+
+
 ]

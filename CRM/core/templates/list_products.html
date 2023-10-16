@@ -20,25 +20,29 @@
 
     <div class="container-sm p-4">
         <h1 class="py-3">Productos de investigación</h1>
-    
-        <table class="table table-hover table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Descripción</th>
-                    <th>Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for p in products %}
-                <tr>
-                    <td>{{p.id}}</td>
-                    <td>{{p.description}}</td>
-                    <td>{{p.type}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table class="table table-hover table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripción</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in products %}
+                    <tr>
+                        <td>{{p.id}}</td>
+                        <td>{{p.description}}</td>
+                        <td>{{p.type}}</td>
+                        <td><button type="submit" name="delete_product" value={{p.id}} class="btn btn-danger">Eliminar</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
     </div>
 
 {% endblock %}
