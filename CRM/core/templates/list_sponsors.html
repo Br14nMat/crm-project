@@ -1,36 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <h1>Sponsors</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <table>
-            <thead>
-                <tr>
-                    <th>NIT</th>
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Correo</th>
-                    <th>Donación inicial</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for s in sponsors %}
-                <tr>
-                    <td>{{s.nit}}</td>
-                    <td>{{s.name}}</td>
-                    <td>{{s.type}}</td>
-                    <td>{{s.mail}}</td>
-                    <td>{{s.initial_donation}}</td>
-                    <td>{{s.status}}</td>
-                    <td><button type="submit" name="new_donation" value="{{s.nit}}">Registrar Donación</button></td>
-                    <td><button type="submit" name="nit" value={{s.nit}}>Editar</button></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </form>
-
+    <div class="container-sm p-4">
+        <h1 class="py-3">Patrocinadores</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            
+            <table class="table table-hover table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>NIT</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Correo</th>
+                        <th>Donación inicial</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in sponsors %}
+                    <tr>
+                        <td>{{s.nit}}</td>
+                        <td>{{s.name}}</td>
+                        <td>{{s.type}}</td>
+                        <td>{{s.mail}}</td>
+                        <td>{{s.initial_donation}}</td>
+                        <td>{{s.status}}</td>
+                        <td>
+                            <button type="submit" name="new_donation" value="{{s.nit}}" class="btn btn-secondary">Registrar Donación</button>
+                            <button type="submit" name="nit" value={{s.nit}} class="btn btn-primary">Editar</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
 {% endblock %}
