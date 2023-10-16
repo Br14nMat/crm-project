@@ -1,31 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section class="info">
-        <h1>{{event.name}}</h1>
-        <h2>{{event.date}}</h2>
-        <h3>{{event.id}}</h3>
-        <h3>{{event.type}}</h3>
-        <h3>{{event.objective}}</h3>
-        <h3>{{event.description}}</h3>
-    </section>
+    <div class="card mx-4">
+        <div class="card-header">{{event.date}}</div>
+            <div class="card-body">
+                <div class="container-sm py-4">
+                <h1 class="card-title">{{event.name}}</h1>
+                <p class="card-text">
+                    {{event.type}}<br>
+                    {{event.objective}}<br>
+                    {{event.description}}<br>
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
 
+    
     <section class="followups">
-        <h2>Seguimientos</h2>
-
-        <form action = "" method = "POST" name="followup">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit" name="followup" value="followup">Submit</button>
-        </form>
-
-        {% for f in followups %}
-            <h3>{{f.name}}</h3>
-            <p>{{f.description}}</p>
-            <a href = "followup/delete/{{event.id}}/{{f.id}}" >Delete</a>
-            <br>
-        {% endfor %}
+        <div class="card mx-4">
+            <div class="card-body">
+                <div class="container-sm py-4">
+                    <h3>Seguimientos</h3>
+                    <div class="form-group">
+                        <form action = "" method = "POST" name="followup">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button type="submit" name="followup" value="followup" class="btn btn-primary">Agregar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <br>
+
+    <div class="row row-cols-1 row-cols-md-1 g-4 px-4">
+        {% for f in followups %}
+            <div class="card text-dark bg-light mb-3 mx-3" style="max-width: 18rem;">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <h5 class="card-title">{{f.name}}</h5>
+                    <p class="card-text">{{f.description}}</p>
+                    <a href ="followup/delete/{{event.id}}/{{f.id}}" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div><br>
 
     </section>
 
@@ -42,8 +62,4 @@
             <button type="submit" class="btn btn-secondary" name="link_sponsor" value="link_sponsor">Agregar</button>
         </form>
     </section>
-
-
-    
-
 {% endblock %}

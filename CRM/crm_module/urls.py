@@ -23,7 +23,7 @@ from core import views as core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', auth_views.signin, name = 'home'),
+    path('', auth_views.signin, name = 'login'),
     path('home/', auth_views.home, name = 'home'),
     path('signup/', auth_views.signup, name = 'signup'),
     path('signin/', auth_views.signin, name = 'signin'),
@@ -36,6 +36,7 @@ urlpatterns = [
     path('event/all', core_views.list_event, name = 'list event'),
     path('event/delete/<int:id>', core_views.delete_event, name = 'delete event'),
     path('event/info/<int:id>', core_views.show_event, name = 'show event information'),
-    path('sponsor/donation/add/<int:nit>', core_views.add_donation, name = 'add new donation'),
+    path('project/product/add/<int:id>', core_views.add_product, name = 'add_product'),
+    path('sponsor/donation/add', core_views.add_donation, name = 'add_donation'),
     path('event/info/followup/delete/<int:eventId>/<int:followupId>', core_views.delete_followup, name = 'show event information')
 ]
