@@ -187,6 +187,13 @@ def delete_followup(request, eventId, followupId):
     followup = Followup.objects.get(id = followupId)
     followup.delete()
     return redirect("/event/info/"+str(eventId))
+
+def remove_sponsor(request, eventId, sponsorId):
+    event = Event.objects.get(id = eventId)
+    sponsor = Sponsor.objects.get(id = sponsorId)
+    event.sponsors.remove(sponsor)
+    sponsor.events.remove(event)
+    return redirect("/event/info/"+str(eventId))
   
  
 
