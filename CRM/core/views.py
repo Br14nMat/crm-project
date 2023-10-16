@@ -209,7 +209,21 @@ def add_project(request):
 def list_product(request,id):
     project = investigation_project.objects.get(id=id)
     products = Product.objects.filter(project=project)
-    return render(request, "list_products.html", {
-        "products": products,
-        "project" : project
-    })
+    if request.method == 'GET':
+        return render(request, "list_products.html", {
+            "products": products,
+            "project" : project
+        })
+    if request.method == 'POST':
+        if request.POST.get('delete_product'):
+            id_product = request.POST.get('delete_product', None)
+            request.session['selectedID']=id_product
+            return redirect('delete_product')
+
+def delete_product(request):
+    id_product = request.session.get('selectedID', -1)
+    product = Product.objects.get(id = id_product)
+    id_project = product.project.id
+    product.delete()
+    del request.session['selectedID']
+    return redirect('list_product', id_project)
