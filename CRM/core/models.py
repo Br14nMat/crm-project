@@ -28,7 +28,7 @@ class Event(models.Model):
     type = models.CharField(max_length = 20, choices = types, default = "florecimiento")
     objective = models.TextField(blank = True)
     description = models.TextField(blank = True)
-    sponsors = models.ManyToManyField(Sponsor, related_name='events')    
+    sponsors = models.ManyToManyField(Sponsor, related_name='events')
 
 class Donation(models.Model):
     sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE, related_name='donations')
