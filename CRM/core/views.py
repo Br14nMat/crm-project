@@ -89,9 +89,11 @@ def show_event(request, id):
     followups = Followup.objects.filter(event_id = id)
     form = FollowupForm()
     usable_sponsors=[]
+    used_sponsors=[]
     for sponsor in Sponsor.objects.all():
-        if not event.sponsors.filter(nit=sponsor.nit).exists():
-            usable_sponsors.append(sponsor)
+        if event.sponsors.filter(nit=sponsor.nit).exists():
+            used_sponsors.append(sponsor)
+        else: usable_sponsors.append(sponsor)
     try:
         if request.method == 'POST':
             if request.POST.get('followup'):
@@ -118,7 +120,8 @@ def show_event(request, id):
         "event": event,
         "followups": followups,
         "form": form,
-        "sponsors" : usable_sponsors
+        "sponsors" : usable_sponsors,
+        "event_sponsors" : used_sponsors
     })
 
 def add_donation(request, nit):

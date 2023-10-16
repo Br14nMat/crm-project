@@ -43,6 +43,15 @@
         </form>
     </section>
 
+    <div>
+        <h4>Activos</h4>
+        {% for r in event_sponsors %}
+            <p>{{r.nit}}</p>
+            <a>Delete</a>
+            <br>
+        {% endfor %}
+    </div>
+
 
     
 
