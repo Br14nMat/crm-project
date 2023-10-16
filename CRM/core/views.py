@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from .forms import SponsorForm
 from .forms import EventForm
 from .forms import DonationForm
+from .forms import ProductForm
 from .forms import FollowupForm
+from .forms import investigation_project_form
 from .models import Event
 from .models import Sponsor
 from .models import Followup
-from .forms import investigation_project_form
+from .models import investigation_project
 
 def register_sponsor(request):
     form= SponsorForm()
@@ -31,17 +33,46 @@ def edit_sponsor(request):
     sponsor=Sponsor.objects.get(nit=nit)
     form = SponsorForm(instance=sponsor)
     if request.method=='POST':
-        
-        form = SponsorForm(request.POST,instance=sponsor)
-        edited_sponsor = form.save(commit=False)
-        edited_sponsor.save()
-        del request.session['selectedNIT']
-        return redirect('list_sponsors')
+        if request.POST.get('edit'):
+            form = SponsorForm(request.POST,instance=sponsor)
+            edited_sponsor = form.save(commit=False)
+            edited_sponsor.save()
+            del request.session['selectedNIT']
+            return redirect('list_sponsors')
+        elif request.POST.get('change_status'):
+            if sponsor.status=='activo':
+                sponsor.status='inactivo'
+            elif sponsor.status=='inactivo':
+                sponsor.status='activo'
+            sponsor.save()
+            context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
+            return render(request, 'edit_sponsor.html', context)
 
     else:
         context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
         return render(request, 'edit_sponsor.html', context)
     
+def add_donation(request):
+    nit = request.session.get('selectedNIT', -1)
+    sponsor=Sponsor.objects.get(nit=nit)
+    form= DonationForm()
+    print(sponsor) 
+    if request.method == 'POST': 
+        try: 
+            form = DonationForm(request.POST)
+            if form.is_valid():
+                donation = form.save(commit=False)
+                donation.sponsor = sponsor
+                donation.save()
+                del request.session['selectedNIT']
+                return redirect('home')
+        except ValueError:
+            print("Please provide valid data")
+            context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
+            return render(request, 'add_donation.html', context)
+    else:
+        context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
+        return render(request, 'add_donation.html', context)
 
 def list_sponsors(request):
     sponsors = Sponsor.objects.all()
@@ -50,9 +81,16 @@ def list_sponsors(request):
             "sponsors":sponsors
         })
     if request.method == 'POST':
-        nit = request.POST.get('nit', None)
-        request.session['selectedNIT']=nit
-        return redirect('edit_sponsor')
+
+        if request.POST.get('new_donation'):
+            nit = request.POST.get('new_donation', None)
+            request.session['selectedNIT']=nit
+            return redirect('add_donation')
+
+        if request.POST.get('nit'):
+            nit = request.POST.get('nit', None)
+            request.session['selectedNIT']=nit
+            return redirect('edit_sponsor')
     
 
 def create_event(request):
@@ -124,26 +162,26 @@ def show_event(request, id):
         "event_sponsors" : used_sponsors
     })
 
-def add_donation(request, nit):
-    sponsor = Sponsor.objects.get(nit=nit)
-    form= DonationForm()
-    print(sponsor)
+def add_product(request, id):
+    #id = request.session.get('selectedID', -1)
+    project = investigation_project.objects.get(id=id)
+    form= ProductForm()
     if request.method == 'POST': 
         try: 
-                form = DonationForm(request.POST)
-                donation = form.save(commit=False)
-                donation.sponsor = sponsor
-                donation.save()
-                print(sponsor)
+            form = ProductForm(request.POST)
+            if form.is_valid():
+                product = form.save(commit=False)
+                product.project = project
+                product.save()
+                #del request.session['selectedID']
                 return redirect('home')
         except ValueError:
             print("Please provide valid data")
-            context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
-            return render(request, 'add_donation.html', context)
-    
-    context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
-    return render(request, 'add_donation.html', context)
-
+            context = {'form': form, 'project': project,'error': 'Please provide valid data'}
+            return render(request, 'add_product.html', context)
+    else:
+        context = {'form': form, 'project': project,'error': 'Please provide valid data'}
+    return render(request, 'add_product.html', context)
 
 def delete_followup(request, eventId, followupId):
     followup = Followup.objects.get(id = followupId)

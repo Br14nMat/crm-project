@@ -13,7 +13,7 @@ class Sponsor(models.Model):
     type = models.CharField(max_length=10,choices=types,default="natural")
     mail = models.EmailField(max_length=200)
     initial_donation = models.DecimalField(max_digits=19, decimal_places=3)
-    status = "active"
+    status = models.CharField(max_length=10, default='activo')
 
     def __str__(self): 
         return str(self.nit)
@@ -41,14 +41,14 @@ class Donation(models.Model):
     )
     type = models.CharField(max_length=20, choices=types, default="Type1")
 
-
 class Followup(models.Model):
     name = models.CharField(max_length = 50, null=False)
     description = models.TextField(blank = True)
     event_id = models.ForeignKey(Event, on_delete = models.CASCADE)
 
 class investigation_project(models.Model):
-    name = models.CharField(max_length=100, primary_key=True, unique=True)
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, unique=True)
     description = models.TextField()
     objectives = models.TextField()
     start_date= models.DateField()
@@ -57,3 +57,14 @@ class investigation_project(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Product(models.Model):
+    project = models.ForeignKey(investigation_project, on_delete=models.CASCADE, related_name='products')
+    description = models.TextField(blank = True)
+    types = (
+        ('Type1', "Type1"),
+        ('Type2', "Type2"),
+        ('Type3', "Type3")
+    )
+    type = models.CharField(max_length=20, choices=types, default="Type1")

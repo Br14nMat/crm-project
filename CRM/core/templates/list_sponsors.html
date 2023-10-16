@@ -9,11 +9,11 @@
             <thead>
                 <tr>
                     <th>NIT</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Mail</th>
-                    <th>Initial Donation</th>
-                    <th>Status</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Correo</th>
+                    <th>Donación inicial</th>
+                    <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +25,7 @@
                     <td>{{s.mail}}</td>
                     <td>{{s.initial_donation}}</td>
                     <td>{{s.status}}</td>
-                    <td><a href = "donation/add/{{s.nit}}" >Registrar Donación</a></td>
+                    <td><button type="submit" name="new_donation" value="{{s.nit}}">Registrar Donación</button></td>
                     <td><button type="submit" name="nit" value={{s.nit}}>Editar</button></td>
                 </tr>
                 {% endfor %}

@@ -28,7 +28,11 @@
         <label for="id_initial_donation">Donación inicial:</label>
         <input type="number" name="initial_donation" value={{sponsor.initial_donation}} step="0.001" min="0" required="" id="id_initial_donation">
       </p>
-      <input type="submit">
+      <p>
+        <label for="id_status">Estado: {{sponsor.status}}</label>
+      </p>
+      <button type="submit" class="btn btn-secondary" name="change_status" value="change_status">Cambiar estado</button>
+      <button type="submit" class="btn btn-success" name="edit" value="edit">Guardar cambios</button>
     </form>
 </body>
 </html>
