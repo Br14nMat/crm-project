@@ -33,12 +33,20 @@ def edit_sponsor(request):
     sponsor=Sponsor.objects.get(nit=nit)
     form = SponsorForm(instance=sponsor)
     if request.method=='POST':
-        
-        form = SponsorForm(request.POST,instance=sponsor)
-        edited_sponsor = form.save(commit=False)
-        edited_sponsor.save()
-        del request.session['selectedNIT']
-        return redirect('list_sponsors')
+        if request.POST.get('edit'):
+            form = SponsorForm(request.POST,instance=sponsor)
+            edited_sponsor = form.save(commit=False)
+            edited_sponsor.save()
+            del request.session['selectedNIT']
+            return redirect('list_sponsors')
+        elif request.POST.get('change_status'):
+            if sponsor.status=='activo':
+                sponsor.status='inactivo'
+            elif sponsor.status=='inactivo':
+                sponsor.status='activo'
+            sponsor.save()
+            context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
+            return render(request, 'edit_sponsor.html', context)
 
     else:
         context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}

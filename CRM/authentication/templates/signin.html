@@ -2,13 +2,29 @@
 
 {% block content %}
 
-    <h1>Sign in</h1>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-4 border p-4">
+            <div class="text-center">
+                {{ error }}
+            </div>
 
-    {{error}}
-    <form action="/signin/" method="POST">
-        {% csrf_token %}
+            <div class="text-center">
+                <img class = "img-fluid p-4" style="max-width:90%;" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Logo_de_la_Universidad_ICESI.svg/2560px-Logo_de_la_Universidad_ICESI.svg.png">
+            </div>
+            <div class = "form-group text-center">
+                <form action="/signin/" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group p-2 mx-4 my-1">
+                            <{{ field|cut:"<"|cut:">" }} class="form-control" placeholder = {{field.name}}>
+                        </div>
+                    {% endfor %}
+                    <button class = "btn btn-primary btn-block m-4 px-4">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-        {{form.as_p}}
-        <button>Sign in</button>
-    </form>
 {% endblock %}

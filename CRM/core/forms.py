@@ -10,7 +10,7 @@ from .models import investigation_project
 class SponsorForm(ModelForm):
     class Meta:
         model = Sponsor
-        fields = '__all__'
+        fields = ['nit', 'name', 'type', 'mail', 'initial_donation']
 
 class EventForm(ModelForm):
     class Meta:
@@ -53,6 +53,15 @@ class FollowupForm(ModelForm):
     class Meta:
         model = Followup
         exclude = ("event_id",)
+        widgets = {
+            'name': widgets.TextInput(attrs = {'class': 'form-control'}),
+
+            'description': widgets.Textarea(attrs = {
+                'class': 'form-control',
+                'rows': '2'
+                }),
+
+        }
         
 class investigation_project_form(ModelForm):
     class Meta:
