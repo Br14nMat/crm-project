@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card mx-4">
+            <div class="card-body">
+                <div class="container-sm py-4">
+                <h1 class="card-title">{{project.name}}</h1>
+                <p class="card-text">
+                    ID: {{project.id}}<br>
+                    NIT: {{project.nit}}<br>
+                    {{project.description}}<br>
+                    Inicio: {{project.start_date}}<br>
+                    Fin: {{project.finish_date}}<br>
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="container-sm p-4">
+        <h1 class="py-3">Productos de investigación</h1>
+    
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in products %}
+                <tr>
+                    <td>{{p.id}}</td>
+                    <td>{{p.description}}</td>
+                    <td>{{p.type}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

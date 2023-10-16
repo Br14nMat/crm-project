@@ -9,6 +9,7 @@ from .models import Event
 from .models import Sponsor
 from .models import Followup
 from .models import investigation_project
+from .models import Product
 
 def register_sponsor(request):
     form= SponsorForm()
@@ -194,8 +195,6 @@ def remove_sponsor(request, eventId, sponsorId):
     event.sponsors.remove(sponsor)
     sponsor.events.remove(event)
     return redirect("/event/info/"+str(eventId))
-  
- 
 
 def add_project(request):
     if request.method == "POST":
@@ -207,4 +206,10 @@ def add_project(request):
         form = investigation_project_form()
     return render(request, 'add_project.html', {"form": form})    
 
-
+def list_product(request,id):
+    project = investigation_project.objects.get(id=id)
+    products = Product.objects.filter(project=project)
+    return render(request, "list_products.html", {
+        "products": products,
+        "project" : project
+    })
