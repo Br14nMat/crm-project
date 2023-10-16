@@ -13,7 +13,7 @@ class Sponsor(models.Model):
     type = models.CharField(max_length=10,choices=types,default="natural")
     mail = models.EmailField(max_length=200)
     initial_donation = models.DecimalField(max_digits=19, decimal_places=3)
-    status = "active"
+    status = models.CharField(max_length=10, default='activo')
 
     def __str__(self): 
         return str(self.nit)
