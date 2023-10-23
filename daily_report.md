@@ -69,7 +69,12 @@
 
 | Fecha       | ¿Qué hice ayer para avanzar en el proyecto? | ¿Qué voy a hacer hoy para avanzar en el proyecto? | ¿Hay algún impedimento que me esté impidiendo avanzar en el proyecto? |
 |-------------|-------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------|
-| [Fecha 1]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
-| [Fecha 2]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
-| [Fecha 3]   | [Acciones realizadas el día anterior]      | [Plan para el día actual]                         | [Si hay obstáculos, descríbelos brevemente]                          |
-| ...         | ...                                       | ...                                                | ...                                                                   |
+| 02/10/2023   | [Acciones realizadas el día anterior]      | Terminar funcionalidad de la Historia de Usuario 6         | [Si hay obstáculos, descríbelos brevemente]                          |
+| 08/10/2023   | [Acciones realizadas el día anterior]      | Se permite añadir productos a un proyecto de investigacion    | [Si hay obstáculos, descríbelos brevemente]                          |
+| 09/1072023   | [Acciones realizadas el día anterior]      | Se aceptaron diferentes pull                         | [Si hay obstáculos, descríbelos brevemente] |
+| 11/10/2023 | Esperar que me acepten las pull request | Se reviso la forma de añadir informacion de una entidad por la session | Ninguno |
+| 14/10/2023 | Esperar que me acepten las pull request | Se arreglaron las url de la HU17 y se realizo un merge | Ninguno |
+| 15/10/2023 | Esperar que me acepten las pull request | Se añadieron modificaciones de la HU17, las cuales fueron problemas con las id, y adicionalemente se realizo la modificacion del estilo basico de la HU6, y se aceptaron pulls | Ninguno |
+| 16/10/2023 | Esperar que me acepten las pull request | Se realizo la modificacion de la rama HU18 donde ya se pueden listar productos de un proyecto | No se ha modificado las historias de usuario correspondientes a los proyectos |
+
+
