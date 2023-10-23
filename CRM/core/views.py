@@ -240,3 +240,15 @@ def delete_project(request, id):
 def project_list(request):
     project= investigation_project.objects.all()
     return render(request, 'project_list.html', {'project':project})
+
+def edit_project(request, id):
+    project = get_object_or_404(investigation_project, id=id)
+
+    if request.method=='POST':
+        form = investigation_project_form(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect("project_list")
+    else:
+        form = investigation_project_form(instance=project)
+    return render(request, 'edit_project.html', {'form':form, 'project':project})

@@ -9,12 +9,13 @@
         {% for project in project %}
             <li>
                 <strong>{{ project.name }}</strong><br>
-                Descripción: {{ project.descripction }}<br>
+                Descripción: {{ project.description }}<br>
                 Objetivos: {{ project.objectives }}<br>
                 Fecha de Inicio: {{ project.start_date }}<br>
                 Fecha de Finalización: {{ project.finish_date }}<br>
                 NIT: {{ project.nit }}<br>
                 <a href="{% url 'delete_project' project.id %}">Eliminar</a>
+                <a href="{% url 'edit_project' project.id %}">Editar</a>
             </li>
         {% endfor %}
     </ul>
