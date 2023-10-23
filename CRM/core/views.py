@@ -7,7 +7,7 @@ def add_project(request):
         form = investigation_project_form(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("home")
+            return redirect("project_list")
     else:
         form = investigation_project_form()
     return render(request, 'add_project.html', {"form": form})    

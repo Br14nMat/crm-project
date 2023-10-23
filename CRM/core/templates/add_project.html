@@ -1,13 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <title>Agregar Proyecto de Investigación</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tempusdominus-bootstrap-4.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/moment.min.js' %}"></script>
+    <script src="{% static 'js/tempusdominus-bootstrap-4.js' %}"></script>
 </head>
 <body>
     <h1>Agregar Proyecto de Investigación</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <script>
+            $(function () {
+                $('#id_fecha_inicio, #id_fecha_finalizacion').datetimepicker({
+                    format: 'YYYY-MM-DD',
+                });
+            });
+        </script>
         <button type="submit">Guardar</button>
     </form>
 </body>
