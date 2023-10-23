@@ -201,7 +201,7 @@ def add_project(request):
         form = investigation_project_form(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("home")
+            return redirect("project_list")
     else:
         form = investigation_project_form()
     return render(request, 'add_project.html', {"form": form})    
@@ -233,6 +233,10 @@ def delete_project(request, id):
 
     if request.method=='POST':
         project.delete()
-        return redirect('home')
+        return redirect('project_list')
     
-    return  render(request, 'delete_project.html', {'project': project}) 
+    return  render(request, 'delete_project.html', {'project': project})
+
+def project_list(request):
+    project= investigation_project.objects.all()
+    return render(request, 'project_list.html', {'project':project})
