@@ -233,6 +233,6 @@ def delete_project(request, id):
 
     if request.method=='POST':
         project.delete()
-        return redirect('home')
+        return redirect('project_list')
     
     return  render(request, 'delete_project.html', {'project': project}) 
