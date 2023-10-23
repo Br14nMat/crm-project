@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import SponsorForm
 from .forms import EventForm
 from .forms import DonationForm
@@ -227,3 +227,12 @@ def delete_product(request):
     product.delete()
     del request.session['selectedID']
     return redirect('list_product', id_project)
+
+def delete_project(request, id):
+    project= get_object_or_404(investigation_project, id=id)
+
+    if request.method=='POST':
+        project.delete()
+        return redirect('home')
+    
+    return  render(request, 'delete_project.html', {'project': project}) 

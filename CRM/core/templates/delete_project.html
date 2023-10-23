@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Proyecto de Investigación</title>
+</head>
+<body>
+    <h1>Eliminar Proyecto de Investigación</h1>
+    <p>¿Estás seguro de que deseas eliminar el proyecto "{{ project.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+    <a href="{% url 'project_list' %}">Cancelar</a>
+</body>
+</html>
