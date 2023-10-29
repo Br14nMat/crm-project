@@ -227,3 +227,6 @@ def delete_product(request):
     product.delete()
     del request.session['selectedID']
     return redirect('list_product', id_project)
+
+def report(request):
+    return redirect('report')
