@@ -64,6 +64,7 @@
 | 11/10/2023   | Aceptar pull el pull request de añadir patrocinador a evento | Mejorar la vista del login | Ninguno |
 | 12/10/2023   | Mejorar la vista del login | Agregar un sidebar colapsable para las opciones del modulo | Me falta que los demas terminen sus funcionalidades para poder agregarlas al menu |
 | 15/10/2023 | Esperar que me acepten las pull request | Aceptar pull request HU4 | Ninguno |
+| 28/10/2023 | Plantear lo que va en el reporte del patrocinador | Añadir la base para el reporte del patrocinador | Ninguno |
 
 ## Sebastián López
 
