@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+
+{% block  content %}
 <head>
     <title>Eliminar Proyecto de Investigación</title>
 </head>
@@ -12,4 +13,5 @@
     </form>
     <a href="{% url 'project_list' %}">Cancelar</a>
 </body>
-</html>
+
+{% endblock %}
