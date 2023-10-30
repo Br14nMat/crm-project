@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+
+{% block content %}
 <head>
     <title>Lista de Proyectos de Investigación</title>
 </head>
@@ -21,3 +22,4 @@
     <a href="{% url 'add_project' %}">Crear Nuevo Proyecto</a>
 </body>
 </html>
+{% endblock %}
