@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block content %}
 {% load static %}
 <html>
 <head>
@@ -22,5 +24,6 @@
         </script>
         <button type="submit">Guardar</button>
     </form>
+    <a href="{% url 'project_list' %}">Ir a la Lista de Proyectos</a>
 </body>
-</html>
+{% endblock %}

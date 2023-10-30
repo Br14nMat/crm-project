@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Editar Patrocinador</h1>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+      <p>
+        <div class="mb-3">
+          <label for="id_nit" class="form-label">Nit:</label>
+          <input class="form-control"type="number" name="nit" value={{sponsor.nit}} required="" id="id_nit"min="0">
+        </div>
+      </p>
+      <p>
+        <div class="mb-3">
+          <label for="id_name" class="form-label">Nombre:</label>
+          <input type="text" name="name" value={{sponsor.name}}  maxlength="255" required="" id="id_name" class="form-control">
+        </div>
+      </p>
+      <p>
+        <label for="id_type" class="form-label">Tipo:</label>
+        <select class="form-select" name="type" id="id_type">
+          <option value="natural" selected="">NATURAL</option>
+          <option value="juridica">JURIDICA</option>
+        </select>
+      </p>
+      <p>
+        <div class="mb-3">
+          <label for="id_mail" class="form-label">Correo</label>
+          <input class="form-control"type="email" name="mail" value={{sponsor.mail}}  maxlength="200" required="" id="id_mail">
+        </div>
+      </p>
+      <p>
+        <div class="mb-3">
+          <label for="id_initial_donation" class="form-label">Donación inicial:</label>
+          <input type="number" name="initial_donation" value={{sponsor.initial_donation}} step="0.001" min="0" required="" id="id_initial_donation" class="form-control" >
+        </div>
+      </p>
+      <p>
+        <label for="id_status" class="form-label">Estado: {{sponsor.status}}</label>
+      </p>
+      <button type="submit" class="btn btn-secondary" name="change_status" value="change_status">Cambiar estado</button>
+      <button type="submit" class="btn btn-success" name="edit" value="edit">Guardar cambios</button>
+    </form>
+</body>
+</html>
+{% endblock %}

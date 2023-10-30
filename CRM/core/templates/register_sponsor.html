@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Registrar patrocinador</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+      <p>
+        <div class="mb-3">
+          <label for="id_nit" class="form-label">Nit:</label>
+          <input type="number" class="form-control" name="nit" required="" id="id_nit">
+        </div>
+      </p>
+      <p>
+        <div class="mb-3">
+          <label for="id_name" class="form-label">Nombre:</label>
+          <input type="text" name="name" maxlength="255" required="" id="id_name" class="form-control">
+        </div>
+      </p>
+      <p>
+        <label for="id_type" class="form-label">Tipo:</label>
+        <select class="form-select" name="type" id="id_type">
+          <option value="natural" selected="">NATURAL</option>
+          <option value="juridica">JURIDICA</option>
+        </select>
+      </p>
+      <p>
+        <div class="mb-3">
+          <label for="id_mail" class="form-label">Correo</label>
+          <input type="email" class="form-control" name="mail" maxlength="200" required="" id="id_mail">
+        </div>
+        
+      </p>
+      <p>
+        <div class="mb-3">
+          <label for="id_initial_donation" class="form-label">Donación inicial:</label>
+          <input type="number" name="initial_donation" step="0.001" required="" id="id_initial_donation" class="form-control" >
+        </div>
+        
+      </p>
+    <button type="submit" class="btn btn-success" name="confirm">Confirmar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,39 @@
+nav{
+    background-color: #00599c;
+    color: white;
+}
+
+body{
+    padding-top: 5rem;
+}
+
+.logo{
+    width: 100%;
+    max-width: 9rem;
+    height: auto;
+}
+
+.content{
+    padding: 1rem 2rem;
+}
+
+.navbar-toggler-icon {
+    filter: invert(100%);
+}
+
+.navbar-toggler{
+    border: .5px solid rgba(255, 255, 255, 0.609);
+    outline:none;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.offcanvas-title{
+    color: black;
+}
+
+.logout{
+    color: rgb(239, 10, 10);
+}
