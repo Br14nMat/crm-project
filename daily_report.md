@@ -29,6 +29,13 @@
 | 5/10/2023 | Investigación sobre edición de objetos de modelo. | Investiación sobre manejo de bootstrap. | Ninguno |
 | 7/10/2023 |  Investigación sobre manejo de bootstrap. | Historia de usuario edición de patrocinador | Ninguno |
 | 8/10/2023 |  Historia de usuario edición de patrocinador  | Revisión de pull requests | Ninguno |
+| 10/10/2023 |  Revisión de pull requests  | Se completó la hu de añadir un patrocinador a un evento | Ninguno |
+| 14/10/2023 |  Se completó la hu de añadir un patrocinador a un evento  | Se completó la hu de cambiar el estado de  un patrocinador  | Ninguno |
+| 17/10/2023 |  Se completó la hu de cambiar el estado de  un patrocinador | Reunión con el profesor sobre el 2do sprint | Ninguno |
+| 23/10/2023 | Reunión con el profesor sobre el 2do sprint | Revisión del sprint y anotación de aspectos por mejorar | Ninguno |
+| 26/10/2023 | Revisión del sprint y anotación de aspectos por mejorar | Investigación sobre uso de JS en el proyecto | Ninguno |
+| 29/10/2023 | Investigación sobre uso de JS en el proyecto | Cambio de vistas de patrocinadores por asociar a eventos y se añadió un filtro para buscar patrocinador por nombre | Ninguno |
+
 
 
 
