@@ -53,7 +53,7 @@ class investigation_project(models.Model):
     objectives = models.TextField()
     start_date= models.DateField()
     finish_date= models.DateField()
-    nit= models.IntegerField()
+    nit= models.ForeignKey(Sponsor, on_delete=models.CASCADE, to_field="nit")
 
     def __str__(self):
         return self.id
