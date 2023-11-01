@@ -71,3 +71,13 @@ class investigation_project_form(ModelForm):
             'start_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
             'finish_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"})
         }
+    def clean(self):
+        cleaned_data = super().clean()
+        start_date = cleaned_data.get('start_date')
+        finish_date = cleaned_data.get('finish_date')
+
+        if start_date and finish_date:
+            if finish_date <= start_date:
+                self.add_error('finish_date', 'La fecha de finalización debe ser posterior a la fecha de inicio.')
+
+        return cleaned_data
