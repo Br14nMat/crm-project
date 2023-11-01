@@ -6,6 +6,33 @@
 </head>
 <body>
     <h1>Lista de Proyectos de Investigación</h1>
+    <table class = "table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Objetivos</th>
+            <th>Fecha de inicio</th>
+            <th>Fecha de Finalización</th>
+            <th>NIT</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for project in project %}
+                <tr>
+                    <td>{{ project.name }}</td>
+                    <td>{{ project.description }}</td>
+                    <td>{{ project.objectives }}</td>
+                    <td>{{ project.star_date }}</td>
+                    <td>{{ project.finish_date }}</td>
+                    <td>{{ project.nit }}</td>
+                    <td><a href="{% url 'delete_project' project.id %}">Eliminar</a>
+                        <a href="{% url 'edit_project' project.id %}">Editar</a></td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
     <ul>
         {% for project in project %}
             <li>
