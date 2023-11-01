@@ -71,3 +71,5 @@ class investigation_project_form(ModelForm):
             'start_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
             'finish_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"})
         }
+        
+        
