@@ -228,5 +228,14 @@ def delete_product(request):
     del request.session['selectedID']
     return redirect('list_product', id_project)
 
-def report(request):
-    return redirect('report')
+def sponsor_report(request, id):
+    sponsor = Sponsor.objects.get(id = id)
+    donations = sponsor.donations.all()
+    num_donations = sponsor.donations.count()
+    total_donated = sum(donation.value for donation in donations)
+
+    return render(request, "sponsor_report.html", {
+        "sponsor": sponsor,
+        "num_donations": num_donations,
+        "total_donated": total_donated
+    })

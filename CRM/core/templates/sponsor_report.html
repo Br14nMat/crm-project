@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<H1>Reporte General Patrocinador</H1>
+
+<div class="card mx-4">
+    <div class="card-header">{{sponsor.status}}</div>
+        <div class="card-body">
+            <div class="container-sm py-4">
+            <h1 class="card-title">{{sponsor.name}}</h1>
+            <p class="card-text">
+                {{sponsor.nit}}<br>
+                {{sponsor.type}}<br>
+                {{sponsor.mail}}<br>
+            </p>
+        </div>
+    </div>
+</div>
+
+<h3>Cantidad de donaciones</h3>
+<p>{{num_donations}}</p>
+<h3>Dinero donado</h3>
+<p>${{total_donated}}</p>
+
+{% endblock %}
