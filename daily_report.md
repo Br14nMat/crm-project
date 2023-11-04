@@ -73,6 +73,7 @@
 | 15/10/2023 | Esperar que me acepten las pull request | Aceptar pull request HU4 | Ninguno |
 | 28/10/2023 | Plantear lo que va en el reporte del patrocinador | Añadir la base para el reporte del patrocinador | Ninguno |
 | 2/11/2023 | Investigar como enviar correos | Hacer review y aceptar pull request | Ninguno |
+| 3/11/2023 | Hacer review y aceptar pull request | Agregar la información más importante del reporte del patrocinador | Ninguno |
 
 ## Sebastián López
 
