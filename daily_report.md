@@ -75,6 +75,7 @@
 | 2/11/2023 | Investigar como enviar correos | Hacer review y aceptar pull request | Ninguno |
 | 3/11/2023 | Hacer review y aceptar pull request | Agregar la información más importante del reporte del patrocinador | Ninguno |
 | 5/11/2023 | Redifinir el enfoque del reporte del patrocinador (pdf, correo -> dashboard) | Crear la opción de generar reporte de patrocinador desde la vista de patrocinadores | Ninguno |
+| 6/11/2023 | Crear la opción de generar reporte de patrocinador desde la vista de patrocinadores | Crear reporte general de la aplicación (total donaciones, dinero donado, top donantes) | Ninguno |
 
 ## Sebastián López
 
