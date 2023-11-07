@@ -239,3 +239,24 @@ def sponsor_report(request, id):
         "num_donations": num_donations,
         "total_donated": total_donated
     })
+
+def general_report(request):
+    sponsors = Sponsor.objects.all()
+    total_donations = 0
+    total_donated = 0
+
+    sponsor_donations = []
+
+    for sponsor in sponsors:
+        donations = sponsor.donations.all()
+        total_donations += sponsor.donations.count()
+        total_donated += sum(donation.value for donation in donations)
+        sponsor_donations.append((sponsor, total_donated))
+
+    ordered_sponsors = sorted(sponsor_donations, key=lambda x: x[1], reverse=True)
+
+    return render(request, "general_report.html", {
+        "total_donations": total_donations,
+        "total_donated": total_donated,
+        "ordered_sponsors": ordered_sponsors
+    })
