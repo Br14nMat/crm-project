@@ -43,10 +43,10 @@
                 Fecha de Finalización: {{ project.finish_date }}<br>
                 NIT: {{ project.nit }}<br>
                 <a href="{% url 'delete_project' project.id %}">Eliminar</a>
+                <a href="{% url 'edit_project' project.id %}">Editar</a>
             </li>
         {% endfor %}
     </ul>
     <a href="{% url 'add_project' %}">Crear Nuevo Proyecto</a>
 </body>
-</html>
 {% endblock %}

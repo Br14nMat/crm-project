@@ -144,11 +144,21 @@ def show_event(request, id):
                     fol.save()
                 return redirect("/event/info/"+str(id))
             if request.POST.get('link_sponsor'):
-                selected_nit= request.POST.get('nit', None)
+                selected_nit= request.POST.get('link_sponsor', None)
                 sponsor = Sponsor.objects.get(nit=selected_nit)
                 event.sponsors.add(sponsor)
                 sponsor.events.add(event)
                 return redirect("/event/info/"+str(id))
+            if request.POST.get('filter_sponsors'):
+                sponsor_name = request.POST.get('sponsor_name', '')
+                sponsors=Sponsor.objects.filter(name__istartswith=sponsor_name)
+                return render(request, "event_info.html", {
+                    "event": event,
+                    "followups": followups,
+                    "form": form,
+                    "sponsors" : sponsors,
+                    "event_sponsors" : used_sponsors})
+            
     except ValueError:
         return render(request, 'event_info.html', {
             'form': FollowupForm,
@@ -240,3 +250,15 @@ def delete_project(request, id):
 def project_list(request):
     project= investigation_project.objects.all()
     return render(request, 'project_list.html', {'project':project})
+
+def edit_project(request, id):
+    project = get_object_or_404(investigation_project, id=id)
+
+    if request.method=='POST':
+        form = investigation_project_form(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect("project_list")
+    else:
+        form = investigation_project_form(instance=project)
+    return render(request, 'edit_project.html', {'form':form, 'project':project})
