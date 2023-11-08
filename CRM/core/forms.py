@@ -71,6 +71,7 @@ class investigation_project_form(ModelForm):
             'start_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
             'finish_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"})
         }
+
     def clean(self):
         cleaned_data = super().clean()
         start_date = cleaned_data.get('start_date')

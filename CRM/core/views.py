@@ -144,11 +144,21 @@ def show_event(request, id):
                     fol.save()
                 return redirect("/event/info/"+str(id))
             if request.POST.get('link_sponsor'):
-                selected_nit= request.POST.get('nit', None)
+                selected_nit= request.POST.get('link_sponsor', None)
                 sponsor = Sponsor.objects.get(nit=selected_nit)
                 event.sponsors.add(sponsor)
                 sponsor.events.add(event)
                 return redirect("/event/info/"+str(id))
+            if request.POST.get('filter_sponsors'):
+                sponsor_name = request.POST.get('sponsor_name', '')
+                sponsors=Sponsor.objects.filter(name__istartswith=sponsor_name)
+                return render(request, "event_info.html", {
+                    "event": event,
+                    "followups": followups,
+                    "form": form,
+                    "sponsors" : sponsors,
+                    "event_sponsors" : used_sponsors})
+            
     except ValueError:
         return render(request, 'event_info.html', {
             'form': FollowupForm,
