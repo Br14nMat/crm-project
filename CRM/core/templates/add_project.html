@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
+<html>
 <head>
     <title>Agregar Proyecto de Investigación</title>
 </head>
@@ -11,5 +13,6 @@
         {{ form.as_p }}
         <button type="submit">Guardar</button>
     </form>
+    <a href="{% url 'project_list' %}">Ir a la Lista de Proyectos</a>
 </body>
 {% endblock %}
