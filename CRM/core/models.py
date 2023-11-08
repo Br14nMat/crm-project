@@ -56,7 +56,7 @@ class investigation_project(models.Model):
     nit= models.ForeignKey(Sponsor, on_delete=models.CASCADE, to_field="nit")
 
     def __str__(self):
-        return self.name
+        return self.id
 
 
 class Product(models.Model):
