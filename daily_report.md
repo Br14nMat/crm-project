@@ -76,6 +76,8 @@
 | 3/11/2023 | Hacer review y aceptar pull request | Agregar la información más importante del reporte del patrocinador | Ninguno |
 | 5/11/2023 | Redifinir el enfoque del reporte del patrocinador (pdf, correo -> dashboard) | Crear la opción de generar reporte de patrocinador desde la vista de patrocinadores | Ninguno |
 | 6/11/2023 | Crear la opción de generar reporte de patrocinador desde la vista de patrocinadores | Crear reporte general de la aplicación (total donaciones, dinero donado, top donantes) | Ninguno |
+| 7/11/2023 | Crear reporte general de la aplicación (total donaciones, dinero donado, top donantes) | Investigar como renderizar el reporte como un pdf en django  | Ninguno |
+| 8/11/2023 | Investigar como renderizar el reporte como un pdf en django | Añadir la cantidad de proyectos registrados al reporte del patrocinador y el reporte general del sistema | Ninguno |
 
 ## Sebastián López
 
