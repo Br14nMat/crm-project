@@ -16,6 +16,19 @@
     </div>
     <br>
 
+    <div class="row row-cols-1 row-cols-md-1 g-4 px-4">
+        {% for f in followups %}
+            <div class="card text-dark bg-light mb-3 mx-3" style="max-width: 18rem;">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <h5 class="card-title">{{f.name}}</h5>
+                    <p class="card-text">{{f.description}}</p>
+                    <a href ="followup/delete/{{event.id}}/{{f.id}}" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div><br>
+
     
     <section class="followups">
         <div class="card mx-4">
@@ -34,18 +47,6 @@
         </div>
         <br>
 
-    <div class="row row-cols-1 row-cols-md-1 g-4 px-4">
-        {% for f in followups %}
-            <div class="card text-dark bg-light mb-3 mx-3" style="max-width: 18rem;">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <h5 class="card-title">{{f.name}}</h5>
-                    <p class="card-text">{{f.description}}</p>
-                    <a href ="followup/delete/{{event.id}}/{{f.id}}" class="btn btn-danger">Eliminar</a>
-                </div>
-            </div>
-        {% endfor %}
-    </div><br>
 
     </section>
 
@@ -54,16 +55,39 @@
             <div class="card-body">
                 <div class="container-sm py-4">
                     <h3>Agregar patrocinador</h3>
+                    <br>
+                    <form action="" method="POST" name="filter_sponsors">
+                        {% csrf_token %} 
+                        <div class="input-group mb-3">    
+                            <input type="text" class="form-control" placeholder="Nombre de patrocinador" name="sponsor_name">
+                            <button class="btn btn-outline-secondary" type="submit" name="filter_sponsors" value="filter_sponsors">Buscar</button>
+                        </div>
+                    </form>
+
+                      
                     <div class="form-group"></div>
                         <form action="" method="POST" name="link_sponsor">
-                            {% csrf_token %}
-                            <select class="form-select" aria-label="Select Sponsor" name="nit">
-                                {% for s in sponsors%}
-                                    <option value={{s.nit}}>{{s.nit}}</option>
-                                {% endfor %}
-                            </select>
-                            <br>
-                            <button type="submit" class="btn btn-secondary" name="link_sponsor" value="link_sponsor">Agregar</button>
+                            {% csrf_token %} 
+                            <table class="table table-hover table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Nit</th>
+                                        <th>Nombre</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for s in sponsors %}
+                                    <tr>
+                                        <td>{{s.nit}}</td>
+                                        <td>{{s.name}}</td>
+                                        <td>
+                                            <button type="submit" class="btn btn-secondary" name="link_sponsor" value={{s.nit}}>Agregar</button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </form>
                     </div>
                 </div>
