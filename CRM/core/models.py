@@ -53,10 +53,10 @@ class investigation_project(models.Model):
     objectives = models.TextField()
     start_date= models.DateField()
     finish_date= models.DateField()
-    nit= models.ForeignKey(Sponsor, on_delete=models.CASCADE, to_field="nit")
+    sponsors = models.ManyToManyField(Sponsor, related_name='projects')
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 class Product(models.Model):

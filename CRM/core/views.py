@@ -252,13 +252,38 @@ def project_list(request):
     return render(request, 'project_list.html', {'project':project})
 
 def edit_project(request, id):
+    if(request.session.get('project_id',-1)==-1):
+        request.session['project_id']=id
+    else:
+        new_id=request.session.get('project_id',-1)
+        if(id!=new_id):
+            id=new_id
+
     project = get_object_or_404(investigation_project, id=id)
+    form = investigation_project_form(instance=project) 
+    usable_sponsors=[]
+    used_sponsors=[]
+    for sponsor in Sponsor.objects.all():
+        if project.sponsors.filter(nit=sponsor.nit).exists():
+            used_sponsors.append(sponsor)
+        else: usable_sponsors.append(sponsor)
 
     if request.method=='POST':
-        form = investigation_project_form(request.POST, instance=project)
-        if form.is_valid():
-            form.save()
-            return redirect("project_list")
-    else:
-        form = investigation_project_form(instance=project)
-    return render(request, 'edit_project.html', {'form':form, 'project':project})
+        if request.POST.get('link_sponsor'):
+                selected_nit= request.POST.get('link_sponsor', None)
+                sponsor = Sponsor.objects.get(nit=selected_nit)
+                project.sponsors.add(sponsor)
+                sponsor.projects.add(project)
+                for s in usable_sponsors:
+                    if (s==sponsor):
+                        used_sponsors.append(sponsor)
+                        usable_sponsors.remove(sponsor)
+                return render(request, 'edit_project.html', {'form':form, 'project':project, "sponsors" : usable_sponsors,"project_sponsors" : used_sponsors})
+        else:
+            form = investigation_project_form(request.POST, instance=project)
+            if form.is_valid():
+                form.save()
+                del request.session['project_id']
+                return redirect("project_list")
+        
+    return render(request, 'edit_project.html', {'form':form, 'project':project, "sponsors" : usable_sponsors,"project_sponsors" : used_sponsors})
