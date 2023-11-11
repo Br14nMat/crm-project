@@ -241,14 +241,17 @@ def delete_product(request):
 def sponsor_report(request, id):
     sponsor = Sponsor.objects.get(id = id)
     donations = sponsor.donations.all()
+    projects = sponsor.investigation_project_set
 
     num_donations = sponsor.donations.count()
-    num_projects = sponsor.investigation_project_set.count()
+    num_projects = projects.count()
     
     total_donated = sum(donation.value for donation in donations)
 
     return render(request, "sponsor_report.html", {
         "sponsor": sponsor,
+        "donations": donations,
+        "projects": projects,
         "num_donations": num_donations,
         "num_projects": num_projects,
         "total_donated": total_donated
