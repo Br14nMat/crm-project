@@ -79,6 +79,7 @@
 | 7/11/2023 | Crear reporte general de la aplicación (total donaciones, dinero donado, top donantes) | Investigar como renderizar el reporte como un pdf en django  | Ninguno |
 | 8/11/2023 | Investigar como renderizar el reporte como un pdf en django | Añadir la cantidad de proyectos registrados al reporte del patrocinador y el reporte general del sistema | Ninguno |
 | 9/11/2023 | Añadir la cantidad de proyectos registrados al reporte del patrocinador y el reporte general del sistema | Revisar y aceptar la pull request que pretende modificar el modelo de Proyecto de Investigación | Tengo que modificar algunas cosas en el reporte por los cambios realizados en el modelo de los proyectos |
+| 10/11/2023 | Revisar y aceptar la pull request que pretende modificar el modelo de Proyecto de Investigación | Listar los proyectos de investigación en reporte del patrocinador | Tengo que modificar algunas cosas en el reporte por los cambios realizados en el modelo de los proyectos |
 
 ## Sebastián López
 
