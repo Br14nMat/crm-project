@@ -66,7 +66,7 @@ class FollowupForm(ModelForm):
 class investigation_project_form(ModelForm):
     class Meta:
         model = investigation_project
-        fields = ['name','description','objectives','start_date','finish_date','nit']
+        fields = ['name','description','objectives','start_date','finish_date']
         widgets = {
             'start_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
             'finish_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"})

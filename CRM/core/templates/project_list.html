@@ -14,7 +14,6 @@
             <th>Objetivos</th>
             <th>Fecha de inicio</th>
             <th>Fecha de Finalización</th>
-            <th>NIT</th>
             <th>Acciones</th>
         </tr>
         </thead>
@@ -26,7 +25,6 @@
                     <td>{{ project.objectives }}</td>
                     <td>{{ project.start_date }}</td>
                     <td>{{ project.finish_date }}</td>
-                    <td>{{ project.nit }}</td>
                     <td><a href="{% url 'delete_project' project.id %}">Eliminar</a>
                         <a href="{% url 'edit_project' project.id %}">Editar</a></td>
                 </tr>
@@ -41,7 +39,6 @@
                 Objetivos: {{ project.objectives }}<br>
                 Fecha de Inicio: {{ project.start_date }}<br>
                 Fecha de Finalización: {{ project.finish_date }}<br>
-                NIT: {{ project.nit }}<br>
                 <a href="{% url 'delete_project' project.id %}">Eliminar</a>
                 <a href="{% url 'edit_project' project.id %}">Editar</a>
             </li>
