@@ -50,6 +50,19 @@
 <h3>Proyectos de investigación</h3>
 <br>
 
+<div class="row row-cols-1 row-cols-md-1 g-4 px-4">
+    {% for p in projects %}
+        <div class="card text-dark bg-light mb-3 mx-3" style="max-width: 18rem;">
+            <div class="card-header">{{p.start_date}} - {{p.finish_date}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{p.name}}</h5>
+                <p class="card-text">{{p.description}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<br>
 <a href = "/sponsor/all" class = "btn btn-primary">Volver</a>
 
 {% endblock %}
