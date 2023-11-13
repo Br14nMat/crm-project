@@ -274,6 +274,53 @@ def delete_product(request):
     del request.session['selectedID']
     return redirect('list_product', id_project)
 
+def sponsor_report(request, id):
+    sponsor = Sponsor.objects.get(id = id)
+    donations = sponsor.donations.all()
+    projects = sponsor.projects.all()
+
+    num_donations = sponsor.donations.count()
+    num_projects = sponsor.projects.count()
+    
+    total_donated = sum(donation.value for donation in donations)
+
+    return render(request, "sponsor_report.html", {
+        "sponsor": sponsor,
+        "donations": donations,
+        "projects": projects,
+        "num_donations": num_donations,
+        "num_projects": num_projects,
+        "total_donated": total_donated
+    })
+
+def general_report(request):
+    sponsors = Sponsor.objects.all()
+    total_donations = 0
+    total_projects = 0
+    total_donated = 0
+
+    sponsor_donations = []
+    sponsor_projects = []
+
+    for sponsor in sponsors:
+        donations = sponsor.donations.all()
+        total_donations += sponsor.donations.count()
+        total_projects += sponsor.projects.count()
+        total_donated += sum(donation.value for donation in donations)
+        sponsor_donations.append((sponsor, total_donated))
+        sponsor_projects.append((sponsor, total_projects))
+
+    ordered_by_donations = sorted(sponsor_donations, key=lambda x: x[1], reverse=True)
+    ordered_by_projects = sorted(sponsor_projects, key=lambda x: x[1], reverse=True)
+
+    return render(request, "general_report.html", {
+        "total_donations": total_donations,
+        "total_projects": total_projects,
+        "total_donated": total_donated,
+        "ordered_by_donations": ordered_by_donations,
+        "ordered_by_projects": ordered_by_projects
+    })
+
 def delete_project(request, id):
     project= get_object_or_404(investigation_project, id=id)
 

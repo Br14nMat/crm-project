@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<H1>Reporte General Patrocinador</H1>
+
+<div class="card mx-4">
+    <div class="card-header">{{sponsor.status}}</div>
+        <div class="card-body">
+            <div class="container-sm py-4">
+            <h1 class="card-title">{{sponsor.name}}</h1>
+            <p class="card-text">
+                {{sponsor.nit}}<br>
+                {{sponsor.type}}<br>
+                {{sponsor.mail}}<br>
+            </p>
+        </div>
+    </div>
+</div>
+
+<br>
+<h3>Dinero total donado</h3>
+<p>${{total_donated}}</p>
+<br>
+
+<h3>Cantidad de donaciones</h3>
+<p>{{num_donations}}</p>
+<br>
+<h3>Donaciones</h3>
+<br>
+
+<div class="row row-cols-1 row-cols-md-1 g-4 px-4">
+    {% for d in donations %}
+        <div class="card text-dark bg-light mb-3 mx-3" style="max-width: 18rem;">
+            <div class="card-header">{{d.date}}</div>
+            <div class="card-body">
+                <h5 class="card-title">${{d.value}}</h5>
+                <p class="card-text">{{d.type}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<br>
+
+<h3>Cantidad de proyectos de investigación</h3>
+<p>{{num_projects}}</p>
+<br>
+
+<h3>Proyectos de investigación</h3>
+<br>
+
+<div class="row row-cols-1 row-cols-md-1 g-4 px-4">
+    {% for p in projects %}
+        <div class="card text-dark bg-light mb-3 mx-3" style="max-width: 18rem;">
+            <div class="card-header">{{p.start_date}} - {{p.finish_date}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{p.name}}</h5>
+                <p class="card-text">{{p.description}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<br>
+<a href = "/sponsor/all" class = "btn btn-primary">Volver</a>
+
+{% endblock %}

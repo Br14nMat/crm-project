@@ -29,7 +29,9 @@
                         <td>{{s.status}}</td>
                         <td>
                             <button type="submit" name="new_donation" value="{{s.nit}}" class="btn btn-secondary">Registrar Donación</button>
-                            <button type="submit" name="nit" value={{s.nit}} class="btn btn-primary">Editar</button></td>
+                            <button type="submit" name="nit" value={{s.nit}} class="btn btn-primary">Editar</button>
+                            <a href = "/sponsor/report/{{s.id}}" class = "btn btn-info">Reporte</a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
