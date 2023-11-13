@@ -4,25 +4,52 @@
 
 <H1>Reporte General Sistema</H1>
 
-<h3>Cantidad de donaciones</h3>
-<p>{{total_donations}}</p>
-<h3>Cantidad de proyectos de investigación</h3>
-<p>{{total_projects}}</p>
+<br>
+
 <h3>Dinero total donado</h3>
 <p>${{total_donated}}</p>
+
+<h3>Cantidad de donaciones</h3>
+<p>{{total_donations}}</p>
+
+<h3>Cantidad de proyectos de investigación</h3>
+<p>{{total_projects}}</p>
 
 <h3>Top donadores</h3>
 
 <table class="table table-hover table-bordered">
     <thead class="table-dark">
         <tr>
+            <th>POS</th>
             <th>Nombre</th>
             <th>Total donado</th>
         </tr>
     </thead>
     <tbody>
-        {% for s in ordered_sponsors %}
+        {% for s in ordered_by_donations %}
         <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{ s.0.name }}</td>
+            <td>{{ s.1 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Top Investigadores</h3>
+
+<table class="table table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>POS</th>
+            <th>Nombre</th>
+            <th>Cantidad Proyectos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in ordered_by_projects %}
+        <tr>
+            <td>{{forloop.counter}}</td>
             <td>{{ s.0.name }}</td>
             <td>{{ s.1 }}</td>
         </tr>
