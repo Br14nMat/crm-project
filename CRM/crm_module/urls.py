@@ -45,7 +45,7 @@ urlpatterns = [
     path('project/product/delete', core_views.delete_product, name='delete_product'),
     path('project/delete/<int:id>', core_views.delete_project, name="delete_project"),
     path('project', core_views.project_list, name= 'project_list'),
-    path('project/edit/<int:id>', core_views.edit_project, name= 'edit_project')
-
-
+    path('project/edit/<int:id>', core_views.edit_project, name= 'edit_project'),
+    path('event/calendar', core_views.calendar ,name= 'show_calendar'),
+    path('event/calendar/events', core_views.list_event_day ,name= 'show_events_calendar')
 ]

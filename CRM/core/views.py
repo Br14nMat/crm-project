@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
 from .forms import SponsorForm
 from .forms import EventForm
 from .forms import DonationForm
@@ -110,7 +111,7 @@ def create_event(request):
 
     return render(request, 'create_event.html', {
         'form': EventForm
-    })
+}) 
 
 def list_event(request):
     events = Event.objects.all()
@@ -121,7 +122,16 @@ def list_event(request):
 def delete_event(request, id):
     event = Event.objects.get(id = id)
     event.delete()
-    return redirect("/event/all")
+    
+    referer = request.META.get('HTTP_REFERER', None)
+    print(referer)
+
+    if referer:
+        if 'event/all' in referer:
+            return redirect("/event/all")
+        elif 'event/calendar' in referer:
+            return redirect("/event/calendar")
+
 
 def show_event(request, id):    
     event = Event.objects.get(id = id)
@@ -313,3 +323,17 @@ def edit_project(request, id):
                 return redirect("project_list")
         
     return render(request, 'edit_project.html', {'form':form, 'project':project, "sponsors" : usable_sponsors,"project_sponsors" : used_sponsors})
+
+def calendar(request):
+    return render(request, "calendar.html")
+    
+from django.http import JsonResponse
+
+def list_event_day(request):
+    print(request.session.get('given_date', -1))
+    #events = Event.objects.filter(date=given_date)
+    events = Event.objects.all()
+    if request.method == 'GET':
+        data = [{"id": event.id,"name": event.name, "date": event.date,"description": event.description,"type":event.type} for event in events]
+        return JsonResponse(data, safe=False)
+    
