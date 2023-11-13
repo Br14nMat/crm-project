@@ -19,7 +19,7 @@ def register_sponsor(request):
             form= SponsorForm(request.POST)
             if form.is_valid():
                 form.save()
-            return redirect('home')
+            return redirect('list_sponsors')
     except ValueError:
         return render(request, 'create_event.html', {
             'form': SponsorForm,
@@ -219,10 +219,17 @@ def add_project(request):
 def list_product(request,id):
     project = investigation_project.objects.get(id=id)
     products = Product.objects.filter(project=project)
+    used_sponsors=[]
+    usable_sponsors=[]
+    for sponsor in Sponsor.objects.all():
+        if project.sponsors.filter(nit=sponsor.nit).exists():
+            used_sponsors.append(sponsor)
+        else: usable_sponsors.append(sponsor)
     if request.method == 'GET':
         return render(request, "list_products.html", {
             "products": products,
-            "project" : project
+            "project" : project,
+            "project_sponsors" : used_sponsors
         })
     if request.method == 'POST':
         if request.POST.get('delete_product'):

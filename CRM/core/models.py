@@ -10,7 +10,7 @@ class Sponsor(models.Model):
         ('Natural', "NATURAL"),
         ('Juridica', "JURIDICA")
     )
-    type = models.CharField(max_length=10,choices=types,default="natural")
+    type = models.CharField(max_length=10,choices=types,default="Natural")
     mail = models.EmailField(max_length=200)
     initial_donation = models.DecimalField(max_digits=19, decimal_places=3)
     status = models.CharField(max_length=10, default='activo')
