@@ -1,6 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Bienvenido, {{ user }}!</h1>
+    <header class="welcome">Bienvenido, {{ user }}!</header>
+
+    <menu class="menu-box">
+        <div>
+            <a class="icon-box event-link" href="/event/all">
+                <i class="bi bi-calendar-day"></i>
+            </a>
+            <h2 class="option-title">Eventos</h2>
+        </div>
+    
+        <div>
+            <a class=" icon-box sponsor-link" href="/sponsor/all">
+                <i class="bi bi-person-fill"></i>
+            </a>
+            <h2 class="option-title">Patrocinadores</h2>
+        </div>
+
+        <div>
+            <a class="icon-box product-link" href="/project/add">
+                <i class="bi bi-clipboard2-fill"></i>
+            </a>
+            <h2 class="option-title">Proyectos</h2>
+        </div>
+    </menu>
+
+
 {% endblock %}
 
