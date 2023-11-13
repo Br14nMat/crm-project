@@ -17,6 +17,9 @@
         </div>
     </div>
     <br>
+    <a href="{% url 'add_product' project.id %}" class="btn btn-primary btn-lg">Añadir producto</a>
+        
+
 
     <div class="container-sm p-4">
         <h1 class="py-3">Productos de investigación</h1>
@@ -26,8 +29,9 @@
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Descripción</th>
-                        <th>Type</th>
+                        <th>Titulo</th>
+                        <th>Tipo de paper</th>
+                        <th>Enlace</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -35,9 +39,12 @@
                     {% for p in products %}
                     <tr>
                         <td>{{p.id}}</td>
-                        <td>{{p.description}}</td>
+                        <td>{{p.title}}</td>
                         <td>{{p.type}}</td>
-                        <td><button type="submit" name="delete_product" value={{p.id}} class="btn btn-danger">Eliminar</button></td>
+                        <td><a href="https://{{p.link}}" target="_blank">{{p.link}}</a></td>
+                        <td><button type="submit" name="delete_product" value={{p.id}} class="btn btn-danger">Eliminar</button>
+                            <button type="submit" name="edit_product" value={{p.id}} class="btn btn-primary">Editar</button></td>
+                        
                     </tr>
                     {% endfor %}
                 </tbody>

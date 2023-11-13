@@ -20,10 +20,16 @@
       <p>
         <label for="id_type" class="form-label">Tipo:</label>
         <select class="form-select" name="type" id="id_type">
-          <option value="natural" selected="">NATURAL</option>
-          <option value="juridica">JURIDICA</option>
+          {% if sponsor.type == "natural" %}
+            <option value="natural" selected>NATURAL</option>
+            <option value="juridica">JURIDICA</option>
+          {% else %}
+            <option value="natural">NATURAL</option>
+            <option value="juridica" selected>JURIDICA</option>
+          {% endif %}
         </select>
       </p>
+      
       <p>
         <div class="mb-3">
           <label for="id_mail" class="form-label">Correo</label>
