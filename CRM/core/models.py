@@ -7,8 +7,8 @@ class Sponsor(models.Model):
     nit = models.IntegerField(unique=True)
     name = models.CharField(max_length=255)
     types=(
-        ('natural', "NATURAL"),
-        ('juridica', "JURIDICA")
+        ('Natural', "NATURAL"),
+        ('Juridica', "JURIDICA")
     )
     type = models.CharField(max_length=10,choices=types,default="natural")
     mail = models.EmailField(max_length=200)
@@ -61,10 +61,12 @@ class investigation_project(models.Model):
 
 class Product(models.Model):
     project = models.ForeignKey(investigation_project, on_delete=models.CASCADE, related_name='products')
+    title = models.TextField(default="Not defined")
     description = models.TextField(blank = True)
     types = (
-        ('Type1', "Type1"),
-        ('Type2', "Type2"),
-        ('Type3', "Type3")
+        ('Journal', "Paper de journal"),
+        ('Congreso', "Paper de congreso")
     )
-    type = models.CharField(max_length=20, choices=types, default="Type1")
+    type = models.CharField(max_length=20, choices=types, default="Journal")
+    doi = models.TextField(unique=True, default="Not defined")
+    link = models.TextField(default="Not defined")

@@ -185,7 +185,7 @@ def add_product(request, id):
                 product.project = project
                 product.save()
                 #del request.session['selectedID']
-                return redirect('home')
+                return redirect('list_product',id)
         except ValueError:
             print("Please provide valid data")
             context = {'form': form, 'project': project,'error': 'Please provide valid data'}
@@ -229,6 +229,25 @@ def list_product(request,id):
             id_product = request.POST.get('delete_product', None)
             request.session['selectedID']=id_product
             return redirect('delete_product')
+        if request.POST.get('edit_product'):
+            id_product = request.POST.get('edit_product', None)
+            request.session['selectedID']=id_product
+            return redirect('edit_product')
+
+def edit_product(request):
+    id_product = request.session.get('selectedID', -1)
+    product = Product.objects.get(id = id_product)
+    id_project = product.project.id
+    form = ProductForm(instance=product)
+    
+    if request.method=='POST':
+        if request.POST.get('edit'):
+            form = ProductForm(request.POST,instance=product)
+            edited_product = form.save(commit=False)
+            edited_product.save()
+            del request.session['selectedID']
+            return redirect('list_product', id_project)
+    return render(request, 'edit_product.html', {"form":form, "product":product})
 
 def delete_product(request):
     id_product = request.session.get('selectedID', -1)
