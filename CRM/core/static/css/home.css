@@ -1,0 +1,51 @@
+.welcome{
+    font-size: 5rem;
+    font-weight: bold;
+    color: #00599c;
+}
+.menu-box{
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 0%;
+    margin: 30px 0;
+
+
+}
+@media screen and (max-width:900px) {
+    .menu-box{
+        display: block;
+    }
+}
+.icon-box{
+    display: flex;
+    justify-content: center;
+    width: 240px;
+    height: 240px;
+    font-size: 10rem;
+    margin: auto;
+    border-radius: 10px;
+}
+.icon-box:hover{
+    background-color: #00599c;
+}
+.event-link{
+    background-color: #FFB347;
+}
+.sponsor-link{
+    background-color: #FFF380;
+}
+.product-link{
+    background-color: #77DD77;
+}
+.bi{
+    color: white;
+}
+.option-title{
+    color: #555555;
+    text-align: center;
+    padding: 24px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
