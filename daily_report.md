@@ -35,6 +35,10 @@
 | 23/10/2023 | Reunión con el profesor sobre el 2do sprint | Revisión del sprint y anotación de aspectos por mejorar | Ninguno |
 | 26/10/2023 | Revisión del sprint y anotación de aspectos por mejorar | Investigación sobre uso de JS en el proyecto | Ninguno |
 | 29/10/2023 | Investigación sobre uso de JS en el proyecto | Cambio de vistas de patrocinadores por asociar a eventos y se añadió un filtro para buscar patrocinador por nombre | Ninguno |
+| 7/11/2023 | Cambio de vistas de patrocinadores por asociar a eventos y se añadió un filtro para buscar patrocinador por nombre | Revisión pull requests  | Ninguno |
+| 8/11/2023 | Revisión pull requests  | Se completó la HU 16 sobre añadir patrocinadores a proyectos de investigacion  | Ninguno |
+| 12/11/2023 | Se completó la HU 16 sobre añadir patrocinadores a proyectos de investigacion  | Se completó la HU 19 sobre editar productos de investigacion  | Ninguno |
+| 13/11/2023 | Se completó la HU 19 sobre editar productos de investigacion  | Se editó la ruta hacia productos de investigación en el front, además de revisión de pull requests  | Ninguno |
 
 
 
