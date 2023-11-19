@@ -10,7 +10,7 @@ from .models import investigation_project
 class SponsorForm(ModelForm):
     class Meta:
         model = Sponsor
-        fields = ['nit', 'name', 'type', 'mail', 'initial_donation']
+        fields = ['nit', 'name', 'type', 'mail']
 
 class EventForm(ModelForm):
     class Meta:

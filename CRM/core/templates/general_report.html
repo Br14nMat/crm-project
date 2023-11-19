@@ -1,21 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/general_report.css' %}" />
 
-<H1>Reporte General Sistema</H1>
+<div class="container-sm p-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Reporte General</li>
+        </ol>
+    </nav>
+</div>
 
-<br>
+<div class="container-general">
+    <header class="title-page">Reporte General Sistema</header>
+    
+    <br>
+    
+    <header class="subtitle">Dinero total donado</header>
+    <p>$ {{total_donated}}</p>
+    
+    <header class="subtitle">Cantidad de donaciones</header>
+    <p>{{total_donations}}</p>
+    
+    <header class="subtitle">Cantidad de proyectos de investigación</header>
+    <p>{{total_projects}}</p>
+</div>
 
-<h3>Dinero total donado</h3>
-<p>${{total_donated}}</p>
-
-<h3>Cantidad de donaciones</h3>
-<p>{{total_donations}}</p>
-
-<h3>Cantidad de proyectos de investigación</h3>
-<p>{{total_projects}}</p>
-
-<h3>Top donadores</h3>
+<header class="title-page">Top donadores</header>
 
 <table class="table table-hover table-bordered">
     <thead class="table-dark">
@@ -36,7 +49,7 @@
     </tbody>
 </table>
 
-<h3>Top Investigadores</h3>
+<header class="title-page">Top Investigadores</header>
 
 <table class="table table-hover table-bordered">
     <thead class="table-dark">

@@ -1,27 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <div class="container-sm p-4">
-        <h1>Agregar Producto</h1><br>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/add_product.css' %}" />
+    <div class="container-general">
+        <header class="title-page">Agregar Producto</header>
         <form method="POST">
             {% csrf_token %}
             <div class="row mb-3">
-                <label for="title" class="col-sm-2 col-form-label">Titulo:</label>
+                <header class="subtitle">Titulo:</header>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="title" name="title" required>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="description" class="col-sm-2 col-form-label">Descripción:</label>
+                <header class="subtitle">Descripción:</header>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="description" name="description" required>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="type" class="col-sm-2 col-form-label">Tipo de producto:</label>
+                <header class="subtitle">Tipo de producto:</header>
                 <div class="col-sm-10">
                     <select class="form-select" id="type" name="type" required>
                         {% for option in form.type.field.choices %}
@@ -32,14 +33,14 @@
             </div>
 
             <div class="row mb-3">
-                <label for="doi" class="col-sm-2 col-form-label">DOI:</label>
+                <header class="subtitle">DOI:</header>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="doi" name="doi" required>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="link" class="col-sm-2 col-form-label">Enlace:</label>
+                <header class="subtitle">Enlace:</header>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="link" name="link" required>
                 </div>

@@ -1,0 +1,85 @@
+.title-page {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #00599c;
+    margin-bottom: 20px; /* Agregado para espacio inferior */
+}
+.container-sponsor{
+    position: relative;
+    max-width: 800px; /* Cambiado a max-width */
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px;
+    color: var(--text-clr);
+    display: flex;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Agregado para espacio superior */
+}
+
+.container-general {
+    position: relative;
+    max-width: 800px; /* Cambiado a max-width */
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px;
+    color: var(--text-clr);
+    display: flex;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Agregado para espacio superior */
+}
+
+.subtitulo {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #00599c;
+    padding: 10px;
+}
+
+.container-card {
+    position: relative;
+    max-width: 800px; /* Cambiado a max-width */
+    width: 100%;
+    height: 300px;
+    margin: 40px auto;
+    padding: 25px;
+    color: var(--text-clr);
+    display: flex;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.breadcrumb {
+    background-color: #ffffff;
+}
+
+.container-general form {
+    width: 100%; /* Cambiado a 100% */
+    max-width: 500px; /* Agregado para limitar el ancho en pantallas grandes */
+    margin: 30px auto;
+}
+
+.container-general form input,
+.container-general form select {
+    width: 100%;
+    margin-bottom: 15px; /* Agregado para espacio inferior entre elementos del formulario */
+}
+
+.card {
+    width: 540px;
+    padding: 0%;
+    margin-bottom: 20px; /* Agregado para espacio inferior */
+}

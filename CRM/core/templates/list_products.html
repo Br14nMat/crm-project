@@ -1,74 +1,77 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/list_products.css' %}" />
 
-    <div class="card mx-4">
-            <div class="card-body">
-                <div class="container-sm py-4">
-                <h1 class="card-title">{{project.name}}</h1>
-                <p class="card-text">
-                    ID: {{project.id}}<br>
-                    NIT: {{project.nit}}<br>
-                    {{project.description}}<br>
-                    Inicio: {{project.start_date}}<br>
-                    Fin: {{project.finish_date}}<br>
-                </p>
+<div class="container-sm p-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'project_list' %}">Lista de proyectos</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Productos del proyecto</li>
+        </ol>
+    </nav>
+</div>
+<div class="container-general">
+    <header class="subtitulo">Información del Proyecto de Investigación</header>
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">{{project.name}}</h5>
+            <div class="card-body d-flex justify-content-between">
+                <div>
+                    <h5 class="card-title">ID: {{project.id}}</h5>
+                    <p class="card-text">NIT: {{project.nit}}</p>
+                    <p class="card-text">Descripción: {{project.description}}</p>
+                    <p class="card-text">Fecha de Inicio: {{project.start_date}}</p>
+                    <p class="card-text">Fecha de Fin: {{project.finish_date}}</p>
+                </div>
             </div>
         </div>
     </div>
     <br>
     <a href="{% url 'add_product' project.id %}" class="btn btn-primary btn-lg">Añadir producto</a>
-        
-    <div class="container-sm p-4">
-        <h3 class="py-3">Patrocinadores activos</h3>
-    
-        <table class="table table-hover table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>Nit</th>
-                    <th>Nombre</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for r in project_sponsors %}
-                <tr>
-                    <td>{{r.nit}}</td>
-                    <td>{{r.name}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+</div>
+    <div class="container-sponsor">
+        <header class="subtitulo">Patrocinadores activos</header>
+        {% for r in project_sponsors %}
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header">NIT: {{r.nit}}</h5>
+                    <div class="card-body d-flex justify-content-between">
+                        <div>
+                            <h5 class="card-title">Nombre: {{r.name}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 
 
-    <div class="container-sm p-4">
-        <h1 class="py-3">Productos de investigación</h1>
+    <div class="container-sponsor">
+        <header class="subtitulo">Productos de investigación</header>
         <form action="" method="POST">
             {% csrf_token %}
-            <table class="table table-hover table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Titulo</th>
-                        <th>Tipo de paper</th>
-                        <th>Enlace</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for p in products %}
-                    <tr>
-                        <td>{{p.id}}</td>
-                        <td>{{p.title}}</td>
-                        <td>{{p.type}}</td>
-                        <td><a href="https://{{p.link}}" target="_blank">{{p.link}}</a></td>
-                        <td><button type="submit" name="delete_product" value={{p.id}} class="btn btn-danger">Eliminar</button>
-                            <button type="submit" name="edit_product" value={{p.id}} class="btn btn-primary">Editar</button></td>
-                        
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            {% for p in products %}
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header">ID: {{p.id}}</h5>
+                        <div class="card-body d-flex justify-content-between">
+                            <div>
+                                <h5 class="card-title">Titulo: {{p.title}}</h5>
+                                <p class="card-text">Tipo: {{p.type}}</p>
+                            </div>    
+                            <div class="text-right">
+                                <a href="https://{{p.link}}" target="_blank">{{p.link}}</a>
+                                <button type="submit" name="delete_product" value={{p.id}} class="btn btn-danger">Eliminar</button>
+                                <button type="submit" name="edit_product" value={{p.id}} class="btn btn-primary">Editar</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </form>
     </div>
 

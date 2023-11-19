@@ -1,0 +1,55 @@
+.title-page{
+    font-size: 4rem;
+    font-weight: bold;
+    color: #00599c;
+}
+
+.container-general {
+    position: relative;
+    width: 1270px;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    color: var(--text-clr);
+    display: flex;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+.breadcrumb{
+    background-color: #ffffff;
+}
+
+
+.container-btn {
+    margin-right: auto;
+}
+
+.d-grid a.btn {
+    color: white;
+    text-decoration: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+    border: none; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.d-grid a.btn-primary, .d-grid a.btn-success {
+    background-color: #2390f8; 
+}
+
+.d-grid a.btn:hover {
+    opacity: 0.8;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.text-right.d-flex.justify-content-between form,
+.text-right.d-flex.justify-content-between a {
+    margin-right: 10px; /* Puedes ajustar el valor según tus necesidades */
+}
+
+.text-right.d-flex.justify-content-between a.btn-info {
+    max-height: 40px; /* Ajusta la altura máxima según tus necesidades */
+}

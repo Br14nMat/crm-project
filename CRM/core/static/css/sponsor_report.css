@@ -1,0 +1,36 @@
+.title-page{
+    font-size: 4rem;
+    font-weight: bold;
+    color: #00599c;
+}
+
+.subtitulo{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00599c;
+}
+
+
+.container-general {
+    position: relative;
+    width: 1000px;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    color: var(--text-clr);
+    display: flex;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+.breadcrumb{
+    background-color: #ffffff;
+}
+
+.card-donation{
+    width: 10px;
+}
+

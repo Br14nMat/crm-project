@@ -1,6 +1,6 @@
 :root {
   --primary-clr: #00599c;
-  --background-clr: #e2e1dc;
+  --background-clr: #ffffff;
   --container-bg-clr: #373c4f;
   --scrollbar-track-clr: #f5f5f5;
   --scrollbar-thumb-clr: var(--primary-clr);
@@ -15,6 +15,11 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+
+
+.breadcrumb{
+  background-color: #ffffff;
 }
 
 /* nice scroll bar */
@@ -52,6 +57,7 @@ body {
   display: flex;
   border-radius: 10px;
   background-color: var(--container-bg-clr);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .left {
