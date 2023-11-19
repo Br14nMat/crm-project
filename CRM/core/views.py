@@ -67,7 +67,7 @@ def add_donation(request):
                 donation.sponsor = sponsor
                 donation.save()
                 del request.session['selectedNIT']
-                return redirect('home')
+                return redirect('list_sponsors')
         except ValueError:
             print("Please provide valid data")
             context = {'form': form, 'sponsor': sponsor,'error': 'Please provide valid data'}
@@ -102,7 +102,7 @@ def create_event(request):
             form = EventForm(request.POST)
             new_form = form.save(commit = False)
             new_form.save()
-            return redirect('home')
+            return redirect('list event')
         except ValueError:
             return render(request, 'create_event.html', {
             'form': EventForm,
@@ -341,7 +341,6 @@ def edit_project(request, id):
         new_id=request.session.get('project_id',-1)
         if(id!=new_id):
             id=new_id
-
     project = get_object_or_404(investigation_project, id=id)
     form = investigation_project_form(instance=project) 
     usable_sponsors=[]

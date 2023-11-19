@@ -1,45 +1,48 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Editar Patrocinador</h1>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/edit_sponsor.css' %}" />
+
+<div class="container-sm p-4">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'list_sponsors' %}">Lista de patrocinadores</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Editar patrocinador</li>
+      </ol>
+  </nav>
+</div>
 <body>
-    <form action="" method="POST">
+    <div class="container-general">
+      <header class="title-page">Editar Patrocinador</header>
+      <form action="" method="POST">
         {% csrf_token %}
       <p>
         <div class="mb-3">
-          <label for="id_nit" class="form-label">Nit:</label>
-          <input class="form-control"type="number" name="nit" value={{sponsor.nit}} required="" id="id_nit"min="0">
+          <input class="form-control"type="number" name="nit" value={{sponsor.nit}} required="" id="id_nit"min="0" placeholder="Nit">
         </div>
       </p>
       <p>
         <div class="mb-3">
-          <label for="id_name" class="form-label">Nombre:</label>
-          <input type="text" name="name" value={{sponsor.name}}  maxlength="255" required="" id="id_name" class="form-control">
+          <input type="text" name="name" value={{sponsor.name}}  maxlength="255" required="" id="id_name" class="form-control" placeholder="Nombre">
         </div>
       </p>
       <p>
-        <label for="id_type" class="form-label">Tipo:</label>
         <select class="form-select" name="type" id="id_type">
-          {% if sponsor.type == "natural" %}
-            <option value="natural" selected>NATURAL</option>
-            <option value="juridica">JURIDICA</option>
+          {% if sponsor.type == "Natural" %}
+            <option value="Natural" selected>NATURAL</option>
+            <option value="Juridica">JURIDICA</option>
           {% else %}
-            <option value="natural">NATURAL</option>
-            <option value="juridica" selected>JURIDICA</option>
+            <option value="Natural">NATURAL</option>
+            <option value="Juridica" selected>JURIDICA</option>
           {% endif %}
         </select>
       </p>
       
       <p>
         <div class="mb-3">
-          <label for="id_mail" class="form-label">Correo</label>
-          <input class="form-control"type="email" name="mail" value={{sponsor.mail}}  maxlength="200" required="" id="id_mail">
-        </div>
-      </p>
-      <p>
-        <div class="mb-3">
-          <label for="id_initial_donation" class="form-label">Donación inicial:</label>
-          <input type="number" name="initial_donation" value={{sponsor.initial_donation}} step="0.001" min="0" required="" id="id_initial_donation" class="form-control" >
+          <input class="form-control"type="email" name="mail" value={{sponsor.mail}}  maxlength="200" required="" id="id_mail" placeholder="Email">
         </div>
       </p>
       <p>
@@ -47,7 +50,9 @@
       </p>
       <button type="submit" class="btn btn-secondary" name="change_status" value="change_status">Cambiar estado</button>
       <button type="submit" class="btn btn-success" name="edit" value="edit">Guardar cambios</button>
-    </form>
+      </form>
+    </div>
+    
 </body>
 </html>
 {% endblock %}

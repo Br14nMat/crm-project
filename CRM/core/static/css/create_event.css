@@ -1,0 +1,23 @@
+.breadcrumb{
+    background-color: #ffffff;
+  }
+.container-create{
+    position: relative;
+    width: 1270px;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    color: var(--text-clr);
+    display: flex;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+.title-page{
+    font-size: 4rem;
+    font-weight: bold;
+    color: #00599c;
+}

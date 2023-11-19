@@ -1,17 +1,68 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/create_event.css' %}" />
 
-    <div class = "container-sm p-4">
-        <h1>Create event </h1>
-        {{ error }}
+    <div class="container-sm p-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'list event' %}">Lista de eventos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Agregar evento</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="container-create">
+        <div class = "container-sm p-4">
+            <header class="title-page">Crear evento</header>
+            {{ error }}
+    
+            <div class = "form-group">
+                <form action = "/event/register" method = "POST">
+                    {% csrf_token %}
+                    <input type="text" name="name" class="form-control" maxlength="50" required="" id="id_name" placeholder="Nombre">
 
-        <div class = "form-group">
-            <form action = "/event/register" method = "POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type = "submit" class="btn btn-primary">Save</button>
-            </form>
+
+                    </p>
+
+
+                    <p>
+                    <input type="date" name="date" class="form-control" required="" id="id_date" placeholder="Fecha">
+
+
+                    </p>
+
+
+                    <p>
+                    <select name="type" class="form-control" id="id_type" placeholder="Tipo">
+                    <option value="Florecimiento">FLORECIMIENTO</option>
+
+                    <option value="Organizacional">ORGANIZACIONAL</option>
+
+                    </select>
+
+
+                    </p>
+
+
+                    <p>
+                    <textarea name="objective" cols="40" rows="3" class="form-control" id="id_objective" placeholder="Objetivo"></textarea>
+
+
+                    </p>
+
+
+                    <p>
+                    <textarea name="description" cols="40" rows="3" class="form-control" id="id_description" placeholder="Descripción"></textarea>
+
+
+
+
+                    </p>
+                    <button type = "submit" class="btn btn-success">Guardar</button>
+                </form>
+            </div>
         </div>
     </div>
 

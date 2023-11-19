@@ -2,20 +2,36 @@
 
 
 {% block content %}
-    <h2>Información del patrocinador</h2><br>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/add_donation.css' %}" />
 
-    <tr>
-        NIT = <td>{{sponsor.nit}}</td><br>
-        Nombre = <td>{{sponsor.name}}</td><br>
-        Tipo = <td>{{sponsor.type}}</td><br>
-        Email = <td>{{sponsor.mail}}</td><br>
-        Donacion Inicial = <td>{{sponsor.initial_donation}}</td><br>
-        Estado = <td>{{sponsor.status}}</td>
-    </tr>
-    <br><br><br>
+    <div class="container-sm p-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'list_sponsors' %}">Lista de patrocinadores</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Registrar donación</li>
+            </ol>
+        </nav>
+    </div>
 
-    <div class="container-sm p-4">   
-        <h1>Agregar Donación</h1><br>
+    <div class="container-card">
+        <header class="subtitle">Información del patrocinador</header>
+        <div class="card">
+            <h5 class="card-header">{{sponsor.nit}}</h5>
+            <div class="card-body d-flex justify-content-between">
+                <div>
+                    <h5 class="card-title">{{sponsor.name}}</h5>
+                    <p class="card-text">Estado: {{sponsor.status}}</p>
+                    <p class="card-text">Tipo: {{sponsor.type}}</p>
+                    <p class="card-text">Email: {{sponsor.mail}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-general">  
+        <header class="title-page">Agregar Donación</header>
         <div class="form-group">
             <form method="POST">
                 {% csrf_token %}

@@ -2,6 +2,15 @@
 {% load static %}
 
 {% block content %}
+<div class="container-sm p-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'list event' %}">Lista de eventos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Calendario de eventos</li>
+    </ol>
+  </nav>  
+</div>
 <!DOCTYPE html>
 <html lang="en">
   <head>

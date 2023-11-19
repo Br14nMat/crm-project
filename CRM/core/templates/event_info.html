@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/event_info.css' %}" />
+
+<div class="container-sm p-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'list event' %}">Lista de eventos</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Información del Evento</li>
+        </ol>
+    </nav>
+</div>
+    
+<header class="title-page">Información del Evento</header>
     <div class="card mx-4">
         <div class="card-header">{{event.date}}</div>
             <div class="card-body">
@@ -35,6 +49,7 @@
             <div class="card-body">
                 <div class="container-sm py-4">
                     <h3>Seguimientos</h3>
+                    <header class="subtitle">Seguimientos</header>
                     <div class="form-group">
                         <form action = "" method = "POST" name="followup">
                             {% csrf_token %}
@@ -54,7 +69,7 @@
         <div class="card mx-4">
             <div class="card-body">
                 <div class="container-sm py-4">
-                    <h3>Agregar patrocinador</h3>
+                    <header class="subtitle">Agregar patrocinador</header>
                     <br>
                     <form action="" method="POST" name="filter_sponsors">
                         {% csrf_token %} 
@@ -73,7 +88,7 @@
                                     <tr>
                                         <th>Nit</th>
                                         <th>Nombre</th>
-                                        <th>Actions</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,14 +111,14 @@
     </section>
 
     <div class="container-sm p-4">
-        <h3 class="py-3">Patrocinadores activos</h3>
+        <header class="subtitle">Patrocinadores activos</header>
     
         <table class="table table-hover table-bordered">
             <thead class="table-dark">
                 <tr>
                     <th>Nit</th>
                     <th>Nombre</th>
-                    <th>Actions</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -112,7 +127,7 @@
                     <td>{{r.nit}}</td>
                     <td>{{r.name}}</td>
                     <td>
-                        <a href = "/event/info/{{event.id}}/remove_sponsor/{{r.id}}" class = "btn btn-danger">Delete</a>
+                        <a href = "/event/info/{{event.id}}/remove_sponsor/{{r.id}}" class = "btn btn-danger">Borrar</a>
                     </td>
                 </tr>
                 {% endfor %}

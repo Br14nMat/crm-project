@@ -1,43 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Registrar patrocinador</h1>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/register_sponsor.css' %}" />
 
-<form action="" method="POST">
-    {% csrf_token %}
-      <p>
-        <div class="mb-3">
-          <label for="id_nit" class="form-label">Nit:</label>
-          <input type="number" class="form-control" name="nit" required="" id="id_nit">
-        </div>
-      </p>
-      <p>
-        <div class="mb-3">
-          <label for="id_name" class="form-label">Nombre:</label>
-          <input type="text" name="name" maxlength="255" required="" id="id_name" class="form-control">
-        </div>
-      </p>
-      <p>
-        <label for="id_type" class="form-label">Tipo:</label>
-        <select class="form-select" name="type" id="id_type">
-          <option value="Natural" selected="">NATURAL</option>
-          <option value="Juridica">JURIDICA</option>
-        </select>
-      </p>
-      <p>
-        <div class="mb-3">
-          <label for="id_mail" class="form-label">Correo</label>
-          <input type="email" class="form-control" name="mail" maxlength="200" required="" id="id_mail">
-        </div>
-        
-      </p>
-      <p>
-        <div class="mb-3">
-          <label for="id_initial_donation" class="form-label">Donación inicial:</label>
-          <input type="number" name="initial_donation" step="0.001" required="" id="id_initial_donation" class="form-control" >
-        </div>
-        
-      </p>
-    <button type="submit" class="btn btn-success" name="confirm">Confirmar</button>
-</form>
+<div class="container-sm p-4">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'list_sponsors' %}">Lista de patrocinadores</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Agregar patrocinador</li>
+      </ol>
+  </nav>
+</div>
+
+
+<div class="container-general">
+  <header class="title-page">Registrar patrocinador</header>
+
+  <form action="" method="POST">
+      {% csrf_token %}
+        <p>
+          <div class="mb-3">
+            <input type="number" class="form-control" name="nit" required="" id="id_nit" placeholder="Nit">
+          </div>
+        </p>
+        <p>
+          <div class="mb-3">
+            <input type="text" name="name" maxlength="255" required="" id="id_name" class="form-control" placeholder="Nombre">
+          </div>
+        </p>
+        <p>
+          <select class="form-select" name="type" id="id_type">
+            <option value="Natural" selected="">NATURAL</option>
+            <option value="Juridica">JURIDICA</option>
+          </select>
+        </p>
+        <p>
+          <div class="mb-3">
+            <input type="email" class="form-control" name="mail" maxlength="200" required="" id="id_mail" placeholder="Email">
+          </div>
+        </p>
+      <button type="submit" class="btn btn-success" name="confirm">Confirmar</button>
+  </form>
+</div>
 {% endblock %}
