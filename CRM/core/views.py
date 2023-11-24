@@ -14,13 +14,14 @@ from .models import investigation_project
 from .models import Product
 from django.views.generic import ListView
 import json
+import os
 
 def register_sponsor(request):
     form= SponsorForm()
     try:
         if request.method == 'POST':
             print(request.POST)
-            form= SponsorForm(request.POST)
+            form= SponsorForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
             return redirect('list_sponsors')
@@ -39,7 +40,7 @@ def edit_sponsor(request):
     form = SponsorForm(instance=sponsor)
     if request.method=='POST':
         if request.POST.get('edit'):
-            form = SponsorForm(request.POST,instance=sponsor)
+            form = SponsorForm(request.POST, request.FILES,instance=sponsor)
             edited_sponsor = form.save(commit=False)
             edited_sponsor.save()
             del request.session['selectedNIT']

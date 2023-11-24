@@ -16,7 +16,7 @@
 <body>
     <div class="container-general">
       <header class="title-page">Editar Patrocinador</header>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
       <p>
         <div class="mb-3">
@@ -48,6 +48,10 @@
       <p>
         <label for="id_status" class="form-label">Estado: {{sponsor.status}}</label>
       </p>
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Seleccione una imagen</label>
+        <input class="form-control" type="file" name="image" id="id_image">
+      </div>
       <button type="submit" class="btn btn-secondary" name="change_status" value="change_status">Cambiar estado</button>
       <button type="submit" class="btn btn-success" name="edit" value="edit">Guardar cambios</button>
       </form>

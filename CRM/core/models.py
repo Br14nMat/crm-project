@@ -13,6 +13,7 @@ class Sponsor(models.Model):
     type = models.CharField(max_length=10,choices=types,default="Natural")
     mail = models.EmailField(max_length=200)
     status = models.CharField(max_length=10, default='activo')
+    image= models.ImageField(null=True, blank=True, upload_to="images/")
 
     def __str__(self): 
         return str(self.nit)
