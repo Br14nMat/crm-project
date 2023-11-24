@@ -49,5 +49,7 @@ urlpatterns = [
     path('project/all', core_views.project_list, name= 'project_list'),
     path('project/edit/<int:id>', core_views.edit_project, name= 'edit_project'),
     path('event/calendar', core_views.calendar ,name= 'show_calendar'),
-    path('event/calendar/events', core_views.list_event_day ,name= 'show_events_calendar')
+    path('event/calendar/events', core_views.list_event_day ,name= 'show_events_calendar'),
+    path('event/info/<int:id>/sponsors/<str:sponsor_name>', core_views.get_sponsors_by_name_event, name = 'show event sponsors'),
+    path('project/edit/<int:id>/sponsors/<str:sponsor_name>', core_views.get_sponsors_by_name_project, name= 'show project sponsors')
 ]

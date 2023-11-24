@@ -54,21 +54,28 @@
         <div class="form-group"></div>
             <form action="" method="POST" name="link_sponsor">
                 {% csrf_token %} 
-                {% for s in sponsors %}
-                <div class="col">
-                    <div class="card">
-                        <h5 class="card-header">{{s.nit}}</h5>
-                        <div class="card-body d-flex justify-content-between">
-                            <div>
-                                <h5 class="card-title">{{s.name}}</h5>
-                            </div>
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-secondary" name="link_sponsor" value={{s.nit}}>Agregar</button>
+                <div class="input-group mb-3">    
+                    <input type="text" class="form-control" placeholder="Nombre de patrocinador" name="sponsor_name" id="sponsor_name">
+                    <button class="btn btn-outline-secondary" type="submit" name="filter_sponsors" value="filter_sponsors">Buscar</button>
+                </div>
+                <div class="row" id="sponsor-cards-container">
+                    {% for s in sponsors %}
+                    <div class="col">
+                        <div class="card">
+                            <h5 class="card-header">{{s.nit}}</h5>
+                            <div class="card-body d-flex justify-content-between">
+                                <div>
+                                    <h5 class="card-title">{{s.name}}</h5>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-secondary" name="link_sponsor" value={{s.nit}}>Agregar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                <script src="{% static 'js/project_sponsors.js' %}"></script>
             </form>
         </div>
     </div>
