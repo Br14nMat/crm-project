@@ -16,57 +16,67 @@
 <div class="container-general">
     <div class="text-right">
         
-    <header class="title-page">Reporte General Patrocinador</header>
+    <header class="title-page">Reporte de Patrocinador</header>
 
     <div class="card">
         <h5 class="card-header">Estado: {{sponsor.status}}</h5>
         <div class="card-body d-flex justify-content-between">
             <div>
                 <h5 class="card-title">{{sponsor.name}}</h5>
-                <p class="card-text">Nit: {{sponsor.nit}}</p>
-                <p class="card-text">Tipo: {{sponsor.type}}</p>
-                <p class="card-text">Email: {{sponsor.mail}}</p>
+                <p class="card-text"><b>NIT: </b> {{sponsor.nit}}</p>
+                <p class="card-text"><b>Tipo: </b>{{sponsor.type}}</p>
+                <p class="card-text"><b>Correo: </b>{{sponsor.mail}}</p>
             </div>
         </div>
     </div>
 
     <br>
     <header class="subtitulo">Dinero total donado</header>
-    <p>$ {{total_donated}}</p>
+    <p class="num_report money_donated">$ {{total_donated}}</p>
     <br>
 
     <header class="subtitulo">Cantidad de Donaciones</header>
-    <p>{{num_donations}}</p>
+    <p class="num_report">{{num_donations}} Donaciones</p>
     <br>
     
     <header class="subtitulo">Donaciones</header>
     <br>
-
-    <div class="row row-cols-1 row-cols-md-1 g-4 px-4">
-        {% for d in donations %}
-            <div class="card text-dark bg-light mb-3 mx-3" style="max-width: 18rem;">
-                <h5 class="card-header">Fecha: {{d.date}}</h5>
-                <div class="card-body d-flex justify-content-between">
-                    <div>
-                        <h5 class="card-title">$ {{d.value}}</h5>
-                        <p class="card-text">Tipo: {{d.type}}</p>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+    {% if donations %}
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+       <table class="table table-bordered table-striped mb-0">
+            <thead>
+                <tr>
+                  <th scope="col"><b>Fecha</b></th>
+                  <th scope="col"><b>Valor</b></th>                      
+                  <th scope="col"><b>Tipo</b></th>
+               </tr>
+          </thead>
+                <tbody>
+                    {% for d in donations %}
+                    <tr>
+                      <td>{{d.date}}</td>
+                      <td>${{d.value}}</td>
+                      <td>{{d.type}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+       </table>
     </div>
-
+    {% else %}
+    <p class="comment">Este patrocinador aún no ha realizado donaciones.</p>
+    {% endif %}
     <br>
 
     
     <header class="subtitulo">Cantidad de proyectos de investigación</header>
-    <p>{{num_projects}}</p>
+    <p class="num_report">{{num_projects}} Proyectos</p>
     <br>
     
     
     <header class="subtitulo">Proyectos de investigación</header>
     <br>
 
+    {% if projects %}
     <div class="row row-cols-1 row-cols-md-1 g-4 px-4">
         {% for p in projects %}
             <div class="card text-dark bg-light mb-3 mx-3" style="max-width: 18rem;">
@@ -78,7 +88,9 @@
             </div>
         {% endfor %}
     </div>
-
+    {% else %}
+    <p class="comment">Este patrocinador no tiene proyectos añadidos.</p>
+    {% endif %}
     <br>
     <a href = "/sponsor/all" class = "btn btn-primary">Volver</a>
     </div>    

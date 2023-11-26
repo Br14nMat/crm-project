@@ -9,8 +9,14 @@
     font-weight: bold;
     color: #00599c;
 }
-
-
+.num_report{
+    font-size: 3rem;
+}
+.money_donated{
+    font-weight: bold;
+    text-align: center;
+    color: green;
+}
 .container-general {
     position: relative;
     width: 1000px;
@@ -34,3 +40,10 @@
     width: 10px;
 }
 
+.comment{
+    font-size: large;
+    font-weight: bold;
+    background-color: #fdfd96;
+    color: black;
+    text-align: center;
+}
