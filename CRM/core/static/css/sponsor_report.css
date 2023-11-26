@@ -10,11 +10,10 @@
     color: #00599c;
 }
 .num_report{
-    font-size: 3rem;
+    font-size: 2rem;
 }
 .money_donated{
     font-weight: bold;
-    text-align: center;
     color: green;
 }
 .container-general {

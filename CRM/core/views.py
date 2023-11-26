@@ -282,9 +282,11 @@ def sponsor_report(request, id):
     sponsor = Sponsor.objects.get(id = id)
     donations = sponsor.donations.all()
     projects = sponsor.projects.all()
+    events = sponsor.events.all()
 
     num_donations = sponsor.donations.count()
     num_projects = sponsor.projects.count()
+    num_events = sponsor.events.count()
     
     total_donated = sum(donation.value for donation in donations)
 
@@ -292,8 +294,10 @@ def sponsor_report(request, id):
         "sponsor": sponsor,
         "donations": donations,
         "projects": projects,
+        "events": events,
         "num_donations": num_donations,
         "num_projects": num_projects,
+        "num_events": num_events,
         "total_donated": total_donated
     })
 
@@ -301,28 +305,43 @@ def general_report(request):
     sponsors = Sponsor.objects.all()
     total_donations = 0
     total_projects = 0
+    total_events = 0
     total_donated = 0
 
     sponsor_donations = []
     sponsor_projects = []
+    sponsor_events = []
 
     for sponsor in sponsors:
         donations = sponsor.donations.all()
         total_donations += sponsor.donations.count()
-        total_projects += sponsor.projects.count()
-        total_donated += sum(donation.value for donation in donations)
-        sponsor_donations.append((sponsor, total_donated))
-        sponsor_projects.append((sponsor, total_projects))
+
+        current_projects = sponsor.projects.count()
+        total_projects += current_projects
+
+        current_events = sponsor.events.count()
+        total_events += current_events
+
+        current_donation = sum(donation.value for donation in donations)
+        total_donated += current_donation
+
+        sponsor_donations.append((sponsor, current_donation))
+        sponsor_projects.append((sponsor, current_projects))
+        sponsor_events.append((sponsor, current_events))
 
     ordered_by_donations = sorted(sponsor_donations, key=lambda x: x[1], reverse=True)
     ordered_by_projects = sorted(sponsor_projects, key=lambda x: x[1], reverse=True)
+    ordered_by_events = sorted(sponsor_events, key=lambda x: x[1], reverse=True)
+
 
     return render(request, "general_report.html", {
         "total_donations": total_donations,
         "total_projects": total_projects,
+        "total_events": total_events,
         "total_donated": total_donated,
         "ordered_by_donations": ordered_by_donations,
-        "ordered_by_projects": ordered_by_projects
+        "ordered_by_projects": ordered_by_projects,
+        "ordered_by_events": ordered_by_events
     })
 
 def delete_project(request, id):

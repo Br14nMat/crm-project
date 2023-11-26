@@ -27,4 +27,10 @@
     background-color: #ffffff;
 }
 
-
+.num_report{
+    font-size: 2rem;
+}
+.money_donated{
+    font-weight: bold;
+    color: green;
+}
