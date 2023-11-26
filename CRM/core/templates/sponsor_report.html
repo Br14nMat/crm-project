@@ -17,7 +17,7 @@
     <div class="text-right">
         
     <header class="title-page">Reporte de Patrocinador</header>
-
+    <br>
     <div class="card">
         <h5 class="card-header">Estado: {{sponsor.status}}</h5>
         <div class="card-body d-flex justify-content-between">
@@ -36,7 +36,7 @@
     <br>
 
     <header class="subtitulo">Cantidad de Donaciones</header>
-    <p class="num_report">{{num_donations}} Donaciones</p>
+    <p class="num_report">{{num_donations}} donaciones</p>
     <br>
     
     <header class="subtitulo">Donaciones</header>
@@ -68,8 +68,8 @@
     <br>
 
     
-    <header class="subtitulo">Cantidad de proyectos de investigación</header>
-    <p class="num_report">{{num_projects}} Proyectos</p>
+    <header class="subtitulo">Cantidad de proyectos</header>
+    <p class="num_report">{{num_projects}} proyectos</p>
     <br>
     
     
@@ -77,22 +77,80 @@
     <br>
 
     {% if projects %}
-    <div class="row row-cols-1 row-cols-md-1 g-4 px-4">
-        {% for p in projects %}
-            <div class="card text-dark bg-light mb-3 mx-3" style="max-width: 18rem;">
-                <div class="card-header">{{p.start_date}} - {{p.finish_date}}</div>
-                <div class="card-body">
-                    <h5 class="card-title">{{p.name}}</h5>
-                    <p class="card-text">{{p.description}}</p>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-bordered table-striped mb-0">
+             <thead>
+                 <tr>
+                   <th scope="col"><b>Nombre</b></th>
+                   <th scope="col"><b>Inicio</b></th>                      
+                   <th scope="col"><b>Cierre</b></th>
+                </tr>
+           </thead>
+                 <tbody>
+                     {% for p in projects %}
+                     <tr>
+                       <td>{{p.name}}</td>
+                       <td>{{p.start_date}}</td>
+                       <td>{{p.finish_date}}</td>
+                     </tr>
+                     {% endfor %}
+                 </tbody>
+        </table>
+     </div>
     {% else %}
     <p class="comment">Este patrocinador no tiene proyectos añadidos.</p>
     {% endif %}
+
     <br>
-    <a href = "/sponsor/all" class = "btn btn-primary">Volver</a>
-    </div>    
+
+    <header class="subtitulo">Cantidad de asistencias</header>
+    <p class="num_report">{{num_events}} asistencias</p>
+    <br>
+
+    <header class="subtitulo">Asistencia eventos</header>
+    <br>
+
+    {% if events %}
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-bordered table-striped mb-0">
+             <thead>
+                 <tr>
+                   <th scope="col"><b>Nombre</b></th>
+                   <th scope="col"><b>Fecha</b></th>                      
+                   <th scope="col"><b>Tipo</b></th>
+                </tr>
+           </thead>
+                 <tbody>
+                     {% for e in events %}
+                     <tr>
+                       <td>{{e.name}}</td>
+                       <td>{{e.date}}</td>
+                       <td>{{e.type}}</td>
+                     </tr>
+                     {% endfor %}
+                 </tbody>
+        </table>
+     </div>
+    {% else %}
+    <p class="comment">Este patrocinador aún no ha asistido a un evento.</p>
+    {% endif %}
+
+
+    <br><br>
+
+    <div>
+        <a href="/sponsor/all" class="btn btn-primary btn-lg">Volver</a>
+        <a class="btn btn-primary btn-lg" onclick="imprimirPantalla()">
+            <i class="bi bi-file-earmark-pdf-fill"></i>
+        </a>
+    </div>
+    <br>
+
+    <script>
+        function imprimirPantalla() {
+            window.print();
+        }
+    </script>
+    
 </div>
 {% endblock %}

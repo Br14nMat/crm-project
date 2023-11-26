@@ -19,60 +19,99 @@
     <br>
     
     <header class="subtitle">Dinero total donado</header>
-    <p>$ {{total_donated}}</p>
+    <p class="num_report money_donated">$ {{total_donated}}</p>
     
     <header class="subtitle">Cantidad de donaciones</header>
-    <p>{{total_donations}}</p>
+    <p class="num_report">{{total_donations}} donaciones</p>
     
     <header class="subtitle">Cantidad de proyectos de investigación</header>
-    <p>{{total_projects}}</p>
+    <p class="num_report">{{total_projects}} proyectos</p>
+
+    <header class="subtitle">Cantidad de asistencias a eventos</header>
+    <p class="num_report">{{total_events}} asistencias</p>
+
+    <div>
+        <a href="/home/" class="btn btn-primary btn-lg">Volver</a>
+        <a class="btn btn-primary btn-lg" onclick="imprimirPantalla()">
+            <i class="bi bi-file-earmark-pdf-fill"></i>
+        </a>
+    </div>
 </div>
 
-<header class="title-page">Top donadores</header>
+<br>
 
-<table class="table table-hover table-bordered">
-    <thead class="table-dark">
-        <tr>
-            <th>POS</th>
-            <th>Nombre</th>
-            <th>Total donado</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for s in ordered_by_donations %}
-        <tr>
-            <td>{{forloop.counter}}</td>
-            <td>{{ s.0.name }}</td>
-            <td>{{ s.1 }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container-sm">
+    <header class="title-page m-4">Top donantes</header>
 
-<header class="title-page">Top Investigadores</header>
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>POS</th>
+                <th>Nombre</th>
+                <th>Total donado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in ordered_by_donations %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{ s.0.name }}</td>
+                <td>{{ s.1 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-<table class="table table-hover table-bordered">
-    <thead class="table-dark">
-        <tr>
-            <th>POS</th>
-            <th>Nombre</th>
-            <th>Cantidad Proyectos</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for s in ordered_by_projects %}
-        <tr>
-            <td>{{forloop.counter}}</td>
-            <td>{{ s.0.name }}</td>
-            <td>{{ s.1 }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <header class="title-page m-4">Top investigadores</header>
 
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>POS</th>
+                <th>Nombre</th>
+                <th>Cantidad Proyectos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in ordered_by_projects %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{ s.0.name }}</td>
+                <td>{{ s.1 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-{% for s in ordered_sponsors %}
-<p>{{s.name}}</p>
-{% endfor %}
+    <header class="title-page m-4">Top asistencias</header>
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>POS</th>
+                <th>Nombre</th>
+                <th>Cantidad asistencias</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in ordered_by_events %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{ s.0.name }}</td>
+                <td>{{ s.1 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+
+    <script>
+        function imprimirPantalla() {
+            window.print();
+        }
+    </script>
+
+</div>
 
 {% endblock %}
