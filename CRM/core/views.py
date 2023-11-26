@@ -1,3 +1,4 @@
+from typing import Any
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .forms import SponsorForm
@@ -11,13 +12,16 @@ from .models import Sponsor
 from .models import Followup
 from .models import investigation_project
 from .models import Product
+from django.views.generic import ListView
+import json
+import os
 
 def register_sponsor(request):
     form= SponsorForm()
     try:
         if request.method == 'POST':
             print(request.POST)
-            form= SponsorForm(request.POST)
+            form= SponsorForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
             return redirect('list_sponsors')
@@ -36,7 +40,7 @@ def edit_sponsor(request):
     form = SponsorForm(instance=sponsor)
     if request.method=='POST':
         if request.POST.get('edit'):
-            form = SponsorForm(request.POST,instance=sponsor)
+            form = SponsorForm(request.POST, request.FILES,instance=sponsor)
             edited_sponsor = form.save(commit=False)
             edited_sponsor.save()
             del request.session['selectedNIT']
@@ -382,4 +386,41 @@ def list_event_day(request):
     if request.method == 'GET':
         data = [{"id": event.id,"name": event.name, "date": event.date,"description": event.description,"type":event.type} for event in events]
         return JsonResponse(data, safe=False)
+
+def get_sponsors_by_name_event(_request,id, sponsor_name):
+    event = get_object_or_404(Event, id=id)
+    sponsors=Sponsor.objects.filter(name__istartswith=sponsor_name)
+    usable_sponsors=[]
+    used_sponsors=[]
+    for sponsor in sponsors:
+        sponsor_data = {
+            'nit': sponsor.nit,
+            'name': sponsor.name
+        }
+
+        if event.sponsors.filter(nit=sponsor.nit).exists():
+            used_sponsors.append(sponsor_data)
+        else:
+            usable_sponsors.append(sponsor_data)
+
+    data = {'message': 'Success', 'sponsors': usable_sponsors, 'event_sponsors': used_sponsors}
+    return JsonResponse(data)
     
+def get_sponsors_by_name_project(_request, id,sponsor_name):
+    project = get_object_or_404(investigation_project, id=id)
+    sponsors=Sponsor.objects.filter(name__istartswith=sponsor_name)
+    usable_sponsors=[]
+    used_sponsors=[]
+    for sponsor in sponsors:
+        sponsor_data = {
+            'nit': sponsor.nit,
+            'name': sponsor.name
+        }
+
+        if project.sponsors.filter(nit=sponsor.nit).exists():
+            used_sponsors.append(sponsor_data)
+        else:
+            usable_sponsors.append(sponsor_data)
+
+    data = {'message': 'Success', 'sponsors': usable_sponsors, 'project_sponsors': used_sponsors}
+    return JsonResponse(data)

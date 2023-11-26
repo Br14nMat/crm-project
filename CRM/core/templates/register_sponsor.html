@@ -18,7 +18,7 @@
 <div class="container-general">
   <header class="title-page">Registrar patrocinador</header>
 
-  <form action="" method="POST">
+  <form action="" method="POST", enctype="multipart/form-data">
       {% csrf_token %}
         <p>
           <div class="mb-3">
@@ -41,6 +41,10 @@
             <input type="email" class="form-control" name="mail" maxlength="200" required="" id="id_mail" placeholder="Email">
           </div>
         </p>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Seleccione una imagen</label>
+          <input class="form-control" type="file" name="image" id="id_image">
+        </div>
       <button type="submit" class="btn btn-success" name="confirm">Confirmar</button>
   </form>
 </div>

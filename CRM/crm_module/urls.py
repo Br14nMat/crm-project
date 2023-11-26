@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from authentication import views as auth_views
 from core import views as core_views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -49,5 +50,7 @@ urlpatterns = [
     path('project/all', core_views.project_list, name= 'project_list'),
     path('project/edit/<int:id>', core_views.edit_project, name= 'edit_project'),
     path('event/calendar', core_views.calendar ,name= 'show_calendar'),
-    path('event/calendar/events', core_views.list_event_day ,name= 'show_events_calendar')
-]
+    path('event/calendar/events', core_views.list_event_day ,name= 'show_events_calendar'),
+    path('event/info/<int:id>/sponsors/<str:sponsor_name>', core_views.get_sponsors_by_name_event, name = 'show event sponsors'),
+    path('project/edit/<int:id>/sponsors/<str:sponsor_name>', core_views.get_sponsors_by_name_project, name= 'show project sponsors')
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

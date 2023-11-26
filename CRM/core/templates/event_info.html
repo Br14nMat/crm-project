@@ -72,7 +72,7 @@
                     <form action="" method="POST" name="filter_sponsors">
                         {% csrf_token %} 
                         <div class="input-group mb-3">    
-                            <input type="text" class="form-control" placeholder="Nombre de patrocinador" name="sponsor_name">
+                            <input type="text" class="form-control" placeholder="Nombre de patrocinador" name="sponsor_name" id="sponsor_name">
                             <button class="btn btn-outline-secondary" type="submit" name="filter_sponsors" value="filter_sponsors">Buscar</button>
                         </div>
                     </form>
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <form action="" method="POST" name="link_sponsor">
                             {% csrf_token %} 
-                            <table class="table table-hover table-bordered">
+                            <table class="table table-hover table-bordered" id="sponsor-table">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Nit</th>
@@ -89,7 +89,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="sponsor-table-body">
                                     {% for s in sponsors %}
                                         <tr>
                                             <td>{{s.nit}}</td>
@@ -101,6 +101,7 @@
                                     {% endfor %}
                                 </tbody>
                             </table>
+                            <script src= "{% static 'js/event_sponsors.js' %}"></script>
                         </form>
                     </div>
                     {% else %}
