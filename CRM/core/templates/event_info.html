@@ -48,7 +48,6 @@
         <div class="card mx-4">
             <div class="card-body">
                 <div class="container-sm py-4">
-                    <h3>Seguimientos</h3>
                     <header class="subtitle">Seguimientos</header>
                     <div class="form-group">
                         <form action = "" method = "POST" name="followup">
@@ -61,8 +60,6 @@
             </div>
         </div>
         <br>
-
-
     </section>
 
     <section class="sponsor_event">
@@ -71,6 +68,7 @@
                 <div class="container-sm py-4">
                     <header class="subtitle">Agregar patrocinador</header>
                     <br>
+                    {% if sponsors %}
                     <form action="" method="POST" name="filter_sponsors">
                         {% csrf_token %} 
                         <div class="input-group mb-3">    
@@ -80,7 +78,7 @@
                     </form>
 
                       
-                    <div class="form-group"></div>
+                    <div class="form-group">
                         <form action="" method="POST" name="link_sponsor">
                             {% csrf_token %} 
                             <table class="table table-hover table-bordered" id="sponsor-table">
@@ -93,50 +91,60 @@
                                 </thead>
                                 <tbody id="sponsor-table-body">
                                     {% for s in sponsors %}
-                                    <tr>
-                                        <td>{{s.nit}}</td>
-                                        <td>{{s.name}}</td>
-                                        <td>
-                                            <button type="submit" class="btn btn-secondary" name="link_sponsor" value={{s.nit}}>Agregar</button>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{s.nit}}</td>
+                                            <td>{{s.name}}</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-secondary" name="link_sponsor" value={{s.nit}}>Agregar</button>
+                                            </td>
+                                        </tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
                             <script src= "{% static 'js/event_sponsors.js' %}"></script>
                         </form>
                     </div>
+                    {% else %}
+                    <p class="comment">No hay patrocinadores disponibles.</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        
+        <br>
     </section>
-    <div class="container-sm p-4">
-        <header class="subtitle">Patrocinadores activos</header>
-    
-        <table class="table table-hover table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>Nit</th>
-                    <th>Nombre</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for r in event_sponsors %}
-                <tr>
-                    <td>{{r.nit}}</td>
-                    <td>{{r.name}}</td>
-                    <td>
-                        <a href = "/event/info/{{event.id}}/remove_sponsor/{{r.id}}" class = "btn btn-danger">Borrar</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
 
-
-    
+    <section class="active_sponsors">
+        <div class="card mx-4">
+            <div class="card-body">
+                <div class="container-sm py-4">
+                    <header class="subtitle">Patrocinadores activos</header>
+                    {% if event_sponsors %}
+                    <table class="table table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Nit</th>
+                                <th>Nombre</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for r in event_sponsors %}
+                                <tr>
+                                    <td>{{r.nit}}</td>
+                                    <td>{{r.name}}</td>
+                                    <td>
+                                        <a href = "/event/info/{{event.id}}/remove_sponsor/{{r.id}}" class = "btn btn-danger">Borrar</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p class="comment">Aún no hay patrocinadores asignados a este evento.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

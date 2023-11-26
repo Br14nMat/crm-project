@@ -26,5 +26,12 @@
 .breadcrumb{
     background-color: #ffffff;
 }
+.comment{
+    font-size: large;
+    font-weight: bold;
+    background-color: #fdfd96;
+    color: black;
+    text-align: center;
+}
 
 
