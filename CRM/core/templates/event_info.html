@@ -48,12 +48,12 @@
         <div class="card mx-4">
             <div class="card-body">
                 <div class="container-sm py-4">
-                    <header class="subtitle">Seguimientos</header>
+                    <header class="subtitle">Agregar Seguimientos</header>
                     <div class="form-group">
                         <form action = "" method = "POST" name="followup">
                             {% csrf_token %}
                             {{form.as_p}}
-                            <button type="submit" name="followup" value="followup" class="btn btn-secondary">Agregar</button>
+                            <button onclick="location.href='mailto:{% for r in event_sponsors %}{{r.mail}};{% endfor %}?subject=Actualización de seguimientos sobre ({{event.name}})&body=La siguiente lista de información refiere a los seguimientos generados para este evento: {% for f in followups %}-{{f.name}}-: {{f.description}} {% endfor %}'" type="submit" class="btn btn-secondary" name="followup" value="followup">Agregar</button>
                         </form>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                                             <td>{{s.nit}}</td>
                                             <td>{{s.name}}</td>
                                             <td>
-                                                <button type="submit" class="btn btn-secondary" name="link_sponsor" value={{s.nit}}>Agregar</button>
+                                                <button onclick="location.href='mailto:{{s.mail}}?subject=Información del Evento ({{event.name}})&body=Se informa que el evento {{event.name}} tendrá lugar este {{event.date}}, con el fin de {{event.objective}}. {{event.description}}. Contamos con su asistencia.'" type="submit" class="btn btn-secondary" name="link_sponsor" value={{s.nit}}>Agregar</button>
                                             </td>
                                         </tr>
                                     {% endfor %}
@@ -139,6 +139,7 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    <a href="mailto:{% for r in event_sponsors %}{{r.mail}};{% endfor %}?subject=Información del Evento ({{event.name}})&body=Se informa que el evento {{event.name}} tendrá lugar este {{event.date}}, con el fin de {{event.objective}}. {{event.description}}. Contamos con su asistencia.">Informar Patrocinadores</a>
                     {% else %}
                     <p class="comment">Aún no hay patrocinadores asignados a este evento.</p>
                     {% endif %}
