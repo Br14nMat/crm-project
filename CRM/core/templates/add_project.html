@@ -12,26 +12,49 @@
             <li class="breadcrumb-item active" aria-current="page">Agregar proyecto de investigacion</li>
         </ol>
     </nav>
-  </div>
-    <div class="container-general">
-        <header class="title-page">Agregar Proyecto de Investigación</header>
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text" name="name" class="form-control" maxlength="50" required="" id="id_name" placeholder="Nombre"><div class="mb-3">
-                <textarea class="form-control" name="description" required="" id="id_description" rows="4" placeholder="Descripción"></textarea>
+</div>
+
+<div class="container-general">
+    <header class="title-page">Agregar Proyecto de Investigación</header>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.objectives.label_tag }}
+            {{ form.objectives }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.start_date.label_tag }}
+            {{ form.start_date }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.finish_date.label_tag }}
+            {{ form.finish_date }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.sponsors.label_tag }}
+            {{ form.sponsors }}
+        </div>
+
+        <div class="row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
-            
-            <div class="mb-3">
-                <textarea class="form-control" name="objectives" required="" id="id_objectives" rows="4" placeholder="Objetivos"></textarea>
-            </div>
-            
-            <input type="date" name="start_date" class="form-control" required="" id="id_start_date" placeholder="Fecha de Inicio">
-            <input type="date" name="finish_date" class="form-control" required="" id="id_finish_date" placeholder="Fecha de Fin">
-            <div class="row">
-                <div class="col-sm-10 offset-sm-2">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
+
 {% endblock %}

@@ -66,10 +66,10 @@ class FollowupForm(ModelForm):
 class investigation_project_form(ModelForm):
     class Meta:
         model = investigation_project
-        fields = ['name','description','objectives','start_date','finish_date']
+        fields = ['name','description','objectives','start_date','finish_date','sponsors']
         widgets = {
             'start_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
-            'finish_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"})
+            'finish_date': widgets.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
         }
 
     def clean(self):
@@ -82,3 +82,7 @@ class investigation_project_form(ModelForm):
                 self.add_error('finish_date', 'La fecha de finalización debe ser posterior a la fecha de inicio.')
 
         return cleaned_data
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Modificar la etiqueta del campo sponsors para mostrar el nombre en lugar del NIT
+        self.fields['sponsors'].label_from_instance = lambda obj: f"{obj.name} ({obj.nit})"

@@ -22,7 +22,6 @@
     <header class="title-page">Editar Proyecto de Investigación</header>
     <form method="post">
         {% csrf_token %}
-        
         <header class="subtitulo">Nombre: </header>
         <input type="text" name="name" class="form-control" maxlength="50" required="" id="id_name" value="{{project.name}}">
         <div class="mb-3">
