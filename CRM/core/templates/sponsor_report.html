@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/sponsor_report.css' %}" />
+
+<div class="container-sm p-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'list_sponsors' %}">Lista de patrocinadores</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Reporte de patrocinador</li>
+        </ol>
+    </nav>
+</div>
+<div class="container-general">
+    <div class="text-right">
+        
+    <header class="title-page">Reporte de Patrocinador</header>
+    <br>
+    <div class="card">
+        <h5 class="card-header">Estado: {{sponsor.status}}</h5>
+        <div class="card-body d-flex justify-content-between">
+            <div>
+                <h5 class="card-title">{{sponsor.name}}</h5>
+                <p class="card-text"><b>NIT: </b> {{sponsor.nit}}</p>
+                <p class="card-text"><b>Tipo: </b>{{sponsor.type}}</p>
+                <p class="card-text"><b>Correo: </b>{{sponsor.mail}}</p>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <header class="subtitulo">Dinero total donado</header>
+    <p class="num_report money_donated">$ {{total_donated}}</p>
+    <br>
+
+    <header class="subtitulo">Cantidad de Donaciones</header>
+    <p class="num_report">{{num_donations}} donaciones</p>
+    <br>
+    
+    <header class="subtitulo">Donaciones</header>
+    <br>
+    {% if donations %}
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+       <table class="table table-bordered table-striped mb-0">
+            <thead>
+                <tr>
+                  <th scope="col"><b>Fecha</b></th>
+                  <th scope="col"><b>Valor</b></th>                      
+                  <th scope="col"><b>Tipo</b></th>
+               </tr>
+          </thead>
+                <tbody>
+                    {% for d in donations %}
+                    <tr>
+                      <td>{{d.date}}</td>
+                      <td>${{d.value}}</td>
+                      <td>{{d.type}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+       </table>
+    </div>
+    {% else %}
+    <p class="comment">Este patrocinador aún no ha realizado donaciones.</p>
+    {% endif %}
+    <br>
+
+    
+    <header class="subtitulo">Cantidad de proyectos</header>
+    <p class="num_report">{{num_projects}} proyectos</p>
+    <br>
+    
+    
+    <header class="subtitulo">Proyectos de investigación</header>
+    <br>
+
+    {% if projects %}
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-bordered table-striped mb-0">
+             <thead>
+                 <tr>
+                   <th scope="col"><b>Nombre</b></th>
+                   <th scope="col"><b>Inicio</b></th>                      
+                   <th scope="col"><b>Cierre</b></th>
+                </tr>
+           </thead>
+                 <tbody>
+                     {% for p in projects %}
+                     <tr>
+                       <td>{{p.name}}</td>
+                       <td>{{p.start_date}}</td>
+                       <td>{{p.finish_date}}</td>
+                     </tr>
+                     {% endfor %}
+                 </tbody>
+        </table>
+     </div>
+    {% else %}
+    <p class="comment">Este patrocinador no tiene proyectos añadidos.</p>
+    {% endif %}
+
+    <br>
+
+    <header class="subtitulo">Cantidad de asistencias</header>
+    <p class="num_report">{{num_events}} asistencias</p>
+    <br>
+
+    <header class="subtitulo">Asistencia eventos</header>
+    <br>
+
+    {% if events %}
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-bordered table-striped mb-0">
+             <thead>
+                 <tr>
+                   <th scope="col"><b>Nombre</b></th>
+                   <th scope="col"><b>Fecha</b></th>                      
+                   <th scope="col"><b>Tipo</b></th>
+                </tr>
+           </thead>
+                 <tbody>
+                     {% for e in events %}
+                     <tr>
+                       <td>{{e.name}}</td>
+                       <td>{{e.date}}</td>
+                       <td>{{e.type}}</td>
+                     </tr>
+                     {% endfor %}
+                 </tbody>
+        </table>
+     </div>
+    {% else %}
+    <p class="comment">Este patrocinador aún no ha asistido a un evento.</p>
+    {% endif %}
+
+
+    <br><br>
+
+    <div>
+        <a href="/sponsor/all" class="btn btn-primary btn-lg">Volver</a>
+        <a class="btn btn-primary btn-lg" onclick="imprimirPantalla()">
+            <i class="bi bi-file-earmark-pdf-fill"></i>
+        </a>
+    </div>
+    <br>
+
+    <script>
+        function imprimirPantalla() {
+            window.print();
+        }
+    </script>
+    
+</div>
+{% endblock %}

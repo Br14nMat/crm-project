@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+    <div class="container">
+        <div class="container-signup">
+            <div class="text-center">
+                <img class="img-fluid p-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Logo_de_la_Universidad_ICESI.svg/2560px-Logo_de_la_Universidad_ICESI.svg.png">
+            </div>
+            <div class="form-group text-center">
+                <form action="/signup/" method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group p-2 mx-4 my-1">
+                        <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username" class="form-control" placeholder="Usuario">
+                    </div>
+
+                    <div class="form-group p-2 mx-4 my-1">
+                        <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" class="form-control" placeholder="Contraseña">
+                    </div>
+
+                    <div class="form-group p-2 mx-4 my-1">
+                        <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" class="form-control" placeholder="Confirma la contraseña">
+                    </div>
+
+                    <button class="btn btn-primary btn-block m-4 px-4">Registrar</button>
+                </form>
+                <div>
+                    <span>¿Ya tienes una cuenta? </span><a class="register-btn" href="/signin/">Inicia sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

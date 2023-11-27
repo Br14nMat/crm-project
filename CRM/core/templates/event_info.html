@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/event_info.css' %}" />
+
+<div class="container-sm p-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'list event' %}">Lista de eventos</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Información del Evento</li>
+        </ol>
+    </nav>
+</div>
+    
+<header class="title-page">Información del Evento</header>
+    <div class="card mx-4">
+        <div class="card-header">{{event.date}}</div>
+            <div class="card-body">
+                <div class="container-sm py-4">
+                <h1 class="card-title">{{event.name}}</h1>
+                <p class="card-text">
+                    {{event.type}}<br>
+                    {{event.objective}}<br>
+                    {{event.description}}<br>
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="row row-cols-1 row-cols-md-1 g-4 px-4">
+        {% for f in followups %}
+            <div class="card text-dark bg-light mb-3 mx-3" style="max-width: 18rem;">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <h5 class="card-title">{{f.name}}</h5>
+                    <p class="card-text">{{f.description}}</p>
+                    <a href ="followup/delete/{{event.id}}/{{f.id}}" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div><br>
+
+    
+    <section class="followups">
+        <div class="card mx-4">
+            <div class="card-body">
+                <div class="container-sm py-4">
+                    <header class="subtitle">Agregar Seguimientos</header>
+                    <div class="form-group">
+                        <form action = "" method = "POST" name="followup">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button onclick="location.href='mailto:{% for r in event_sponsors %}{{r.mail}};{% endfor %}?subject=Actualización de seguimientos sobre ({{event.name}})&body=La siguiente lista de información refiere a los seguimientos generados para este evento: {% for f in followups %}-{{f.name}}-: {{f.description}} {% endfor %}'" type="submit" class="btn btn-secondary" name="followup" value="followup">Agregar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </section>
+
+    <section class="sponsor_event">
+        <div class="card mx-4">
+            <div class="card-body">
+                <div class="container-sm py-4">
+                    <header class="subtitle">Agregar patrocinador</header>
+                    <br>
+                    {% if sponsors %}
+                    <form action="" method="POST" name="filter_sponsors">
+                        {% csrf_token %} 
+                        <div class="input-group mb-3">    
+                            <input type="text" class="form-control" placeholder="Nombre de patrocinador" name="sponsor_name" id="sponsor_name">
+                            <button class="btn btn-outline-secondary" type="submit" name="filter_sponsors" value="filter_sponsors">Buscar</button>
+                        </div>
+                    </form>
+
+                      
+                    <div class="form-group">
+                        <form action="" method="POST" name="link_sponsor">
+                            {% csrf_token %} 
+                            <table class="table table-hover table-bordered" id="sponsor-table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Nit</th>
+                                        <th>Nombre</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sponsor-table-body">
+                                    {% for s in sponsors %}
+                                        <tr>
+                                            <td>{{s.nit}}</td>
+                                            <td>{{s.name}}</td>
+                                            <td>
+                                                <button onclick="location.href='mailto:{{s.mail}}?subject=Información del Evento ({{event.name}})&body=Se informa que el evento {{event.name}} tendrá lugar este {{event.date}}, con el fin de {{event.objective}}. {{event.description}}. Contamos con su asistencia.'" type="submit" class="btn btn-secondary" name="link_sponsor" value={{s.nit}}>Agregar</button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <script src= "{% static 'js/event_sponsors.js' %}"></script>
+                        </form>
+                    </div>
+                    {% else %}
+                    <p class="comment">No hay patrocinadores disponibles.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <br>
+    </section>
+
+    <section class="active_sponsors">
+        <div class="card mx-4">
+            <div class="card-body">
+                <div class="container-sm py-4">
+                    <header class="subtitle">Patrocinadores activos</header>
+                    {% if event_sponsors %}
+                    <table class="table table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Nit</th>
+                                <th>Nombre</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for r in event_sponsors %}
+                                <tr>
+                                    <td>{{r.nit}}</td>
+                                    <td>{{r.name}}</td>
+                                    <td>
+                                        <a href = "/event/info/{{event.id}}/remove_sponsor/{{r.id}}" class = "btn btn-danger">Borrar</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <a href="mailto:{% for r in event_sponsors %}{{r.mail}};{% endfor %}?subject=Información del Evento ({{event.name}})&body=Se informa que el evento {{event.name}} tendrá lugar este {{event.date}}, con el fin de {{event.objective}}. {{event.description}}. Contamos con su asistencia.">Informar Patrocinadores</a>
+                    {% else %}
+                    <p class="comment">Aún no hay patrocinadores asignados a este evento.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

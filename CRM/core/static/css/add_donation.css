@@ -1,0 +1,62 @@
+.title-page{
+    font-size: 4rem;
+    font-weight: bold;
+    color: #00599c;
+}
+
+.container-general {
+    position: relative;
+    width: 800px;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    color: var(--text-clr);
+    display: flex;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+.subtitle{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00599c;
+    padding: 10px;
+}
+.container-card {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    margin: 40px auto;
+    padding: 25px;
+    color: var(--text-clr);
+    display: flex;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.breadcrumb{
+    background-color: #ffffff;
+}
+
+
+.container-general form {
+    width: 500px;
+    margin: 30px auto;
+}
+
+.container-general form input,
+.container-general form select {
+    width: 100%;
+}
+
+.card{
+    width: 540px;
+    padding: 0%;
+}
+

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/edit_sponsor.css' %}" />
+
+<div class="container-sm p-4">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'list_sponsors' %}">Lista de patrocinadores</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Editar patrocinador</li>
+      </ol>
+  </nav>
+</div>
+<body>
+    <div class="container-general">
+      <header class="title-page">Editar Patrocinador</header>
+      <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+      <p>
+        <div class="mb-3">
+          <input class="form-control"type="number" name="nit" value={{sponsor.nit}} required="" id="id_nit"min="0" placeholder="Nit">
+        </div>
+      </p>
+      <p>
+        <div class="mb-3">
+          <input type="text" name="name" value={{sponsor.name}}  maxlength="255" required="" id="id_name" class="form-control" placeholder="Nombre">
+        </div>
+      </p>
+      <p>
+        <select class="form-select" name="type" id="id_type">
+          {% if sponsor.type == "Natural" %}
+            <option value="Natural" selected>NATURAL</option>
+            <option value="Juridica">JURIDICA</option>
+          {% else %}
+            <option value="Natural">NATURAL</option>
+            <option value="Juridica" selected>JURIDICA</option>
+          {% endif %}
+        </select>
+      </p>
+      
+      <p>
+        <div class="mb-3">
+          <input class="form-control"type="email" name="mail" value={{sponsor.mail}}  maxlength="200" required="" id="id_mail" placeholder="Email">
+        </div>
+      </p>
+      <p>
+        <label for="id_status" class="form-label">Estado: {{sponsor.status}}</label>
+      </p>
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Seleccione una imagen</label>
+        <input class="form-control" type="file" name="image" id="id_image">
+      </div>
+      <button type="submit" class="btn btn-secondary" name="change_status" value="change_status">Cambiar estado</button>
+      <button type="submit" class="btn btn-success" name="edit" value="edit">Guardar cambios</button>
+      </form>
+    </div>
+    
+</body>
+</html>
+{% endblock %}

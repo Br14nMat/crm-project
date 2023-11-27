@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/add_donation.css' %}" />
+
+    <div class="container-sm p-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'list_sponsors' %}">Lista de patrocinadores</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Registrar donación</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-card">
+        <header class="subtitle">Información del patrocinador</header>
+        <div class="card">
+            <h5 class="card-header">{{sponsor.nit}}</h5>
+            <div class="card-body d-flex justify-content-between">
+                <div>
+                    <h5 class="card-title">{{sponsor.name}}</h5>
+                    <p class="card-text">Estado: {{sponsor.status}}</p>
+                    <p class="card-text">Tipo: {{sponsor.type}}</p>
+                    <p class="card-text">Email: {{sponsor.mail}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-general">  
+        <header class="title-page">Agregar Donación</header>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <label for="value" class="col-sm-2 col-form-label">Valor:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="value" name="value" required>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <label for="type" class="col-sm-2 col-form-label">Tipo de donación:</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" id="type" name="type" required>
+                            {% for option in form.type.field.choices %}
+                                <option value="{{ option.0 }}">{{ option.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="row mb-3">
+                    <label for="id_date" class="col-sm-2 col-form-label">Fecha de la donación:</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" name="date" required id="id_date">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container-home">  
+        <header class="welcome">Bienvenido, {{ user }}!</header>
+        <menu class="menu-box">
+            <div class="icon">
+                <a class="icon-box event-link" href="/event/all">
+                    <i class="bi bi-calendar-day"></i>
+                </a>
+                <h2 class="option-title">Eventos</h2>
+            </div>
+        
+            <div class="icon">
+                <a class=" icon-box sponsor-link" href="/sponsor/all">
+                    <i class="bi bi-person-fill"></i>
+                </a>
+                <h2 class="option-title">Patrocinadores</h2>
+            </div>
+
+            <div class="icon">
+                <a class="icon-box product-link" href="/project/all">
+                    <i class="bi bi-clipboard2-fill"></i>
+                </a>
+                <h2 class="option-title">Proyectos</h2>
+            </div>
+
+            <div class="icon">
+                <a class="icon-box report-link" href="/sponsor/report">
+                    <i class="bi bi-calculator-fill"></i>
+                </a>
+                <h2 class="option-title">Reporte General</h2>
+            </div>
+        </menu>
+    </div>
+
+
+{% endblock %}
+

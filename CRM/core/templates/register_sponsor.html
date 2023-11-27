@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/register_sponsor.css' %}" />
+
+<div class="container-sm p-4">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'list_sponsors' %}">Lista de patrocinadores</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Agregar patrocinador</li>
+      </ol>
+  </nav>
+</div>
+
+
+<div class="container-general">
+  <header class="title-page">Registrar patrocinador</header>
+
+  <form action="" method="POST", enctype="multipart/form-data">
+      {% csrf_token %}
+        <p>
+          <div class="mb-3">
+            <input type="number" class="form-control" name="nit" required="" id="id_nit" placeholder="Nit">
+          </div>
+        </p>
+        <p>
+          <div class="mb-3">
+            <input type="text" name="name" maxlength="255" required="" id="id_name" class="form-control" placeholder="Nombre">
+          </div>
+        </p>
+        <p>
+          <select class="form-select" name="type" id="id_type">
+            <option value="Natural" selected="">NATURAL</option>
+            <option value="Juridica">JURIDICA</option>
+          </select>
+        </p>
+        <p>
+          <div class="mb-3">
+            <input type="email" class="form-control" name="mail" maxlength="200" required="" id="id_mail" placeholder="Email">
+          </div>
+        </p>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Seleccione una imagen</label>
+          <input class="form-control" type="file" name="image" id="id_image">
+        </div>
+      <button type="submit" class="btn btn-success" name="confirm">Confirmar</button>
+  </form>
+</div>
+{% endblock %}

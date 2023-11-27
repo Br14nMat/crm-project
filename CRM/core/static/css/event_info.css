@@ -1,0 +1,37 @@
+.title-page{
+    font-size: 3rem;
+    font-weight: bold;
+    color: #00599c;
+}
+
+.container-general {
+    position: relative;
+    width: 95%;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    color: var(--text-clr);
+    display: flex;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+}
+.subtitle{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00599c;
+    padding: 10px;
+}
+.breadcrumb{
+    background-color: #ffffff;
+}
+.comment{
+    font-size: large;
+    font-weight: bold;
+    background-color: #fdfd96;
+    color: black;
+    text-align: center;
+}
+
+
