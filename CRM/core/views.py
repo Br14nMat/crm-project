@@ -358,13 +358,13 @@ def project_list(request):
     return render(request, 'project_list.html', {'project':project})
 
 def edit_project(request, id):
-    if(request.session.get('project_id',-1)==-1):
+    project = get_object_or_404(investigation_project, id=id)
+    if(request.session.get('project_id',-1)==project.id):
         request.session['project_id']=id
     else:
         new_id=request.session.get('project_id',-1)
         if(id!=new_id):
             id=new_id
-    project = get_object_or_404(investigation_project, id=id)
     form = investigation_project_form(instance=project) 
     usable_sponsors=[]
     used_sponsors=[]
