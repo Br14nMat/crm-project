@@ -78,9 +78,15 @@ WSGI_APPLICATION = 'crm_module.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'neondb',
+    'USER': 'Br14nMat',
+    'PASSWORD': 'JyoG0mZjcp1W',
+    'HOST': 'ep-holy-hat-60288479.us-east-2.aws.neon.tech',
+    'PORT': '5432',
+    'OPTIONS': {'sslmode': 'require'},
+  }
+
 }
 
 
